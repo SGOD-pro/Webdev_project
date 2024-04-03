@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var usersModel = require("../models/User")
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('this is users dashboard');
-});
+
+
+
 
 router.post("/register", async function (req, res) {
   try {
@@ -24,7 +24,7 @@ router.post("/register", async function (req, res) {
     }
     req.session._id = createdUser._id;
     const user = await usersModel.findById(req.session._id).select("-password")
-    res.status(200).json({ message: "Successfully registered", user, success: true });
+    res.status(200).redirect("/");
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -33,6 +33,7 @@ router.post("/register", async function (req, res) {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body);
     const user = await usersModel.findOne({ email: email });
     if (!user) {
       throw new Error("User not found");
@@ -52,18 +53,34 @@ router.post('/login', async (req, res) => {
           foreignField: "userId",
           localField: "_id",
           as: "history",
-          pipeline:[
-
+          pipeline: [
+            {
+              $lookup: {
+                from: "doctors",
+                foreignField: "_id",
+                localField: "doctorId",
+                as: "doctorName",
+                pipeline: [
+                  {
+                    $project:
+                    {
+                      name: 1
+                    }
+                  }
+                ]
+              }
+            }
           ]
         }
       },
       {
-        $project:{
+        $project: {
           password: 0
         }
       }
     ])
-    res.status(200).json({ message: "Login successful", data, success: true });
+    console.log(data);
+    res.status(200).redirect("/");
   } catch (error) {
     res.status(500).send(error.message);
   }

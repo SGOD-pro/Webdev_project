@@ -1,0 +1,79 @@
+.flex {
+	display: flex;
+}
+.items-center {
+	align-items: center;
+}
+.items-end {
+	align-items: end;
+}
+.justify-between {
+	justify-content: space-between;
+}
+.justify-center {
+	justify-content: center;
+}
+.justify-around {
+	justify-content: space-around;
+}
+.text-xl{
+    font-size: clamp(1.8rem,7.5vw,4.2rem);
+}
+.text-lg{
+    font-size: clamp(1.4rem,5.5vw,2rem);
+}
+.text-md{
+    font-size: clamp(1.1rem,4vw,1.3rem);
+}
+.text-basic{
+    font-size: clamp(.9rem,3.5vw,1.1rem);
+}
+.text-sm{
+    font-size: clamp(.7rem,2.5vw,.8rem);
+}
+.text-xs{
+    font-size: clamp(.5rem,2vw,.7rem);
+}
+.text-xs.opacity-6{
+    opacity: .6;
+}
+.flex-shrink{
+    flex-shrink: 1;
+}
+.flex-grow{
+    flex-grow: 1;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.w-full{
+    width: 100%;
+}
+.h-full{
+    height: 100%;
+}
+.h-screen{
+    height: 100vh;
+}
+.realtive{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+
+}
+.fixed{
+    position: fixed;
+}
+.top-0{
+    top: 0;
+}
+.left-0{
+    left: 0;
+}
+.inline-block{
+    display: inline-block;
+}
+.hidden{
+    display: none;
+}
