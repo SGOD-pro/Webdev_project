@@ -25,7 +25,13 @@ const appointmentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'doctors', // Reference to the Doctor model
         required: true
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
     }
+}, {
+    timestamps: true 
 });
 
 const Appointment = mongoose.model('appointments', appointmentSchema);
