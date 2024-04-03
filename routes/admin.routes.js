@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var adminModel = require("../models/Admin")
 var doctormodel = require("../models/Doctor")
+var tipsmodel = require("../models/Tips");
+const { default: isVerified } = require('../utils/verify');
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -20,7 +22,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/newdoctors', async (req, res) => {
+router.post('/newdoctors', isVerified, async (req, res) => {
     try {
         const {
             name,
@@ -49,7 +51,7 @@ router.post('/newdoctors', async (req, res) => {
             clinicLocation,
             charges
         });
-
+        // TODO:   Send username and password via email and add it to the admin database
         res.status(201).json({ message: 'Doctor data saved successfully', doctor: newDoctor, success: true });
     } catch (error) {
         console.error('Error saving doctor data:', error);
@@ -57,4 +59,28 @@ router.post('/newdoctors', async (req, res) => {
     }
 });
 
+router.get('/getalltips', isVerified, async (req, res) => {
+    try {
+        const allTips = await tipsmodel.find()
+        if (!allTips) {
+            throw new Error("Something is wrong.")
+        }
+        res.status(200).json(allTips);
+    } catch (error) {
+        res.status(500).json(error.message);
+    }
+})
+
+router.get("deletedoctor:id", isVerified, async (req, res) => {
+    try {
+        const _id = req.params.id;
+        const deleted = await doctormodel.findByIdAndDelete(_id)
+        const fromAdmin = await adminModel.findOne({ username: deleted.username })
+
+        await adminModel.findByIdAndDelete(fromAdmin._id)
+        // TODO:
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+})
 module.exports = router;

@@ -68,7 +68,7 @@ signupForm.addEventListener('submit', function (event) {
         }).catch((error) => {
 
         }).finally(() => {
-
+                
         });
 });
 
@@ -111,4 +111,5 @@ const logout = () => {
         }).catch((error) => {
             alert("Something went wrong.");
         })
+
 }

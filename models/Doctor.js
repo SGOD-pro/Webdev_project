@@ -27,7 +27,7 @@ const doctorSchema = new Schema({
     type: String,
     required: true,
     validate: {
-      validator: function(v) {
+      validator: function (v) {
         return /\d{10,}/.test(v); // Validates that phone number has at least 10 digits
       },
       message: props => `${props.value} is not a valid phone number!`
@@ -48,6 +48,16 @@ const doctorSchema = new Schema({
   charges: {
     type: Number,
     required: true
+  },
+  image: {
+    type: String,
+  },
+  username:{
+    type: String,
+  },
+  limit: {
+    type: Number,
+    default: 5,
   }
 });
 

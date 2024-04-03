@@ -29,9 +29,12 @@ const appointmentSchema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
         ref: 'user',
+    },
+    dateTime: {
+        type: Date
     }
 }, {
-    timestamps: true 
+    timestamps: true
 });
 
 const Appointment = mongoose.model('appointments', appointmentSchema);

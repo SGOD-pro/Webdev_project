@@ -5,154 +5,18 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: "Poppins", sans-serif;
-            }
-
-            html,
-            body {
-                min-height: 100%;
-                max-width: 100vw;
-                background-color: #242424;
-                color: #f4f4f4;
-            }
-
-            .header {
-                display: flex;
-                justify-content: space-between;
-                background-color: #303030;
-                align-items: center;
-                color: #f4f4f4;
-                padding: 10px;
-                position: relative;
-            }
-
-            .header a {
-                color: #f4f4f4;
-                text-decoration: none;
-                text-transform: capitalize;
-                margin-left: 8px;
-            }
-
-            .header .responcive {
-                display: flex;
-                align-items: center;
-                width: 75%;
-                justify-content: space-between;
-                transition: all 0.5s ease;
-            }
-
-            .header .buttons button {
-                outline: none;
-                background-color: #ff9a8b;
-                background-image: linear-gradient(90deg,
-                        #ff9a8b 0%,
-                        #ff6a88 55%,
-                        #ff99ac 100%);
-                border: none;
-                padding: 5px 13px;
-                border-radius: 8px;
-                text-transform: capitalize;
-                color: #f4f4f4;
-                margin-right: 5px;
-            }
-
-            #menu-icon {
-                display: none;
-            }
-
-            @media (max-width: 600px) {
-                #menu-icon {
-                    display: block;
-                }
-
-                .header .responcive {
-                    position: absolute;
-                    /* transform: translateY(-100%); */
-                    transition: all .5s cubic-bezier(0.165, 0.84, 0.44, 1);
-                    display: flex;
-                    flex-direction: column;
-                    bottom: 0;
-                    transform: translateY(100%);
-                    align-items: center;
-                    justify-content: center;
-                    width: 100%;
-                    transition: all 0.5s ease;
-                    left: 0;
-                    /* padding: 15px; */
-                    border-radius: 0 0 40px 40px;
-                    background-color: #303030;
-                    overflow: hidden;
-                    height: 0;
-                }
-                
-
-                .header .responcive.active {
-                    height: 30vh;
-                }
-
-                .header .link {
-                    display: flex;
-                    flex-direction: column;
-                }
-
-                .header .buttons {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 5px;
-                    width: 100%;
-                }
-
-                .header .buttons button {
-                    width: 50%;
-                }
-            }
-        </style>
     </head>
 
     <body>
+        <script>
 
-        <div class="header">
-            <div class="logo">
-                <h2>SGOD</h2>
-            </div>
 
-            <div class="responcive">
-                <div class="link">
-                    <a href="#">Home</a>
-                    <a href="#">services</a>
-                    <a href="#">contact</a>
-                    <a href="#">about</a>
-                </div>
-                <div class="buttons">
-                    <button id="login">login</button>
-                    <button>Register</button>
-                </div>
-            </div>
-
-            <div id="menu-icon" class="icon" onclick="active()">
-                <i class='bx bx-menu'></i>
-            </div>
-        </div>
-        <section>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam commodi ut quod aliquid, dolores error! Accusamus nostrum voluptatem excepturi blanditiis, nobis, nihil quos consequuntur ipsum eum, veritatis voluptas officia quas aut debitis tenetur quis! Sequi aliquam, est odio quis exercitationem accusamus ipsam maxime facere molestias magnam neque quisquam. Id, quas!
-        </section>
+            
+            setTimeout(() => {
+                console.log("hey");
+            }, 1000);
+            console.log("hello");
+        </script>
     </body>
-    <script>
-        const a = document.querySelector(".responcive")
-        function active() {
-
-            a.classList.toggle("active")
-            login.remove()
-        }
-    </script>
 
 </html>

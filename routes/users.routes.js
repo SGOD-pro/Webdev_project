@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var usersModel = require("../models/User")
+var appointmentModel = require("../models/Appointment")
+var feedbackModel = require("../models/Feedback")
+var isVerified = require("../utils/verify")
 /* GET users listing. */
-
-
 
 
 router.post("/register", async function (req, res) {
@@ -23,7 +24,7 @@ router.post("/register", async function (req, res) {
       throw new Error("Internal server error");
     }
     req.session._id = createdUser._id;
-    const user = await usersModel.findById(req.session._id).select("-password")
+    req.session.fullname = user.fullname;
     res.status(200).redirect("/");
   } catch (error) {
     res.status(500).send(error.message);
@@ -43,6 +44,7 @@ router.post('/login', async (req, res) => {
       throw new Error("Password is incorrect");
     }
     req.session._id = user._id;
+    req.session.fullname = user.fullname;
     const data = await usersModel.aggregate([
       {
         $match: { _id: user._id }
@@ -103,8 +105,80 @@ router.post('/logout', (req, res) => {
     res.status(404).send(error.message);
   }
 });
-router.post("/feedback", async function (req, res) {
-  res.send(req.session._id)
+router.post("/feedback:appId", isVerified, async function (req, res) {
+  //res.send(req.session._id)
+  try {
+    const comments = req.body
+    const appId = req.query
+    // TODO: fetch the doctor id from database
+    const doctorId = nll
+    const createdFeed = feedbackModel.create({
+      comments,
+      userId,
+      doctorId,
+    })
+    if (!createdFeed) {
+      throw new Error("Something went wrong.")
+    }
+    res.status(200).send("Added feedback")
+
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+
+})
+router.post('/new-appointment', isVerified, async function (req, res) {
+  const { fullname, age, gender, issue, doctorId } = req.body
+  //TODO: first find the doctor and check if patient limit is full or not 
+  //NOTE: Then set a appointment next day according to no of patient records
+
+  const today = new Date();
+  const currentDay = today.getDate();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
+
+  const nextDay = new Date(currentYear, currentMonth, currentDay + 1);
+
+  const nextDayDate = nextDay.getDate();
+  const nextDayMonth = nextDay.getMonth() + 1;
+  const nextDayDay = nextDay.getDay();
+
+  console.log(` ${nextDayDate}/${nextDayMonth}/${nextDay.getFullYear()}`);
+
+  const dateTime = ` ${nextDayDate}/${nextDayMonth}/${nextDayDay}(Add time)`
+
+  try {
+    const appointment = appointmentModel.create({
+      user: {
+        fullname,
+        age,
+        gender,
+        issue
+      },
+      doctorId,
+      userId,
+      dateTime
+    })
+    if (!appointment) {
+      throw new Error("Internal server error")
+    }
+    //TODO: add mail function too
+    res.status(500).send(dateTime)
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+})
+
+router.get("allappointments", isVerified, async function (req, res) {
+  try {
+    const appoinments = await appointmentModel.find({ userId: req.session._id })
+    if (!appoinments) {
+      throw new Error("Something went wrong")
+    }
+    res.status(200).json(appoinments)
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
 })
 
 module.exports = router;
