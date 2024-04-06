@@ -160,3 +160,29 @@ button {
 	cursor: pointer;
 	z-index: 20;
 }
+#message{
+	font-weight: bolder;
+	text-shadow: 2px 2px #26a1bf;
+	text-transform: capitalize;
+	color: white;
+	text-align: center;
+	margin-top: 5rem;
+}
+#page2 .left img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	position: relative;
+	top: 5px;
+	border-radius: 5%;
+}
+#page2 .right {
+	width: 40%;
+	font-weight: 400;
+	color: #00c1a9;
+	line-height: 2rem;
+	gap: 2rem;
+}
+#page {
+	flex-direction: row-reverse;
+}

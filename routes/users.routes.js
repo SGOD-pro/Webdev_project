@@ -11,7 +11,7 @@ router.post("/register", async function (req, res) {
   try {
     const { fullname, phoneNumber, email, password } = req.body
     if ([fullname, phoneNumber, email, password].some(item => !item && item.strip() === "")) {
-      throw new Error("Please fillup porpoerly!");
+      throw new Error("Please fillup properly!");
     }
     const existsUser = await usersModel.findOne({ email })
     if (existsUser) {

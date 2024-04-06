@@ -98,7 +98,7 @@ loginForm.addEventListener('submit', function (event) {
         .then(() => {
             window.location.href = "/";
         }).catch((error) => {
-            alert("Usrename or password incorrect.");
+            alert("Incorrect username or password.");
         }).finally(() => {
 
         });
