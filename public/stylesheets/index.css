@@ -112,13 +112,13 @@ button {
 	position: relative;
 	top: 5px;
 }
-.left {
+#page1 .left {
 	width: 50%;
 	color: #2966bf;
 	padding: 1.5rem;
 	font-weight: 600;
 }
-.left h1 {
+#page1 .left h1 {
 	letter-spacing: -1px;
 }
 .forms {
@@ -169,20 +169,57 @@ button {
 	margin-top: 5rem;
 }
 #page2 .left img {
-	width: 100%;
-	height: 100%;
+	width: 50%;
+	height: 50%;
 	object-fit: contain;
 	position: relative;
 	top: 5px;
 	border-radius: 5%;
+	filter: drop-shadow(8px 8px 8px #a9ddeb);
 }
 #page2 .right {
 	width: 40%;
 	font-weight: 400;
-	color: #00c1a9;
+	color: #26a1bf;
 	line-height: 2rem;
 	gap: 2rem;
+	display: inline; 
+	text-transform: capitalize;
+	margin-right: 10rem;
 }
-#page {
-	flex-direction: row-reverse;
+#page2 .right p{
+	font-weight: 500;
+	word-spacing: 5px;
 }
+#page2 .right button{
+	background-color: #a9ddeb;
+	opacity: 0.75;
+}
+#message{
+	animation: consult 0.75s infinite ;
+}
+@keyframes consult {
+	0% {
+		color:rgb(17, 163, 168);
+	}
+	20%{
+		color:purple;
+	}
+	40%{
+		color: rgb(72, 196, 19);
+	}
+	60%{
+		color:yellow;
+	}
+	80%{
+		color:rgb(210, 50, 178)
+	}
+	100%{
+		color:rgba(28, 12, 244, 0.877)
+	}
+	to{
+	animation-duration: 4s;
+	}
+}
+
+
