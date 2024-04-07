@@ -68,7 +68,7 @@ signupForm.addEventListener('submit', function (event) {
         }).catch((error) => {
 
         }).finally(() => {
-                
+
         });
 });
 
@@ -113,3 +113,36 @@ const logout = () => {
         })
 
 }
+
+
+const dont = [
+    "Don't neglect your physical health. Remember that your physical and mental health are interconnected.",
+    "Avoid excessive use of alcohol, drugs, or other substances as a way to cope with stress or emotional issues.",
+    "Don't isolate yourself. Stay connected with others and reach out for support when needed.",
+    "Avoid dwelling on negative thoughts or ruminating on past events. Practice self-compassion and focus on solutions.",
+    "Don't ignore warning signs of mental health problems in yourself or others. Early intervention is key to effective treatment.",
+    "Avoid comparing yourself to others, especially on social media. Remember that everyone's journey is unique.",
+    "Don't be afraid to set boundaries and say no to things that drain your energy or contribute to stress."
+]
+let tips = ""
+dont.forEach(item => {
+    tips += `<li>${item}</li>`
+})
+const notToDo = document.querySelector("#not-to-do ul")
+notToDo.innerHTML = tips
+
+const dos = [
+    "Practice relaxation techniques such as deep breathing, meditation, or progressive muscle relaxation.",
+    "Engage in activities you enjoy and that bring you a sense of fulfillment.",
+    "Reach out to friends, family, or support groups for social connection and emotional support.",
+    "Set realistic goals and celebrate your achievements, no matter how small.",
+    "Prioritize self-care activities, including getting enough sleep, eating nutritious foods, and exercising regularly.",
+    "Practice mindfulness and stay present in the moment, focusing on what you can control.",
+    "Seek professional help if you're struggling with your mental health. Therapy or counseling can provide valuable support and guidance."
+]
+tips = ""
+dos.forEach(item => {
+    tips += `<li>${item}</li>`
+})
+const toDo = document.querySelector("#to-do ul")
+toDo.innerHTML = tips
