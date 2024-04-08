@@ -58,6 +58,11 @@ section {
 	border-radius: 12px;
 	padding: 0.5rem;
 }
+section h1{
+    color: var(--primary-text-color);
+    line-height: .5rem;
+    margin: 0;
+}
 section button {
 	background-color: var(--theme-color);
 	padding-inline: 0.8rem;
@@ -75,6 +80,7 @@ section button {
 .table-div {
 	overflow: auto;
 	height: 75vh;
+    min-width: 450px;
 	--sb-track-color: #232e33;
 	--sb-thumb-color: #00a8cc;
 	--sb-size: 9px;
