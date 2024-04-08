@@ -241,56 +241,74 @@ button {
 	font-weight: 800;
 	text-decoration: underline;
 }
-#page3 .tips-section{
+#page3 .tips-section {
 	gap: 2rem;
 	margin: 0;
 	padding: 1rem;
 	padding-bottom: 4rem;
 }
-#page3 .tips-section>*{
+#page3 .tips-section > * {
 	min-height: 50%;
 }
 #page3 .tips-section .left {
 	width: 55%;
 }
-#page3 .tips-section .left h4{
+#page3 .tips-section .left h4 {
 	text-decoration: underline;
 	color: var(--primary-text-color);
 	font-weight: 600;
 }
-#page3 .tips-section .left>*{
+#page3 .tips-section .left > * {
 	width: 50%;
 	padding: 1rem;
-	padding-top: .5rem;
+	padding-top: 0.5rem;
 }
-#page3 .tips-section .left>* ul{
+#page3 .tips-section .left > * ul {
 	color: var(--theme-color);
 }
-#page3 .tips-section .left>* ul li{
+#page3 .tips-section .left > * ul li {
 	font-weight: 400;
-	margin-block: .5rem;
+	margin-block: 0.5rem;
 }
 #page3 .tips-section .right {
 	background-color: tan;
 	width: 44%;
 }
-#page3 .tips-section .right img{
+#page3 .tips-section .right img {
 	object-fit: contain;
 }
 
-#not-to-do ul{
-	border-left:2px solid var(--secondary-bg-color) ;
-
+#not-to-do ul {
+	border-left: 2px solid var(--secondary-bg-color);
 }
-#page4{
+#page4 {
 	background-color: var(--secondary-bg-color);
 }
-#page4 h1{
+#page4 h1 {
 	color: var(--primary-text-color);
 	padding: 2rem;
 	text-decoration: underline;
 }
-#page4 p{
+#page4 p {
 	color: var(--primary-text-color);
+}
+#page4 .card-section {
+	border: 1px solid var(--primary-bg-color);
+	width: 70%;
+	margin: auto;
+	padding-left: 5rem;
+	height: fit-content;
+}
 
+#page4 .card-section:nth-child(odd) {
+	flex-direction: row-reverse;
+}
+#page4 .card-section .card {
+	background: red;
+	width: 350px;
+	transform: translateY(-50%);
+	height: 400px;
+}
+#page4 .card-section:not(first-child) {
+	background-color: #2966bf;
 }
