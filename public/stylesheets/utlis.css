@@ -16,6 +16,9 @@
 .justify-around {
 	justify-content: space-around;
 }
+.flex-end{
+    justify-content: flex-end;
+}
 .text-xl{
     font-size: clamp(1.8rem,7.5vw,4.2rem);
 }
