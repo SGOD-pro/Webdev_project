@@ -4,4 +4,4 @@ function isVerified(req, _, next) {
     }
     throw new Error("User not logged in.")
 }
-export default isVerified
+module.exports= isVerified
