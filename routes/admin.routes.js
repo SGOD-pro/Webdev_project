@@ -3,7 +3,7 @@ var router = express.Router();
 var adminModel = require("../models/Admin")
 var doctormodel = require("../models/Doctor")
 var tipsmodel = require("../models/Tips");
-const { default: isVerified } = require('../utils/verify');
+const  isVerified  = require('../utils/verify');
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
