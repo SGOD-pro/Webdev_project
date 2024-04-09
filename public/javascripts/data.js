@@ -1,7 +1,8 @@
 [
     {
       "title": "Practice Self-Care Daily",
-      "description": "Take time each day to do something that brings you joy and relaxation, whether it's reading a book, going for a walk, or practicing meditation."
+      "description": "Take time each day to do something that brings you joy and relaxation, whether it's reading a book, going for a walk, or practicing meditation.",
+      
     },
     {
       "title": "Stay Connected",
