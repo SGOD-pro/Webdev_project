@@ -1,3 +1,31 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<link rel="stylesheet" href="/stylesheets/error.css">
+<div>
+    <% if (error.status==='500' ) {%>
+        <span class='error-num'>5</span>
+        <div class='eye'></div>
+        <div class='eye'></div>
+        <p class='sub-text'>Oh eyeballs! <%= error.message %></p>
+        <% }else{ %>
+            <h1 class='error-num'>
+                <%= error.message %>
+            </h1>
+            <h2 class='sub-text'>
+                <%= error.status %>
+            </h2>
+            <a href='/'>Go back to Home</a>
+            <% } %>
+</div>
+<script>
+    document.body.addEventListener('mousemove', function (event) {
+        var e = document.querySelectorAll('.eye');
+        e.forEach(function (eye) {
+            var rect = eye.getBoundingClientRect();
+            var x = rect.left + (rect.width / 2);
+            var y = rect.top + (rect.height / 2);
+            var rad = Math.atan2(event.pageX - x, event.pageY - y);
+            var rot = (rad * (180 / Math.PI) * -1) + 180;
+            eye.style.transform = 'rotate(' + rot + 'deg)';
+        });
+    });
+
+</script>

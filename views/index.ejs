@@ -6,36 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MENTAL PEACE</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href=" /stylesheets/index.css">
-    <link rel="stylesheet" href=" /stylesheets/utlis.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/stylesheets/root.css">
+    <link rel="stylesheet" href="/stylesheets/utlis.css">
+    <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/index.css">
   </head>
 
   <body>
     <nav class="navbar flex justify-between items-center fixed top-0 left-0">
       <div id="logo">
-        <img src=" /images/logo.png">
-        
+        <img src="/images/logo.png">
+        <!-- <span>logo</span> -->
       </div>
+      <div class="link">
         <ul id="links">
-          <li> <a href="#"> Home </a></li>
-          <li> <a href="#"> Customers </a></li>
-          <li> <a href="#"> Activity </a></li>
-          <li> <a href="#"> Consultants </a></li>
-          <li> <a href="#"> Help </a></li>
+          <li> <a href="/"> Home </a></li>
+          <li> <a href="/doctorspage" class="text-capitalize">therapists </a></li>
         </ul>
-      
+      </div>
       <div class="buttons">
-        <% if (!isLoggedIn??false) { %>
-          <button class="text-basic" onclick="user()"> login </button>
-          <button class="text-basic" onclick="admin()"> Admin </button>
-          <% }else{ %>
-            <button class="text-basic" onclick="logout()"> logout </button>
-            <% } %>
+        <button class="text-basic" onclick="user()"> login </button>
+        <button class="text-basic" onclick="admin()"> Admin </button>
       </div>
     </nav>
-    <div class="forms absolute hidden">
+    <div class="forms fixed hidden" data-bs-theme="dark">
       <i class='bx bx-x-circle absolute p-1 text-md' id="form-close"></i>
       <div class="student w-full h-full hidden">
         <div class="login inline-block w-full h-full">
@@ -50,7 +47,8 @@
               <input type="password" class="form-control" name="password">
             </div>
             <p class="text-capitalize">doesn't have any account?<span
-                style="color: #00c1a9; font-weight: 500; cursor: pointer;" onclick="showSignup()"> signup</span></p>
+                style="color: #00c1a9; font-weight: 500; cursor: pointer;" onclick="showSignup()">
+                signup</span></p>
             <div class="text-end">
               <button class="btn btn-success">Submit</button>
             </div>
@@ -76,7 +74,8 @@
               <input type="password" class="form-control" name="password">
             </div>
             <p class="text-capitalize">already have a account?<span
-                style="color: #00c1a9; font-weight: 500; cursor: pointer;" onclick="showLogin()"> login</span></p>
+                style="color: #00c1a9; font-weight: 500; cursor: pointer;" onclick="showLogin()">
+                login</span></p>
             <div class="text-end">
               <button class="btn btn-success">Submit</button>
             </div>
@@ -86,14 +85,14 @@
       <div class="admin w-full h-full hidden">
         <div class="login inline-block w-full h-full">
           <h2 class="text-center text-capitalize">admin login</h2>
-          <form>
+          <form >
             <div class="mb-3">
               <label for="email" class="form-label">Username</label>
-              <input type="email" class="form-control" id="email" name="email">
+              <input type="email" class="form-control" id="admin-email" name="email">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" name="password">
+              <input type="password"  id="admin-password" class="form-control" name="password">
             </div>
             <div class="text-end">
               <button type="submit" class="btn btn-success">Submit</button>
@@ -102,21 +101,124 @@
         </div>
       </div>
     </div>
+    <main data-scroll-container>
+      <div id="page1" data-scroll data-scroll-speed="-8" class="h-screen w-full flex justify-between relative">
+        <div class="left flex justify-center items-center">
+          <h1 class="text-xl">Start your peaceful journey from today.</h1>
+        </div>
+        <div class="right flex justify-center items-center">
+          <div class="image w-full">
+            <img src="/images/7324680.png" alt="">
+          </div>
+        </div>
 
-    <div id="page1" class="h-screen w-full flex justify-between">
-      <div class="left flex justify-center items-center">
-        <h1 class="text-xl">Start your peaceful journey from today.</h1>
       </div>
-      <div class="right flex justify-center items-center">
-        <div class="image w-full">
-          <img src=" /images/7324680.png" alt="">
+
+      <div id="page2" data-scroll data-scroll-speed="-.2" class=" w-full realtive">
+        <div class="custom-shape-divider-bottom-1712487496">
+          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+              class="shape-fill"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 id="message"> Consult top therapists online for any mental concern </h1>
+        </div>
+        <div class="left flex justify-between items-center">
+          <div class="image w-full" data-scroll data-scroll-speed="-1.5">
+            <img src="/images/undraw_doctor_kw5l (1).png" alt="">
+          </div>
+          <div class="right flex justify-center items-center" data-scroll data-scroll-speed="-1.5">
+            <h1 class="text-xl "> Urgent <span class="material-symbols-outlined text-lg">
+                ecg_heart
+              </span>appointment </h1>
+            <p> Book your schedule with the top therapists and consultants for any kind of mental issues.</p>
+            <button class="text-basic">appointment</button>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div id="page3" class="" data-scroll data-scroll-speed="-.1">
+        <h1 class="text-lg text-capitalize">do-dont's: - <span class="material-symbols-outlined text-lg">
+            pulse_alert
+          </span></h1>
+        <div class="flex justify-between items-center tips-section h-full w-full">
+          <div class="left flex justify-around" data-scroll-scetion data-scroll data-scroll-speed="-.8">
+            <div id="to-do">
+              <h4 class="text-md text-capitalize text-center">To-Do</h4>
+              <ul class=" flex flex-col justify-between h-full">
+                <li>bsdk</li>
+                <li>lmjp</li>
+                <li>alla hu akbar💣💥</li>
+              </ul>
+            </div>
+            <div id="not-to-do">
+              <h4 class="text-md text-capitalize text-center">not-to-do</h4>
+              <ul class=" flex flex-col justify-between h-full">
+                <li>bsdk</li>
+                <li>lmjp</li>
+                <li>alla hu akbar</li>
+              </ul>
+            </div>
+          </div>
+          <div class="right relative" data-scroll-scetion data-scroll data-scroll-speed="1.5">
+            <div class="img">
+              <img src="/images/tips.png" alt="" class="w-full h-full">
+            </div>
+          </div>
+          <div class="circle absolute top-0" data-scroll-scetion data-scroll data-scroll-speed="-.2"></div>
+        </div>
+      </div>
+
+      <div id="page4" data-scroll data-scroll-speed=".2" class="flex flex-col">
+        <h1 class="text-lg text-capitalize">Tips: - <span class="material-symbols-outlined text-lg">
+            stethoscope_check
+          </span></h1>
+        <div class="cards">
+          <div class="flex w-full h-full flex-col card-section">
+            <div class="card">
+              <div class="image">
+                <img src="/images/tips.png" alt="">
+              </div>
+              <div class="text">
+                <h3 class="text-md">Practice Self-Care Daily</h3>
+                <p class="text-sm">
+                  Physical activity is not only good for your body but also for your mind. Aim for at least 30 minutes
+                  of
+                  exercise most days of the week.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <footer class="text-center p-1 pb-3 flex items-center justify-center flex-col">
+        <h2 class="text-basic">Copyright © [2024] [Mental Peace]. All rights reserved. No part of this website may be
+          reproduced, distributed, or transmitted in any form or by any means.</h2>
+        <p class="text-sm">For permission requests, contact sgod@gmail.com.</p>
+      </footer>
+    </main>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+      integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="
+https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js
+"></script>
     <script src="/javascripts/script.js"></script>
-
+    <script>
+      (function () {
+        const scroll = new LocomotiveScroll({
+          el: document.querySelector('[data-scroll-container]'),
+          smooth: true
+        });
+      })();
+    </script>
   </body>
 
 </html>
