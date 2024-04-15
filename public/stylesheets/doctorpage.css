@@ -1,0 +1,110 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.navbar {
+	background-color: var(--secondary-bg-color) !important;
+}
+.navbar .image {
+	width: 55px;
+	height: 55px;
+}
+.navbar li a{
+	color: var(--primary-text-color) !important;
+}
+.navbar .image img {
+	width: 100%;
+	object-fit: cover;
+	height: 100%;
+}
+.navbar form button {
+	padding: 0;
+	width: fit-content;
+	height: fit-content;
+}
+.navbar form button i {
+	padding: 6px;
+}
+main {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: var(--primary-bg-color);
+
+	width: 100%;
+	overflow: auto;
+	color: var(--primary-text-color);
+}
+
+#heading {
+	font-size: 150px;
+	font-weight: bolder;
+	height: 200px;
+	width: 100%;
+	text-align: center;
+	background-image: url("./health2.jpg");
+	background-size: contain;
+	background-position: center;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	z-index: 10;
+}
+.container {
+	max-width: 600px;
+	margin: 50px auto;
+	background-color: rgba(0, 0, 0, 0);
+	box-sizing: border-box;
+	padding: 30px;
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
+	border-radius: 10px;
+	background-color: var(--secondary-bg-color);
+}
+.doctor-image {
+	width: 60%;
+	height: auto;
+	border-radius: 50%;
+	margin-bottom: 30px;
+	/* box-shadow: 2px 5px  rgb(212, 145, 208); */
+}
+.doctor-name {
+	font-size: 2rem;
+	margin-bottom: 10px;
+}
+.doctor-specialty {
+	font-size: 1.5rem;
+	color: #5d57cd;
+	margin-bottom: 30px;
+}
+.doctor-details {
+	margin-bottom: 20px;
+}
+.doctor-detail {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 10px;
+	line-height: 14px;
+}
+.doctor-detail label {
+	width: 70px;
+	margin-right: 10px;
+}
+.doctor-detail span {
+	margin-left: 10px;
+}
+
+.container button {
+	height: 30px;
+	width: 150px;
+	font-size: medium;
+	background-color: rgba(0, 0, 0, 0);
+	outline: none;
+	border: none;
+	border: 1px solid #333;
+	border-radius: 8px;
+	transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.container button:hover {
+	box-shadow: 0px 5px 5px grey;
+	background-color: rgb(121, 188, 215);
+}

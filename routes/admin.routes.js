@@ -3,7 +3,12 @@ var router = express.Router();
 var adminModel = require("../models/Admin")
 var doctormodel = require("../models/Doctor")
 var tipsmodel = require("../models/Tips");
-const  isVerified  = require('../utils/verify');
+const  isAdmin  = require('../utils/isAdmin');
+
+router.get('/', isAdmin,(req,res) => {
+    res.render('admin')
+})
+
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -16,13 +21,13 @@ router.post('/login', async (req, res) => {
             throw new Error("Password is incorrect");
         }
         req.session._id = user._id;
-        res.status(200).json({ message: "Login successful", user: {}, success: true });
+        res.redirect("admin");
     } catch (error) {
         res.status(500).send(error.message);
     }
 });
 
-router.post('/newdoctors', isVerified, async (req, res) => {
+router.post('/newdoctors', isAdmin, async (req, res) => {
     try {
         const {
             name,
@@ -59,7 +64,7 @@ router.post('/newdoctors', isVerified, async (req, res) => {
     }
 });
 
-router.get('/getalltips', isVerified, async (req, res) => {
+router.get('/getalltips', isAdmin, async (req, res) => {
     try {
         const allTips = await tipsmodel.find()
         if (!allTips) {
@@ -71,7 +76,7 @@ router.get('/getalltips', isVerified, async (req, res) => {
     }
 })
 
-router.get("deletedoctor:id", isVerified, async (req, res) => {
+router.get("deletedoctor:id", isAdmin, async (req, res) => {
     try {
         const _id = req.params.id;
         const deleted = await doctormodel.findByIdAndDelete(_id)

@@ -153,11 +153,11 @@ toDo.innerHTML = tips
 //Tips:-
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
-  }
+}
 let tips2 = [
     {
         "title": "Practice Self-Care Daily",
@@ -205,12 +205,17 @@ let tips2 = [
         url: "Practice Gratitude.jpg"
     },
 ]
-tips2=shuffleArray(tips2)
+tips2 = shuffleArray(tips2)
 
 let html = ""
 for (let index = 0; index < tips2.length / 2; index++) {
-    html += ` <div class="flex w-full h-full flex-col card-section">
-    <div class="card">
+    let dic = 1
+    if (index % 2 !== 0) {
+        dic *= -1
+    }
+    html += `
+     <div class="flex w-full h-full flex-col card-section" data-scroll data-scroll-speed="${dic}" data-scroll-direction="horizontal">
+    <div class="card" >
         <div class="image">
             <img src="../public/images/${tips2[index].url}" alt="no">
         </div>
@@ -227,6 +232,18 @@ for (let index = 0; index < tips2.length / 2; index++) {
 document.querySelector(".cards").innerHTML = html
 
 
+// admin Form control
 
+document.querySelector(".admin form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    let formData = new FormData(e.target)
+    console.log(formData);
+    axios.post("/admin/login", formData)
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => { console.log(error); })
+        .finally(() => {
 
-
+        });
+})
