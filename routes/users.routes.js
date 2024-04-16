@@ -10,6 +10,7 @@ var isVerified = require("../utils/verify")
 router.post("/register", async function (req, res) {
   try {
     const { fullname, phoneNumber, email, password } = req.body
+    console.log(req.body);
     if ([fullname, phoneNumber, email, password].some(item => !item && item.strip() === "")) {
       throw new Error("Please fillup properly!");
     }
@@ -27,6 +28,7 @@ router.post("/register", async function (req, res) {
     req.session.fullname = user.fullname;
     res.status(200).redirect("/");
   } catch (error) {
+    console.log(error);
     res.status(500).send(error.message);
   }
 })

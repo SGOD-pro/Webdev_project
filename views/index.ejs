@@ -15,23 +15,9 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
   </head>
 
+  
   <body>
-    <nav class="navbar flex justify-between items-center fixed top-0 left-0">
-      <div id="logo">
-        <img src="/images/logo.png">
-        <!-- <span>logo</span> -->
-      </div>
-      <div class="link">
-        <ul id="links">
-          <li> <a href="/"> Home </a></li>
-          <li> <a href="/doctorspage" class="text-capitalize">therapists </a></li>
-        </ul>
-      </div>
-      <div class="buttons">
-        <button class="text-basic" onclick="user()"> login </button>
-        <button class="text-basic" onclick="admin()"> Admin </button>
-      </div>
-    </nav>
+    <% include ./partials/navbar.ejs %>
     <div class="forms fixed hidden" data-bs-theme="dark">
       <i class='bx bx-x-circle absolute p-1 text-md' id="form-close"></i>
       <div class="student w-full h-full hidden">
