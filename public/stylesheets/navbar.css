@@ -1,0 +1,23 @@
+.navbar {
+	background-color: var(--secondary-bg-color) !important;
+}
+.navbar .image {
+	width: 55px;
+	height: 55px;
+}
+.navbar li a{
+	color: var(--primary-text-color) !important;
+}
+.navbar .image img {
+	width: 100%;
+	object-fit: cover;
+	height: 100%;
+}
+.navbar form button {
+	padding: 0;
+	width: fit-content;
+	height: fit-content;
+}
+.navbar form button i {
+	padding: 6px;
+}
