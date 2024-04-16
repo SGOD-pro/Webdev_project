@@ -3,7 +3,8 @@ var router = express.Router();
 var doctorModel = require("../models/Doctor")
 var appointmentModel = require("../models/Appointment")
 var feedbackModel = require("../models/Feedback")
-var isVerified = require("../utils/verify")
+var isVerified = require("../middlewares/verify")
+
 
 router.get('/all-appointments', isVerified, async (req, res) => {
 

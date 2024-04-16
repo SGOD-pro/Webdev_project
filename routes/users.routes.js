@@ -3,7 +3,8 @@ var router = express.Router();
 var usersModel = require("../models/User")
 var appointmentModel = require("../models/Appointment")
 var feedbackModel = require("../models/Feedback")
-var isVerified = require("../utils/verify")
+var isVerified = require("../middlewares/verify")
+
 /* GET users listing. */
 
 

@@ -3,9 +3,9 @@ var router = express.Router();
 var adminModel = require("../models/Admin")
 var doctormodel = require("../models/Doctor")
 var tipsmodel = require("../models/Tips");
-const  isAdmin  = require('../utils/isAdmin');
-
-router.get('/', isAdmin,(req,res) => {
+const isAdmin = require('../middlewares/isAdmin');
+const uploads = require('../middlewares/Multer');
+router.get('/', isAdmin, (req, res) => {
     res.render('admin')
 })
 
@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/newdoctors', isAdmin, async (req, res) => {
+router.post('/newdoctors', isAdmin, uploads.single("picture"), async (req, res) => {
     try {
         const {
             name,
@@ -41,6 +41,7 @@ router.post('/newdoctors', isAdmin, async (req, res) => {
             clinicLocation,
             charges
         } = req.body;
+        console.log(req.body);
         if ([name, qualification, experience, speciality, email, contactNo, timing, days, clinicLocation, charges].some(field => !field)) {
             throw new Error("Some fields are required.")
         }

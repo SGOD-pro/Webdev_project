@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router()
-var isVerified = require("../utils/verify")
+var isVerified = require("../middlewares/verify")
 var tipsModel = require('../models/Tips')
 /* GET home page. */
 router.get('/', function (req, res, next) {
