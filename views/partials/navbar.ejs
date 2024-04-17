@@ -1,7 +1,10 @@
-
 <link rel="stylesheet" href="/stylesheets/navbar.css">
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed top-0 w-full">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed top-0 w-full" data-bs-theme="dark">
     <div class="container-fluid realtive">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 flex items-center">
                 <li class="nav-item relative">
@@ -16,8 +19,8 @@
                     <a class="nav-link" href="/doctorspage">therapists</a>
                 </li>
             </ul>
-            <div class="buttons me-1">
-                <button class="btn btn-outline-success" onclick="user()"> login </button>
+            <div class="buttons">
+                <button class="btn btn-outline-success" onclick="user()"> Login </button>
                 <button class="btn btn-outline-info" onclick="admin()"> Admin </button>
             </div>
             <form class="flex items-center" role="search">

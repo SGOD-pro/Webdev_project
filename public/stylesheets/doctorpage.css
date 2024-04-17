@@ -2,17 +2,49 @@
 	margin: 0;
 	padding: 0;
 }
+body {
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+}
 main {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
 	background-color: var(--primary-bg-color);
-
 	width: 100%;
 	overflow: auto;
 	color: var(--primary-text-color);
+	max-height: 100vh;
+	scroll-behavior: smooth;
+	padding-top: 5rem;
 }
 
+main {
+	--sb-track-color: #232e3304;
+	--sb-thumb-color: var(--theme-color);
+	--sb-size: 5px;
+}
+
+main::-webkit-scrollbar {
+	width: var(--sb-size);
+}
+
+main::-webkit-scrollbar-track {
+	background: var(--sb-track-color);
+	border-radius: 6px;
+}
+
+main::-webkit-scrollbar-thumb {
+	background: var(--sb-thumb-color);
+	border-radius: 6px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+	main {
+		scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+	}
+}
 #heading {
 	font-size: 150px;
 	font-weight: bolder;

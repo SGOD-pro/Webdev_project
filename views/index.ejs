@@ -18,75 +18,8 @@
   
   <body>
     <% include ./partials/navbar.ejs %>
-    <div class="forms fixed hidden" data-bs-theme="dark">
-      <i class='bx bx-x-circle absolute p-1 text-md' id="form-close"></i>
-      <div class="student w-full h-full hidden">
-        <div class="login inline-block w-full h-full">
-          <h2 class="text-center text-capitalize">login</h2>
-          <form id="userLogin">
-            <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="login-email" name="email">
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" name="password">
-            </div>
-            <p class="text-capitalize">doesn't have any account?<span
-                style="color: #00c1a9; font-weight: 500; cursor: pointer;" onclick="showSignup()">
-                signup</span></p>
-            <div class="text-end">
-              <button class="btn btn-success" id="user-login-btn">Submit</button>
-            </div>
-          </form>
-        </div>
-        <div class="register inline-block w-full h-full">
-          <h2 class="text-center text-capitalize">signup</h2>
-          <form id="userSignup">
-            <div class="mb-3">
-              <label for="fullname" class="form-label">Fullname</label>
-              <input type="text" class="form-control" id="fullname" name="fullname">
-            </div>
-            <div class="mb-3">
-              <label for="phoneNumber" class="form-label">phone Number</label>
-              <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" name="email">
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" name="password">
-            </div>
-            <p class="text-capitalize">already have a account?<span
-                style="color: #00c1a9; font-weight: 500; cursor: pointer;" onclick="showLogin()">
-                login</span></p>
-            <div class="text-end">
-              <button class="btn btn-success" id="user-register-btn">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="admin w-full h-full hidden">
-        <div class="login inline-block w-full h-full">
-          <h2 class="text-center text-capitalize">admin login</h2>
-          <form>
-            <div class="mb-3">
-              <label for="email" class="form-label">Username</label>
-              <input type="email" class="form-control" id="admin-email" name="email">
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" id="admin-password" class="form-control" name="password">
-            </div>
-            <div class="text-end">
-              <button class="btn btn-success" id="admin-login-btn">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    <% include ./partials/forms.ejs %>
+  
     <main data-scroll-container>
       <div id="page1" data-scroll data-scroll-speed="-8" class="h-screen w-full flex justify-between relative">
         <div class="left flex justify-center items-center">
@@ -197,7 +130,7 @@
 https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js
 "></script>
     <script src="/javascripts/script.js"></script>
-    <script src="/javascripts/indexRoutings.js"></script>
+    <script src="/javascripts/formControl.js"></script>
     <script>
       (function () {
         const scroll = new LocomotiveScroll({

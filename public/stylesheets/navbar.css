@@ -1,5 +1,6 @@
 .navbar {
 	background-color: var(--secondary-bg-color) !important;
+	z-index: 50!important;
 }
 .navbar .image {
 	width: 55px;
@@ -20,4 +21,22 @@
 }
 .navbar form button i {
 	padding: 6px;
+}
+.navbar-toggler{
+	color: var(--primary-text-color)!important;
+}
+.navbar-toggler-icon{
+	color: var(--primary-text-color)!important;
+}
+.buttons{
+	display: flex;
+	margin: 0;
+	margin-right: 10px;
+	gap: 8px;
+}
+@media (max-width: 995px) {
+	.buttons{
+		flex-direction: column;
+		margin-bottom: 8px;
+	}
 }

@@ -1,37 +1,3 @@
-const forms = document.querySelector(".forms")
-const userForm = document.querySelector(".forms .student")
-const adminForm = document.querySelector(".forms .admin")
-
-
-const user = () => {
-    forms.classList.remove("hidden")
-    adminForm.classList.add("hidden")
-    userForm.classList.remove("hidden")
-}
-const admin = () => {
-    forms.classList.remove("hidden")
-    userForm.classList.add("hidden")
-    adminForm.classList.remove("hidden")
-}
-
-document.getElementById("form-close").addEventListener("click", () => {
-    forms.classList.add("hidden")
-    if (!adminForm.classList.contains("hidden")) {
-        adminForm.classList.add("hidden")
-    }
-    if (!userForm.classList.contains("hidden")) {
-        userForm.classList.add("hidden")
-    }
-})
-const student = document.querySelector(".forms .student")
-const showLogin = () => {
-    student.style.transform = "translateX(-0%)"
-}
-const showSignup = () => {
-    student.style.transform = "translateX(-100%)"
-}
-
-
 //Do-dont's
 
 const dont = [

@@ -1,7 +1,40 @@
+const forms = document.querySelector(".forms")
+const userForm = document.querySelector(".forms .student")
+const adminForm = document.querySelector(".forms .admin")
+
+
+const user = () => {
+    forms.classList.remove("hidden")
+    adminForm.classList.add("hidden")
+    userForm.classList.remove("hidden")
+}
+const admin = () => {
+    forms.classList.remove("hidden")
+    userForm.classList.add("hidden")
+    adminForm.classList.remove("hidden")
+}
+
+document.getElementById("form-close").addEventListener("click", () => {
+    forms.classList.add("hidden")
+    if (!adminForm.classList.contains("hidden")) {
+        adminForm.classList.add("hidden")
+    }
+    if (!userForm.classList.contains("hidden")) {
+        userForm.classList.add("hidden")
+    }
+})
+const student = document.querySelector(".forms .student")
+const showLogin = () => {
+    student.style.transform = "translateX(-0%)"
+}
+const showSignup = () => {
+    student.style.transform = "translateX(-100%)"
+}
 
 
 
 
+//Routes
 const signupForm = document.getElementById('userSignup');
 
 signupForm.addEventListener('submit', function (event) {
@@ -39,9 +72,11 @@ signupForm.addEventListener('submit', function (event) {
         .then((response) => {
             window.location.href = "/";
         }).catch((error) => {
-
+            console.log(error.response.data);
+            console.log(error.response.status);
         }).finally(() => {
-            btn.setAttribute("disabled", false);
+            console.log("jiii");
+            btn.removeAttribute("disabled");
         });
 });
 
@@ -60,23 +95,23 @@ loginForm.addEventListener('submit', function (event) {
     }
     const { email, password } = formDataJSON;
     const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-    // if (!emailPattern.test(email)) {
-    //     alert("Please enter a valid email address.");
-    //     return false;
-    // }
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
 
-    // if (password.length < 6) {
-    //     alert("Password must be at least 6 characters long.");
-    //     return false;
-    // }
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+    }
     axios.post("/users/login", formDataJSON)
         .then(() => {
             window.location.href = "/";
         }).catch((error) => {
-            alert("Incorrect username or password.");
+            console.log(error.response.data);
+            console.log(error.response.status);
         }).finally(() => {
-            btn.setAttribute("disabled", false);
-
+            btn.removeAttribute("disabled");
         });
 });
 
@@ -93,15 +128,23 @@ const logout = () => {
 document.querySelector(".admin form").addEventListener("submit", function (e) {
     e.preventDefault();
     let formData = new FormData(e.target)
-    console.log(formData);
     const btn = document.getElementById("admin-login-btn")
+    const formDataJSON = {};
+    for (const [key, value] of formData.entries()) {
+        formDataJSON[key] = value;
+    }
+    const { email, password } = formDataJSON;
+    console.log(formDataJSON);
     btn.setAttribute("disabled", true);
-    axios.post("/admin/login", formData)
+    axios.post("/admin/login", formDataJSON)
         .then((response) => {
             console.log(response);
         })
-        .catch((error) => { console.log(error); })
+        .catch((error) => {
+            console.log(error.response.data);
+            console.log(error.response.status);
+        })
         .finally(() => {
-            btn.setAttribute("disabled", false);
+            btn.removeAttribute("disabled");
         });
 })

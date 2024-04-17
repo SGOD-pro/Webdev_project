@@ -1,6 +1,7 @@
 <% include ./partials/header.ejs %>
-  
+
   <link rel="stylesheet" href="/stylesheets/admin.css">
+
   <body>
     <div class="container absolute form-container">
       <span class="material-symbols-outlined absolute">
@@ -9,20 +10,30 @@
       <h2>Doctor Registration Form</h2>
       <form data-bs-theme="dark">
         <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" name="name" required>
+          <label for="name">Full Name:</label>
+          <input type="text" class="form-control" id="name" name="name" required placeholder="Danie Daniels">
         </div>
         <div class="form-group">
           <label for="qualification">Qualification:</label>
-          <input type="text" class="form-control" id="qualification" name="qualification" required>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="experience">Experience:</label>
-          <input type="text" class="form-control" id="experience" name="experience" required>
+          <input type="number" class="form-control" id="experience" name="experience" required>
         </div>
         <div class="form-group">
           <label for="speciality">Speciality:</label>
-          <input type="text" class="form-control" id="speciality" name="speciality" required>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="email">Email:</label>
@@ -42,7 +53,23 @@
         </div>
         <div class="form-group">
           <label for="days">Days Available:</label>
-          <input type="text" class="form-control" id="days" name="days" required>
+          <% const days=["S","M","T","W","T","F","S"] %>
+            <div class="flex gap-2 p-2 justify-between days-div" data-bs-theme="dark">
+              <% for (let index=0; index < days.length; index++) {%>
+                <div class="content">
+                  <label class="checkBox relative flex items-center justify-center">
+                    <input type="checkbox" id="<%=days[index]  %>" value="<%=days[index]  %>" />
+                    <div class="transition"></div>
+                    <label class="text" for="<%=days[index]  %>">
+                      <%=days[index] %>
+                    </label>
+                  </label>
+                </div>
+
+                <%} %>
+
+            </div>
+
         </div>
         <div class="form-group">
           <label for="clinicLocation">Clinic Location:</label>
@@ -52,17 +79,17 @@
           <label for="charges">Charges:</label>
           <input type="number" class="form-control" id="charges" name="charges" required>
         </div>
-        <div class="form-group" >
+        <div class="form-group">
           <label for="formFile" class="">Image</label>
           <input class="form-control" type="file" id="formFile">
         </div>
-        
+
         <div class="flex flex-end items-end"><button type="submit" class="btn btn-primary w-full">Submit</button></div>
       </form>
     </div>
 
     <main class="w-screen h-screen flex flex-col">
-      <header class="flex justify-between items-center relative">
+      <header class="flex justify-between items-center relative z-10">
         <div class="search flex items-center">
           <input type="text">
           <i class='bx bx-search text-md'></i>
@@ -76,11 +103,16 @@
             <img src="https://wallpapercave.com/wp/wp7925519.png" alt="">
           </div>
           <div class="icon">
-            <i class='bx bxs-chevron-down text-md'></i>
+            <i class='bx bxs-chevron-down text-md' id="dropdown-trigger" onclick="showDropdown()"></i>
+          </div>
+          <div class="absolute dropdown z-100" id="dropdown">
+            <h1>dropdown</h1>
+            <!-- <p>TODO: Add links</p> -->
           </div>
         </div>
+        
       </header>
-      <section class="w-full h-full flex flex-col">
+      <section class="w-full h-full flex flex-col z-0">
         <div class="button flex justify-between items-center">
           <h1 class="text-capitalize text-md">Therapist list</h1>
           <button class="text-capitalize flex items-center" id="add-btn">add<i class='bx bx-plus-circle'></i></button>

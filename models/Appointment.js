@@ -28,10 +28,14 @@ const appointmentSchema = new Schema({
     },
     userId: {
         type: Schema.Types.ObjectId,
-        ref: 'user',
+        ref: 'users',
     },
     dateTime: {
         type: Date
+    },
+    feedback:{
+        type: Schema.Types.ObjectId,
+        ref: 'feedbacks',
     }
 }, {
     timestamps: true

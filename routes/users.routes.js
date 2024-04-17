@@ -17,20 +17,24 @@ router.post("/register", async function (req, res) {
     }
     const existsUser = await usersModel.findOne({ email })
     if (existsUser) {
-      throw new Error("User already exists");
+      const error = new Error("User already exists");
+      error.status = 409;
+      throw error;
     }
     const createdUser = await usersModel.create({
       fullname, phoneNumber, email, password
     })
     if (!createdUser) {
-      throw new Error("Internal server error");
+      const error = new Error("Internal server error");
+      error.status = 500;
+      throw error;
     }
     req.session._id = createdUser._id;
     req.session.fullname = user.fullname;
     res.status(200).redirect("/");
   } catch (error) {
-    console.log(error);
-    res.status(500).send(error.message);
+    console.log(error.status);
+    res.status(error.status).send(error.message);
   }
 })
 
@@ -39,12 +43,17 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     console.log(req.body);
     const user = await usersModel.findOne({ email: email });
+    
     if (!user) {
-      throw new Error("User not found");
+      const error = new Error("Incorrect email or password");
+      error.status = 404;
+      throw error;
     }
     const isCorrect = await user.isPasswordCorrect(password);
     if (!isCorrect) {
-      throw new Error("Password is incorrect");
+      const error = new Error("Incorrect password");
+      error.status = 401;
+      throw error;
     }
     req.session._id = user._id;
     req.session.fullname = user.fullname;
@@ -87,7 +96,7 @@ router.post('/login', async (req, res) => {
     console.log(data);
     res.status(200).redirect("/");
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(error.status).send(error.message);
   }
 })
 

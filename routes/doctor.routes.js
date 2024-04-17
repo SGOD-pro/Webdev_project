@@ -20,6 +20,7 @@ router.get('/all-appointments', isVerified, async (req, res) => {
     }
 })
 router.get("/emergency", isVerified, async function (req, res) {
-    // TODO:
+    const id=req.session._id
+    
 })
 module.exports = router;

@@ -7,3 +7,7 @@ document.querySelector('#add-btn').addEventListener('click', function (e) {
 document.querySelector(".form-container>span").addEventListener('click', function (e){
     document.querySelector('.form-container').classList.remove("active")
 })
+
+const showDropdown=()=>{
+    document.querySelector("#dropdown").classList.toggle("active")
+}
