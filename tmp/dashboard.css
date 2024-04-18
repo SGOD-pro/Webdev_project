@@ -1,0 +1,187 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(224, 189, 122);
+    /* margin:50px; */
+    overflow: hidden;
+}
+
+.content{
+    display: flex;
+    justify-content: space-evenly;
+    margin-block: 2rem;
+}
+.sidebar{
+    height: 100vh;
+    width: 20%;
+    min-width: 280px;
+    background-color: rgb(187, 132, 117);
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.sidebar .upper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    color:aliceblue;
+}
+
+
+.sidebar .logo{
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+
+}
+
+
+.sidebar .logo img{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    
+}
+
+.sidebar .upper h3{
+    align-items: flex-start;
+    margin: 2px;
+    padding: 2px;
+}
+.upper h3,h2{
+    font-weight: bolder;
+}
+.upper img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.sidebar .lower a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    /* font-size: 100px; */
+    font-weight: 400;
+    line-height: 4rem;
+}
+.sidebar .lower a:hover{
+    text-decoration: underline;
+    opacity: 0.50;
+}
+
+.rightside{
+    line-height: 4rem;
+    height: 100vh;
+    width: 40%;
+    text-align: center;
+}
+.rightside .items{
+    display: inline;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.rightside .items a{
+    text-decoration: none;
+    color: black;
+    margin-right: 2rem;
+    font-weight: bold;
+    font-size: large;
+}
+
+.rightside .items a:hover{
+    text-decoration: underline;
+    opacity: 0.50;
+}
+
+.appointment {
+    height: 100vh;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.appointment .box{
+    height: 200px;
+    width: 330px;
+    background-color: rgb(218, 139, 90);
+    border-radius: 5%;
+    display: inline;
+    align-items: center;
+    justify-content: space-evenly;
+    line-height: 3rem;
+
+}
+.appointment .box h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+}
+
+.appointment .box p{
+    margin: auto;
+}
+
+.topappointment table{
+    border-spacing: 10px;
+}
+.topappointment table th,td{
+    font-size: larger;
+    padding: 5px;
+}
+.topappointment .doctor-image{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.topappointment #dr{
+    font-weight: bolder;
+}
+
+/* 
+.appointment .circle {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.appointment .circle .c3{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    background-color: red;
+    text-align: center;
+  
+}
+
+.appointment .circle .c2{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    border-top: 8px solid black;
+    top: 50%;
+    left: 50%;
+    margin-right: 1px;
+    transform: rotate(-45deg);
+}
+.appointment .circle .c1{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    border-top: 8px solid black;
+    top: 80%;
+    left: 80%;
+    margin-right: 1px;
+    transform: rotate(-45deg);
+} */
