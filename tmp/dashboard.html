@@ -1,83 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dashboard </title>
-    <link rel="stylesheet" href="dashboard.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="content">
-        <div class="sidebar">
-            <div class="logo">
-                <img src="image.png">
-                <h3> MIND PEACE </h3>
-            </div>
-            <div class="upper">
-                <img src="sweta img.jpeg">
-                <h2> Sharmila Thakur </h2>
-            </div>
-            <div class="lower">
-                <a href="#">Insights</a>
-                <a href="#">Reports</a>
-                <a href="#">Comments</a>
-                <a href="#">Reviews</a>
-            </div>
-        </div>
-        <div class="rightside">
-            <h1> Dashboard </h1>
-            <div class="items">
-                <a href="#"> All Activity </a>
-            </div>
-            <div class="items">
-                <a href="#"> Appointments </a>
-            </div>
-            <div class="items">
-                <a href="#"> History </a>
-            </div>
-        </div>
-        <div class="appointment">
-            <div class="box">
-                <h1> Total Appointments done </h1>
-                <p> appointment </p>
-            </div>
-          
-            <div class="topappointment">
-                <h1> Recent Appointments</h1>
-                <table class="table" table-dark>
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Dashboard </title>
+        <link rel="stylesheet" href="dashboard.css">
+        <link rel="stylesheet" href="../public//stylesheets/utlis.css">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    </head>
+
+    <body>
+        <main>
+            <nav class="sidebar">
+                <div class="logo">
+                    <div class="image">
+                        <img src="image.png">
+                    </div>
+                    <h3> MIND PEACE </h3>
+                </div>
+                <div class="upper flex flex-col items-center gap-1">
+                    <img src="sweta img.jpeg">
+                    <h2> Sharmila Thakur </h2>
+                </div>
+                <div class="lower">
+                    <a href="#">Insights</a>
+                    <a href="#">Reports</a>
+                    <a href="#">Comments</a>
+                    <a href="#">Reviews</a>
+                </div>
+            </nav>
+            <section>
+                <div class="right-side">
+                    <h1> Dashboard </h1>
+                    <div class="items flex justify-around">
+                        <div class="item flex flex-col gap-1">
+                            <h4 class="text-basic">Appointments</h4>
+                            <p>69</p>
+                        </div>
+                        <div class="item flex flex-col gap-1">
+                            <h4 class="text-basic">Appointments</h4>
+                            <p>69</p>
+                        </div>
+                        <div class="item flex flex-col gap-1">
+                            <h4 class="text-basic">Appointments</h4>
+                            <p>69</p>
+                        </div>
+                       
+                    </div>
+                    <div class="swiper w-full">
+                        swiper
+                    </div>
+                </div>
+                <div class="left-side">
+                    <div class="box flex items-center">
+                        <h1 class="text-lg"> YOUR HEALTH IS <strong>OUR</strong> PRIORITY </h1>
+                        
+                    </div>
+
+                    <div class="top-appointment">
+                        <h1 class="text-lg"> Recent Appointments</h1>
+                       <div class="table-div">
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First</th>
+                                    <th scope="col">Last</th>
+                                    <th scope="col">Handle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td colspan="2">Larry the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                       </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </body>
+
 </html>
