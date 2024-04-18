@@ -33,7 +33,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/newdoctors', isAdmin, uploads.single("picture"), async (req, res) => {
+router.post('/newdoctors', uploads.single("image"), async (req, res) => {
     try {
         const {
             name,
@@ -42,13 +42,14 @@ router.post('/newdoctors', isAdmin, uploads.single("picture"), async (req, res) 
             speciality,
             email,
             contactNo,
-            timing,
+            to,
+            from,
             days,
             clinicLocation,
             charges
         } = req.body;
-        console.log(req.body);
-        if ([name, qualification, experience, speciality, email, contactNo, timing, days, clinicLocation, charges].some(field => !field)) {
+        console.log(req.file?.path);
+        if ([name, qualification, experience, speciality, email, contactNo, from,to, days, clinicLocation, charges].some(field => !field)) {
             const error = new Error("Some fields are required");
             error.status = 400;
             throw error;
@@ -60,7 +61,7 @@ router.post('/newdoctors', isAdmin, uploads.single("picture"), async (req, res) 
             speciality,
             email,
             contactNo,
-            timing,
+            timing:`${from} - ${to}`,
             days,
             clinicLocation,
             charges
@@ -71,8 +72,9 @@ router.post('/newdoctors', isAdmin, uploads.single("picture"), async (req, res) 
             throw error;
         }
         // TODO:   Send username and password via email and add it to the admin database
-        res.status(200).json({ message: 'Doctor data saved successfully', doctor: newDoctor, success: true });
+        res.status(200).json({ message: 'Doctor data saved successfully', doctor: req.body, success: true });
     } catch (error) {
+        console.log(error);
         res.status(error.status).send(error.message);
     }
 });

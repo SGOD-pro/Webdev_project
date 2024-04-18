@@ -38,14 +38,16 @@ const showSignup = () => {
 const signupForm = document.getElementById('userSignup');
 
 signupForm.addEventListener('submit', function (event) {
-    // Prevent the default form submission behavior
     event.preventDefault();
     const formData = new FormData(event.target);
     const formDataJSON = {};
+    console.log(formData);
     const btn = document.getElementById("user-register-btn")
     for (const [key, value] of formData.entries()) {
         formDataJSON[key] = value;
     }
+    console.log(formDataJSON);
+
     if (!formDataJSON.fullname.trim()) {
         alert("Please enter your fullname.");
         return false;
@@ -67,6 +69,7 @@ signupForm.addEventListener('submit', function (event) {
         alert("Password must be at least 6 characters long.");
         return false;
     }
+    return
     btn.setAttribute("disabled", true);
     axios.post("/users/register", formDataJSON)
         .then((response) => {

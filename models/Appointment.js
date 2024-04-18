@@ -36,6 +36,10 @@ const appointmentSchema = new Schema({
     feedback:{
         type: Schema.Types.ObjectId,
         ref: 'feedbacks',
+    },
+    status:{
+        type: Boolean,
+        default:false
     }
 }, {
     timestamps: true
