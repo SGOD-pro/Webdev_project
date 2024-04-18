@@ -69,7 +69,6 @@ signupForm.addEventListener('submit', function (event) {
         alert("Password must be at least 6 characters long.");
         return false;
     }
-    return
     btn.setAttribute("disabled", true);
     axios.post("/users/register", formDataJSON)
         .then((response) => {
@@ -142,10 +141,12 @@ document.querySelector(".admin form").addEventListener("submit", function (e) {
     axios.post("/admin/login", formDataJSON)
         .then((response) => {
             console.log(response);
+            window.location.href = "/admin";
+
         })
         .catch((error) => {
-            console.log(error.response.data);
-            console.log(error.response.status);
+            // console.log(error.response.data);
+            // console.log(error.response.status);
         })
         .finally(() => {
             btn.removeAttribute("disabled");

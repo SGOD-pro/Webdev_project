@@ -7,12 +7,17 @@ const adminSchema = new Schema({
         required: true,
         unique: true
     },
+    fullname:{
+        type: String,
+        required: true,
+    },
     password: {
         type: String
     },
     role: {
         type: Number,
-        enum: [2000, 1999]
+        enum: [2000, 1999],
+        required: true
     }
 })
 adminSchema.pre('save', async function (next) {

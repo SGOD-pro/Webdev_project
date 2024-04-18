@@ -25,7 +25,7 @@ document.querySelector("#add-doctors").addEventListener("submit", (e) => {
         }
     });
     console.log(checkedValues);
-    if (checkedValues.length === 0 ) {
+    if (checkedValues.length === 0) {
         alert('Please select days')
     }
     const data = { ...jsonData, days: checkedValues }
@@ -34,5 +34,16 @@ document.querySelector("#add-doctors").addEventListener("submit", (e) => {
         headers: { 'Content-Type': 'multipart/form-data' }
     }).then(response => {
         console.log(response.data);
-    }).catch(error => {console.log(error);})
+        window.location.href = "/admin";
+    }).catch(error => { console.log(error); })
 })
+
+const logout = () => {
+    axios.get("/admin/logout")
+        .then((response) => {
+            window.location.href = "/"
+
+        }).catch((error) => {
+            alert("Somethig went wrong.")
+        })
+}

@@ -72,10 +72,10 @@ section button {
 	overflow: hidden;
 	border-radius: 10px;
 	margin-top: 10px;
+
 }
 .table {
 	padding: 10px;
-	height: 100%;
 }
 .table-div {
 	overflow: auto;
@@ -85,7 +85,9 @@ section button {
 	--sb-thumb-color: #00a8cc;
 	--sb-size: 9px;
 }
-
+table{
+	margin-bottom: 0!important;
+}
 .table-div::-webkit-scrollbar {
 	width: var(--sb-size);
 	height: var(--sb-size);
@@ -201,7 +203,7 @@ section button {
 	right: 0;
 	bottom: 0;
 	transform: translate(-5%,80%);
-	padding: 0.5rem;
+	padding: 0.2rem;
 	border-radius: 10px;
 	box-shadow: 0 0 10px #000;
 	transition:all .4s cubic-bezier(0.165, 0.84, 0.44, 1);
