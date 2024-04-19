@@ -1,0 +1,141 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+main {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	background-color: #252525;
+	overflow: hidden;
+	max-height: 100vh;
+	padding: 1.5rem;
+    padding-right: .1rem;
+}
+section {
+	display: flex;
+	width: 100%;
+	gap: 0.5rem;
+	padding: 0.6rem;
+}
+
+nav {
+	height: 100%;
+	width: 20%;
+	min-width: 280px;
+	background-color: rgb(187, 132, 117);
+	border-radius: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+    padding: 0.4rem;
+}
+
+.sidebar .logo {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+    
+}
+.logo .image{
+    height: clamp(40px,.15rem + 6vw,60px);
+	width: clamp(40px,.15rem + 6vw,60px);
+    background-color: red;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.sidebar .logo .image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.sidebar .upper {
+	color: aliceblue;
+}
+
+.sidebar .logo img {
+
+	object-fit: cover;
+}
+
+.sidebar .upper h3 {
+	align-items: flex-start;
+	margin: 2px;
+	padding: 2px;
+}
+
+.upper img {
+    height: clamp(60px,.2rem + 8vw,120px);
+	width: clamp(60px,.2rem + 8vw,120px);
+	border-radius: 50%;
+	object-fit: cover;
+}
+.sidebar .lower a {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	text-decoration: none;
+	color: black;
+	font-weight: 400;
+	line-height: 4rem;
+}
+.sidebar .lower a:hover {
+	text-decoration: underline;
+	opacity: 0.5;
+}
+
+.item{
+    background-color: #252525;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0,.8);
+    margin-top: 1rem;
+}
+.item h4,.item p{
+    margin: 0;
+}
+.right-side{
+    width: 65%;
+    color: #f4f4f4;
+}
+.left-side {
+    padding: clamp(.5rem,.15rem + 3vw,1.6rem);
+    width: 35%;
+}
+.left-side .box{
+    width: 100%;
+    min-height: 150px;
+    background-color: #3559E0;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .9);
+    margin-bottom: 1rem;
+}
+.top-appointment{
+    background-color: #252525;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #f4f4f4;
+    padding: 0.8rem;
+}
+.top-appointment h1{
+    line-height: 2.4rem;
+}
+.table-div{
+    margin-top: 0.5rem;
+}
+.table-div table{
+    height: 100%;
+    margin-bottom: 0;
+}
+.swiper{
+    background-color: aqua;
+    margin-top: 4rem;
+    padding: 0.6rem;
+}

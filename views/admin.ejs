@@ -8,14 +8,14 @@
         cancel
       </span>
       <h2>Doctor Registration Form</h2>
-      <form data-bs-theme="dark">
+      <form data-bs-theme="dark" id="add-doctors" enctype="multipart/form-data">
         <div class="form-group">
           <label for="name">Full Name:</label>
-          <input type="text" class="form-control" id="name" name="name" required placeholder="Danie Daniels">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Danie Daniels" required>
         </div>
         <div class="form-group">
           <label for="qualification">Qualification:</label>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" name="qualification" aria-label="Default select example" required>
             <option selected>Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
           <label for="speciality">Speciality:</label>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" name="speciality" required>
             <option selected>Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
@@ -41,14 +41,14 @@
         </div>
         <div class="form-group">
           <label for="contactNo">Contact Number:</label>
-          <input type="tel" class="form-control" id="contactNo" name="contactNo" pattern="[0-9]{10,}" required
-            placeholder="At least 10digits">
+          <input type="tel" class="form-control" id="contactNo" name="contactNo" pattern="[0-9]{10,}"
+            placeholder="At least 10digits" required>
         </div>
         <div class="form-group">
           <label for="timing">Timing:(From-To)</label>
           <div class="from-group flex  gap-2">
-            <input type="time" class="form-control" id="timing" name="timing" required>
-            <input type="time" class="form-control" id="timing" name="timing" required>
+            <input type="time" class="form-control" id="timing" name="from">
+            <input type="time" class="form-control" id="timing" name="to" required>
           </div>
         </div>
         <div class="form-group">
@@ -58,7 +58,7 @@
               <% for (let index=0; index < days.length; index++) {%>
                 <div class="content">
                   <label class="checkBox relative flex items-center justify-center">
-                    <input type="checkbox" id="<%=days[index]  %>" value="<%=days[index]  %>" />
+                    <input type="checkbox" id="<%=days[index]  %>" value="<%=days[index]  %>" name="days" />
                     <div class="transition"></div>
                     <label class="text" for="<%=days[index]  %>">
                       <%=days[index] %>
@@ -81,7 +81,7 @@
         </div>
         <div class="form-group">
           <label for="formFile" class="">Image</label>
-          <input class="form-control" type="file" id="formFile">
+          <input class="form-control" type="file" id="formFile" name="image">
         </div>
 
         <div class="flex flex-end items-end"><button type="submit" class="btn btn-primary w-full">Submit</button></div>
@@ -96,8 +96,9 @@
         </div>
         <div class="profile flex items-center">
           <div class="text flex flex-col">
-            <h4 class="text-basic">name</h4>
-            <p class="text-sm">username</p>
+            <h4 class="text-basic">
+              <%=username %>
+            </h4>
           </div>
           <div class="image">
             <img src="https://wallpapercave.com/wp/wp7925519.png" alt="">
@@ -106,11 +107,15 @@
             <i class='bx bxs-chevron-down text-md' id="dropdown-trigger" onclick="showDropdown()"></i>
           </div>
           <div class="absolute dropdown z-100" id="dropdown">
+<<<<<<< HEAD
             <h1>dropdown</h1>
             <!-- <p>TODO: Add links</p> /admin/logout  profile button -->
+=======
+            <button class="btn btn-danger" onclick="logout()">Logout</button>
+>>>>>>> 0fef9f74e68198b507e95040645bdcd09759b93c
           </div>
         </div>
-        
+
       </header>
       <section class="w-full h-full flex flex-col z-0">
         <div class="button flex justify-between items-center">
@@ -122,280 +127,50 @@
             <table class="table table-hover" data-bs-theme="dark">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">#Sl no</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Qualification</th>
+                  <th scope="col">Experience</th>
+                  <th scope="col">Speciality</th>
+                  <th scope="col">Clinic locaion</th>
+                  <th scope="col">Contact no.</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                <% doctors.map((item, index)=> { %>
+                  <tr>
+                    <th scope="row">
+                      <%= index + 1 %>
+                    </th>
+                    <td class="">
+                      <img src="/uploads/<%= item.image %>" class="rounded-circle" alt="..." width="40px" height="40px"
+                        style="background-color: aquamarine;margin-right: 8px;">
+                      <%= item.name %>
+                    </td>
+                    <td>
+                      <%= item.email %>
+                    </td>
+                    <td>
+                      <%= item.qualification %>
+                    </td>
+                    <td>
+                      <%= item.experience %>
+                    </td>
+                    <td>
+                      <%= item.speciality %>
+                    </td>
+                    <td>
+                      <%= item.clinicLocation %>
+                    </td>
+                    <td>
+                      <%= item.contactNo %>
+                    </td>
+                  </tr>
+                  <% }) %>
+
+
+
               </tbody>
             </table>
           </div>
@@ -404,5 +179,6 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="/javascripts/admin.js"></script>
     <% include ./partials/footer.ejs %>

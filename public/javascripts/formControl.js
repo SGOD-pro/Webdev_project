@@ -38,14 +38,16 @@ const showSignup = () => {
 const signupForm = document.getElementById('userSignup');
 
 signupForm.addEventListener('submit', function (event) {
-    // Prevent the default form submission behavior
     event.preventDefault();
     const formData = new FormData(event.target);
     const formDataJSON = {};
+    console.log(formData);
     const btn = document.getElementById("user-register-btn")
     for (const [key, value] of formData.entries()) {
         formDataJSON[key] = value;
     }
+    console.log(formDataJSON);
+
     if (!formDataJSON.fullname.trim()) {
         alert("Please enter your fullname.");
         return false;
@@ -139,10 +141,12 @@ document.querySelector(".admin form").addEventListener("submit", function (e) {
     axios.post("/admin/login", formDataJSON)
         .then((response) => {
             console.log(response);
+            window.location.href = "/admin";
+
         })
         .catch((error) => {
-            console.log(error.response.data);
-            console.log(error.response.status);
+            // console.log(error.response.data);
+            // console.log(error.response.status);
         })
         .finally(() => {
             btn.removeAttribute("disabled");

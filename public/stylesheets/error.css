@@ -45,6 +45,7 @@ a {
 	color: white;
 	text-decoration: none;
 	text-transform: uppercase;
+	text-decoration: underline;
 }
 a:hover {
 	color: lightgray;
