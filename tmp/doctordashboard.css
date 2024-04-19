@@ -33,18 +33,13 @@ main .navbar .data{
 main .left .items {
     margin-top: 5rem;
 }
-main .left .links{
-    display: flex;
-    align-items: center;
-    margin-left: 3rem;
-    gap: 2rem
-    /* line-height: 3rem; */
-    
-}
+
 main .left .links a{
     color: white;
     text-decoration: none;
     font-size: larger;
-    font-weight: bold;
-    line-height: 3rem;
+}
+.left .footer{
+    bottom: 5%;
+    right: 10%;
 }
