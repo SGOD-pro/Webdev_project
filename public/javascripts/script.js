@@ -100,7 +100,7 @@ for (let index = 0; index < tips2.length / 2; index++) {
      <div class="flex w-full h-full flex-col card-section" data-scroll data-scroll-speed="${dic}" data-scroll-direction="horizontal">
     <div class="card" >
         <div class="image">
-            <img src="../public/images/${tips2[index].url}" alt="no">
+            <img src="/images/${tips2[index].url}" alt="no">
         </div>
         <div class="text">
             <h3 class="text-md">${tips2[index].title}</h3>
