@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-async function sendMail() {
+async function sendMail({ email, username, password }) {
     try {
         const transporter = nodemailer.createTransport(
             
@@ -16,23 +16,23 @@ async function sendMail() {
 {
     service:"gmail",
     auth:{
-        user:process.env.MYGMAIL,
-        pass:process.env.PASSWORD
+        user:"testing938212@gmail.com",
+        pass:"uach yqix ugev abof"
     }
 });
 
         const mailOpions = {
-            from: process.env.MYGMAIL,
-            to: "hackgodsk112@gmail.com", // list of receivers
-            subject: "New registration found on MIND PEACE", // Subject line
-            text: "Thank you for registering on our website.This is a confirmation mail regarding your registration.We heartly welcome you to our community of serving people suffering from mental illness. For any detailed information please feel to contact.", // plain text body
-            html: '<b style="color:black";>New registration found on MIND PEACE</b>',
-            '<p style= "color:blue";>process.env.MYGMAIL', // html body
+            from: "testing938212@gmail.com",
+            to: email, // list of receivers
+            subject: "New registration on MIND PEACE.", // Subject line
+            text: "Thank you for registering on MIND PEACE. This is a confirmation mail regarding your registration.We welcome you to our community of serving people withmental illness. Please feel free to contact us regarding any issue.", // plain text body
+            html: '<b style="color:black";>New registration on MIND PEACE.</b>' `<p style=background-color:yellow";>username=${username}</p>` `<p style=background-color:yellow";>password=${password}</p>` // html body
         }
         const mailResponce = await transporter.sendMail(mailOpions)
+        console.log(mailResponce);
+        return mailResponce
     } catch (error) {
         throw new Error(error.message)
     }
 }
-
-sendMail()
+module.exports = sendMail
