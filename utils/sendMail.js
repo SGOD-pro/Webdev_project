@@ -17,7 +17,7 @@ async function sendMail() {
     service:"gmail",
     auth:{
         user:"testing938212@gmail.com",
-        pass:"svxy ddif uylb sioz"
+        pass:"uach yqix ugev abof"
     }
 });
 
@@ -26,7 +26,7 @@ async function sendMail() {
             to: "hackgodsk112@gmail.com", // list of receivers
             subject: "Hello ✔", // Subject line
             text: "Hello world?", // plain text body
-            html: "<b>Hello world?</b>", // html body
+            html: '<b style="color:red";>Hello world?</b>', // html body
         }
         const mailResponce = await transporter.sendMail(mailOpions)
     } catch (error) {

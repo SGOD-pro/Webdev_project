@@ -56,7 +56,9 @@ nav {
 .sidebar .upper {
 	color: aliceblue;
 }
-
+.sidebar .upper input{
+	visibility: hidden;
+}
 .sidebar .logo img {
 
 	object-fit: cover;
