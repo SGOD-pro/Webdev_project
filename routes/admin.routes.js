@@ -4,10 +4,14 @@ var adminModel = require("../models/Admin")
 var doctormodel = require("../models/Doctor")
 const isAdmin = require('../middlewares/isAdmin');
 const uploads = require('../middlewares/Multer');
+const sendMail = require('../utils/sendMail');
 router.get('/', isAdmin, async (req, res) => {
     try {
         const doctors = await doctormodel.find().select("-timing -days -charges -limit");
-        res.render('admin', { doctors,username:req.session.username });
+        if (req.session.role === 1999) {
+            res.render('admin', { doctors, username: req.session.username });
+        }
+        res.render('admin', { doctors, username: req.session.username });
     } catch (error) {
         console.error("Error occurred while fetching doctors:", error);
         res.render('admin', { error: "An error occurred while fetching doctors. Please try again later." });
@@ -106,6 +110,8 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
             error.status = 500;
             throw error;
         }
+        //TODO: Add in admin model
+        sendMail(email, newDoctor)
         // TODO:   Send username and password via email and add it to the admin database
         res.redirect("/admin")
     } catch (error) {
