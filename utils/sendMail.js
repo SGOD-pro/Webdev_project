@@ -16,17 +16,18 @@ async function sendMail() {
 {
     service:"gmail",
     auth:{
-        user:"testing938212@gmail.com",
-        pass:"uach yqix ugev abof"
+        user:process.env.MYGMAIL,
+        pass:process.env.PASSWORD
     }
 });
 
         const mailOpions = {
-            from: "testing938212@gmail.com",
+            from: process.env.MYGMAIL,
             to: "hackgodsk112@gmail.com", // list of receivers
-            subject: "Hello ✔", // Subject line
-            text: "Hello world?", // plain text body
-            html: '<b style="color:red";>Hello world?</b>', // html body
+            subject: "New registration found on MIND PEACE", // Subject line
+            text: "Thank you for registering on our website.This is a confirmation mail regarding your registration.We heartly welcome you to our community of serving people suffering from mental illness. For any detailed information please feel to contact.", // plain text body
+            html: '<b style="color:black";>New registration found on MIND PEACE</b>',
+            '<p style= "color:blue";>process.env.MYGMAIL', // html body
         }
         const mailResponce = await transporter.sendMail(mailOpions)
     } catch (error) {
