@@ -1,21 +1,39 @@
-const forms = document.querySelector(".forms")
+
+
+const form = document.querySelector(".forms")
 const userForm = document.querySelector(".forms .student")
 const adminForm = document.querySelector(".forms .admin")
-
-
+let c = 0
+function ShowToast(error, type) {
+    var parent = document.getElementById('toast-div');
+    parent.style.display = "block"
+    let toast = document.createElement("div")
+    toast.style.opacity = "1"
+    toast.innerHTML = ` <div class="my-toast rounded-2 bg-${type} text-${type} p-2 my-1 py-1 border border-${type} bg-opacity-25 flex gap-2 items-center">
+${error}
+<span class="material-symbols-outlined text-lg">
+    disabled_by_default
+    </span>
+</div>`
+    parent.appendChild(toast)
+    setTimeout(() => {
+        parent.removeChild(toast)
+    }, 4000 + c * 1000);
+    c += 1
+}
 const user = () => {
-    forms.classList.remove("hidden")
+    form.classList.remove("hidden")
     adminForm.classList.add("hidden")
     userForm.classList.remove("hidden")
 }
 const admin = () => {
-    forms.classList.remove("hidden")
+    form.classList.remove("hidden")
     userForm.classList.add("hidden")
     adminForm.classList.remove("hidden")
 }
 
 document.getElementById("form-close").addEventListener("click", () => {
-    forms.classList.add("hidden")
+    form.classList.add("hidden")
     if (!adminForm.classList.contains("hidden")) {
         adminForm.classList.add("hidden")
     }
@@ -31,8 +49,9 @@ const showSignup = () => {
     student.style.transform = "translateX(-100%)"
 }
 
-
-
+// const toastLiveExample = document.querySelector('#page1')
+// console.log(toastLiveExample);
+// const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
 
 //Routes
 const signupForm = document.getElementById('userSignup');
@@ -41,15 +60,17 @@ signupForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formDataJSON = {};
-    console.log(formData);
     const btn = document.getElementById("user-register-btn")
+
+
     for (const [key, value] of formData.entries()) {
         formDataJSON[key] = value;
     }
     console.log(formDataJSON);
 
     if (!formDataJSON.fullname.trim()) {
-        alert("Please enter your fullname.");
+        //alert("Please enter your fullname.");
+        ShowToast("Please enter your fullname.", "warning")
         return false;
     }
 
