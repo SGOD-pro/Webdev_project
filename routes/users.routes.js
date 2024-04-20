@@ -15,7 +15,7 @@ router.post("/register", async function (req, res) {
     const { fullname, phoneNumber, email, password } = req.body
     console.log(req.body);
     if ([fullname, phoneNumber, email, password].some(item => !item && item.strip() === "")) {
-      throw new Error("Please fillup properly!");
+      throw new Error("Please fill up properly!");
     }
     const existsUser = await usersModel.findOne({ email })
     if (existsUser) {
@@ -32,13 +32,15 @@ router.post("/register", async function (req, res) {
       throw error;
     }
     req.session._id = createdUser._id;
-    req.session.fullname = user.fullname;
-    res.redirect("/users");
+    req.session.fullname = createdUser.fullname;
+    res.status(200).json({message:"Done!"});
   } catch (error) {
-    console.log(error.status);
-    res.status(error.status).send(error.message);
+    const statusCode = error.status || 500; // Set default status code
+    console.log(statusCode);
+    res.status(statusCode).send(error.message);
   }
 })
+
 
 router.post('/login', async (req, res) => {
   try {
@@ -59,44 +61,8 @@ router.post('/login', async (req, res) => {
     }
     req.session._id = user._id;
     req.session.fullname = user.fullname;
-    const data = await usersModel.aggregate([
-      {
-        $match: { _id: user._id }
-      },
-      {
-        $lookup: {
-          from: "appointments",
-          foreignField: "userId",
-          localField: "_id",
-          as: "history",
-          pipeline: [
-            {
-              $lookup: {
-                from: "doctors",
-                foreignField: "_id",
-                localField: "doctorId",
-                as: "doctorName",
-                pipeline: [
-                  {
-                    $project:
-                    {
-                      name: 1
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        $project: {
-          password: 0
-        }
-      }
-    ])
-    console.log(data);
-    res.status(200).redirect("/");
+    
+    res.status(200).redirect("/users");
   } catch (error) {
     res.status(error.status).send(error.message);
   }

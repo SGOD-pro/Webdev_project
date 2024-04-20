@@ -8,8 +8,9 @@ nav {
 	border-radius: 2rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
-    padding: 0.4rem;
+	justify-content: space-between;
+    padding: 0.6rem;
+	padding-bottom: 3rem;
 }
 
 .logo .image{

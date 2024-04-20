@@ -72,7 +72,7 @@ signupForm.addEventListener('submit', function (event) {
     btn.setAttribute("disabled", true);
     axios.post("/users/register", formDataJSON)
         .then((response) => {
-            window.location.href = "/";
+            window.location.href = "/users";
         }).catch((error) => {
             console.log(error.response.data);
             console.log(error.response.status);
@@ -108,7 +108,7 @@ loginForm.addEventListener('submit', function (event) {
     }
     axios.post("/users/login", formDataJSON)
         .then(() => {
-            window.location.href = "/";
+            window.location.href = "/users";
         }).catch((error) => {
             console.log(error.response.data);
             console.log(error.response.status);
@@ -117,14 +117,6 @@ loginForm.addEventListener('submit', function (event) {
         });
 });
 
-const logout = () => {
-    axios.post("/users/logout")
-        .then(() => {
-            window.location.href = "/";
-        }).catch((error) => {
-            alert("Something went wrong.");
-        })
-}
 
 
 document.querySelector(".admin form").addEventListener("submit", function (e) {
