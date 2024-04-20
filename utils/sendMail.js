@@ -32,6 +32,7 @@ async function sendMail({ email, username, password }) {
         console.log(mailResponce);
         return mailResponce
     } catch (error) {
+        console.log(error);
         throw new Error(error.message)
     }
 }

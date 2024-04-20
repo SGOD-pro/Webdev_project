@@ -145,8 +145,8 @@ document.querySelector(".admin form").addEventListener("submit", function (e) {
 
         })
         .catch((error) => {
-            // console.log(error.response.data);
-            // console.log(error.response.status);
+            console.log(error.response.data);
+            console.log(error.response.status);
         })
         .finally(() => {
             btn.removeAttribute("disabled");

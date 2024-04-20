@@ -37,7 +37,7 @@
 .text-xs {
 	font-size: clamp(0.5rem, 2vw, 0.7rem);
 }
-.text-xs.opacity-6 {
+.opacity-6 {
 	opacity: 0.6;
 }
 .flex-shrink {

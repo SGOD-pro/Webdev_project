@@ -7,11 +7,12 @@ const uploads = require('../middlewares/Multer');
 const sendMail = require('../utils/sendMail');
 router.get('/', isAdmin, async (req, res) => {
     try {
-        const doctors = await doctormodel.find().select("-timing -days -charges -limit");
         if (req.session.role === 1999) {
+            res.render('doctorDashboard');
+        } else {
+            const doctors = await doctormodel.find().select("-timing -days -charges -limit");
             res.render('admin', { doctors, username: req.session.username });
         }
-        res.render('admin', { doctors, username: req.session.username });
     } catch (error) {
         console.error("Error occurred while fetching doctors:", error);
         res.render('admin', { error: "An error occurred while fetching doctors. Please try again later." });
@@ -42,7 +43,6 @@ router.post('/login', async (req, res) => {
         res.redirect("/admin");
     } catch (error) {
         res.status(error.status).send(error.message);
-
     }
 });
 router.get('/logout', (req, res) => {
@@ -86,13 +86,26 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
         }
         const path = req.file?.filename
         const exists = await doctormodel.findOne({ email })
-        if (!exists) {
+        if (exists) {
             const error = new Error("Already exists");
             error.status = 409;
             throw error;
         }
 
-        const newDoctor = await doctormodel.create({
+        // const newDoctor = await doctormodel.create({
+        //     name,
+        //     qualification,
+        //     experience,
+        //     speciality,
+        //     email,
+        //     contactNo,
+        //     timing: `${from} - ${to}`,
+        //     days,
+        //     clinicLocation,
+        //     charges,
+        //     image: path || ""
+        // });
+        const newDoctor = new doctormodel({
             name,
             qualification,
             experience,
@@ -105,13 +118,15 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
             charges,
             image: path || ""
         });
+        console.log(newDoctor);
         if (!newDoctor) {
             const error = new Error("Could not save");
             error.status = 500;
             throw error;
         }
         //TODO: Add in admin model
-        sendMail(email, newDoctor)
+        const password = "mindpeace"
+        await sendMail({email, username:newDoctor?._id,password})
         // TODO:   Send username and password via email and add it to the admin database
         res.redirect("/admin")
     } catch (error) {
