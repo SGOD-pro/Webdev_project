@@ -104,7 +104,7 @@ main::-webkit-scrollbar-thumb {
 
 .container button {
 	height: 30px;
-	width: 150px;
+	width: 200px;
 	font-size: medium;
 	background-color: rgba(0, 0, 0, 0);
 	outline: none;
