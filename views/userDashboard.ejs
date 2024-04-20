@@ -1,0 +1,75 @@
+<% include ./partials/header.ejs %>
+    <link rel="stylesheet" href="../public/stylesheets/dashboard.css">
+
+    <main>
+        <% include ./partials/userNavbar.ejs %>
+            <section>
+                <div class="right-side">
+                    <h1> Dashboard </h1>
+                    <div class="items flex justify-around">
+                        <div class="item flex flex-col gap-1">
+                            <h4 class="text-basic">Appointments</h4>
+                            <p>69</p>
+                        </div>
+                        <div class="item flex flex-col gap-1">
+                            <h4 class="text-basic">Appointments</h4>
+                            <p>69</p>
+                        </div>
+                        <div class="item flex flex-col gap-1">
+                            <h4 class="text-basic">Appointments</h4>
+                            <p>69</p>
+                        </div>
+
+                    </div>
+                    <div class="swiper w-full">
+                        swiper
+                    </div>
+                </div>
+                <div class="left-side">
+                    <div class="box flex items-center">
+                        <h1 class="text-lg"> YOUR HEALTH IS <strong>OUR</strong> PRIORITY </h1>
+
+                    </div>
+
+                    <div class="top-appointment">
+                        <h1 class="text-lg"> Recent Appointments</h1>
+                        <div class="table-div">
+                            <table class="table table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td colspan="2">Larry the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <% include ./partials/footer.ejs %>

@@ -6,7 +6,9 @@ var feedbackModel = require("../models/Feedback")
 var isVerified = require("../middlewares/verify")
 
 /* GET users listing. */
-
+router.get("/", isVerified, async (req, res) => {
+  res.render("userDashboard")
+})
 
 router.post("/register", async function (req, res) {
   try {
@@ -31,7 +33,7 @@ router.post("/register", async function (req, res) {
     }
     req.session._id = createdUser._id;
     req.session.fullname = user.fullname;
-    res.status(200).redirect("/");
+    res.redirect("/users");
   } catch (error) {
     console.log(error.status);
     res.status(error.status).send(error.message);
@@ -43,7 +45,7 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     console.log(req.body);
     const user = await usersModel.findOne({ email: email });
-    
+
     if (!user) {
       const error = new Error("Incorrect email or password");
       error.status = 404;
@@ -100,7 +102,7 @@ router.post('/login', async (req, res) => {
   }
 })
 
-router.post('/logout', (req, res) => {
+router.post('/logout',isVerified, (req, res) => {
   try {
     if (req.session._id == null) {
       throw new Error("User is not logged in");

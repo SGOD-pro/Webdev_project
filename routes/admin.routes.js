@@ -5,17 +5,29 @@ var doctormodel = require("../models/Doctor")
 const isAdmin = require('../middlewares/isAdmin');
 const uploads = require('../middlewares/Multer');
 const sendMail = require('../utils/sendMail');
+
+function generatePassword(name, prefix) {
+    const initials = name.split(" ").map(word => word[0]).join("").toUpperCase();
+    const randomNumber = Math.floor(10000 + Math.random() * 90000);
+    return `${initials}/${prefix}-${randomNumber}`;
+}
+
+function generateUsername(prefix) {
+    const timestamp = new Date().getTime().toString();
+    return prefix + (+timestamp % 1000000);
+}
+
 router.get('/', isAdmin, async (req, res) => {
     try {
+        console.log(req.session.role);
         if (req.session.role === 1999) {
-            res.render('doctorDashboard');
+            res.render('doctorsDashboard');
         } else {
             const doctors = await doctormodel.find().select("-timing -days -charges -limit");
             res.render('admin', { doctors, username: req.session.username });
         }
     } catch (error) {
         console.error("Error occurred while fetching doctors:", error);
-        res.render('admin', { error: "An error occurred while fetching doctors. Please try again later." });
     }
 });
 
@@ -40,6 +52,7 @@ router.post('/login', async (req, res) => {
         req.session._id = user._id;
         req.session.role = user.role;
         req.session.username = user.username;
+        console.log("done!");
         res.redirect("/admin");
     } catch (error) {
         res.status(error.status).send(error.message);
@@ -62,6 +75,7 @@ router.get('/logout', (req, res) => {
         res.status(404).send(error.message);
     }
 })
+
 router.post('/newdoctors', uploads.single("image"), async (req, res) => {
     try {
         const {
@@ -92,20 +106,7 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
             throw error;
         }
 
-        // const newDoctor = await doctormodel.create({
-        //     name,
-        //     qualification,
-        //     experience,
-        //     speciality,
-        //     email,
-        //     contactNo,
-        //     timing: `${from} - ${to}`,
-        //     days,
-        //     clinicLocation,
-        //     charges,
-        //     image: path || ""
-        // });
-        const newDoctor = new doctormodel({
+        const newDoctor = await doctormodel.create({
             name,
             qualification,
             experience,
@@ -124,28 +125,29 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
             error.status = 500;
             throw error;
         }
-        //TODO: Add in admin model
-        const password = "mindpeace"
-        await sendMail({email, username:newDoctor?._id,password})
-        // TODO:   Send username and password via email and add it to the admin database
-        res.redirect("/admin")
+
+        const password = generatePassword(name, "MP")
+        const username = generateUsername("MP")
+        console.log(username, password);
+        const asAdmin = await adminModel.create({
+            fullname: name,
+            username,
+            password,
+            role: 1999
+        })
+        if (!asAdmin) {
+            const error = new Error("Could not save");
+            error.status = 500;
+            throw error;
+        }
+        await sendMail({ email, username, password })
+
+        res.status(200).json({ success: true, message: "Done!" })
     } catch (error) {
         console.log(error);
         res.status(error.status).send(error.message);
     }
 });
-
-// router.get('/getalltips', isAdmin, async (req, res) => {
-//     try {
-//         const allTips = await tipsmodel.find()
-//         if (!allTips) {
-//             throw new Error("Something is wrong.")
-//         }
-//         res.status(200).json(allTips);
-//     } catch (error) {
-//         res.status(500).json(error.message);
-//     }
-// })
 
 router.get("deletedoctor:id", isAdmin, async (req, res) => {
     try {

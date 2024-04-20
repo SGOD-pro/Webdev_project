@@ -7,39 +7,7 @@ main {
 	padding: 1.5rem;
 	height: 100vh;
 }
-main .left {
-	background-color: rgb(27, 27, 109);
-	color: white;
-	height: 100%;
-	width: 20%;
-	border-radius: 2rem;
-	padding: 0.5rem;
-}
 
-main .left .navbar .image img {
-	height: 70px;
-	width: 70px;
-	border-radius: 50%;
-	margin-top: 10px;
-	object-fit: cover;
-}
-main .navbar .data {
-	margin-top: 15px;
-	text-align: center;
-}
-main .left .items {
-	margin-top: 5rem;
-}
-
-main .left .links a {
-	color: white;
-	text-decoration: none;
-	font-size: larger;
-}
-.left .footer {
-	bottom: 5%;
-	right: 10%;
-}
 .right{
     color: var(--primary-text-color);
     width: 100%;
@@ -56,14 +24,15 @@ main .left .links a {
     font-size: clamp(.9rem,.20rem + 4vw,1.8rem);
 }
 
-.card{
+.card-mp{
     background-color: var(--secondary-bg-color);
     padding: 8px;
     box-shadow: 0 0 8px rgba(0, 0, 0, .7);
     border-radius: 12px;
     min-width: 200px;
+    color: var(--primary-text-color);
 }
-.card span{
+.card-mp span{
     font-size: clamp(1rem,.22rem + 6vw,2.2rem);
 }
 #table-sec{
