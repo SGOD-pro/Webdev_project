@@ -1,146 +1,238 @@
 <% include ./partials/header.ejs %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
 
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .autoplay-progress {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            z-index: 10;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--swiper-theme-color);
+        }
+
+        .autoplay-progress svg {
+            --progress: 0;
+            position: absolute;
+            left: 0;
+            top: 0px;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            stroke-width: 4px;
+            stroke: var(--swiper-theme-color);
+            fill: none;
+            stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+            stroke-dasharray: 125.6;
+            transform: rotate(-90deg);
+        }
+    </style>
     <link rel="stylesheet" href="/stylesheets/doctorpage.css">
 
     <body>
         <% include ./partials/navbar.ejs %>
-        <% include ./partials/forms.ejs %>
-            <main>
-                <header>
-                    add a nav bar => contains a search bar in middle
+            <% include ./partials/forms.ejs %>
+                <% include ./partials/toast.ejs %>
 
-                    a hero section features some random doctor by swiper js
+                    <main>
+                       
+                        <div class="heading">
+                            <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                  <div class="swiper-slide">Slide 1</div>
+                                  <div class="swiper-slide">Slide 2</div>
+                                  <div class="swiper-slide">Slide 3</div>
+                                  <div class="swiper-slide">Slide 4</div>
+                                  <div class="swiper-slide">Slide 5</div>
+                                  <div class="swiper-slide">Slide 6</div>
+                                  <div class="swiper-slide">Slide 7</div>
+                                  <div class="swiper-slide">Slide 8</div>
+                                  <div class="swiper-slide">Slide 9</div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                                <div class="autoplay-progress">
+                                  <svg viewBox="0 0 48 48">
+                                    <circle cx="24" cy="24" r="20"></circle>
+                                  </svg>
+                                  <span></span>
+                                </div>
+                              </div>
+                        </div>
 
-                    **in main show doctors by catagorywise like flipkart**
-                </header>
-                <div class="heading">
-                    <h1 class="">hlw</h1>
-                </div>
-                <div class="contents flex justify-between flex-wrap">
+                        <div class="contents flex justify-between flex-wrap">
+                            <div class="container">
+                                <img src="./mdoctor2.jpg" alt="Doctor Image" class="doctor-image">
+                                <h1 class="doctor-name">Dr. John Doe</h1>
+                                <h2 class="doctor-specialty">Social Psychology</h2>
+                                <div class="doctor-details">
+                                    <div class="doctor-detail">
+                                        <label for="degree">Degree</label>
+                                        <span id="degree">: MD(Doctor of Mmedicine) in Psychiatry</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="experience">Experience</label>
+                                        <span id="experience">:10 years</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="hospital">Hospital</label>
+                                        <span id="hospital">:Maytri Hospital</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="timings">Timings</label>
+                                        <span id="timings">:9am-5pm</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="fees">Fees</label>
+                                        <span id="fees">:$100 per consultation</span>
+                                    </div>
+                                </div>
+                                <button id="book-appointment">Book Appointment</button>
+                            </div>
 
+                            <div class="container">
+                                <img src="./mdoctor5.jpg" alt="Doctor Image" class="doctor-image">
+                                <h1 class="doctor-name">Dr. Khush Gupta </h1>
+                                <h2 class="doctor-specialty">Psychiatrist</h2>
+                                <div class="doctor-details">
+                                    <div class="doctor-detail">
+                                        <label for="degree">Degree:</label>
+                                        <span id="degree">DNB(Diplomate of National Board) in Psychiatry</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="experience">Experience:</label>
+                                        <span id="experience">15 years</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="hospital">Hospital:</label>
+                                        <span id="hospital">DSP Main Hospital</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="timings">Timings:</label>
+                                        <span id="timings">9am-5pm</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="fees">Fees:</label>
+                                        <span id="fees">$150 per consultation</span>
+                                    </div>
+                                </div>
+                                <button id="book-appointment">Book Appointment</button>
+                            </div>
 
-                    <div class="container">
-                        <img src="./mdoctor2.jpg" alt="Doctor Image" class="doctor-image">
-                        <h1 class="doctor-name">Dr. John Doe</h1>
-                        <h2 class="doctor-specialty">Social Psychology</h2>
-                        <div class="doctor-details">
-                            <div class="doctor-detail">
-                                <label for="degree">Degree</label>
-                                <span id="degree">: MD(Doctor of Mmedicine) in Psychiatry</span>
+                            <div class="container">
+                                <img src="./fdoctor1.jpg" alt="Doctor Image" class="doctor-image">
+                                <h1 class="doctor-name">Dr. Sweta Kumari</h1>
+                                <h2 class="doctor-specialty">Clinical Psychology</h2>
+                                <div class="doctor-details">
+                                    <div class="doctor-detail">
+                                        <label for="degree">Degree:</label>
+                                        <span id="degree"> PhD(Doctor of Philosophy)</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="experience">Experience:</label>
+                                        <span id="experience">8 years</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="hospital">Hospital:</label>
+                                        <span id="hospital">Health Hospital</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="timings">Timings:</label>
+                                        <span id="timings">9am-5pm</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="fees">Fees:</label>
+                                        <span id="fees">$150 per consultation</span>
+                                    </div>
+                                </div>
+                                <button id="book-appointment">Book Appointment</button>
                             </div>
-                            <div class="doctor-detail">
-                                <label for="experience">Experience</label>
-                                <span id="experience">:10 years</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="hospital">Hospital</label>
-                                <span id="hospital">:Maytri Hospital</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="timings">Timings</label>
-                                <span id="timings">:9am-5pm</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="fees">Fees</label>
-                                <span id="fees">:$100 per consultation</span>
+
+                            <div class="container">
+                                <img src="./mdoctor17.jpg" alt="Doctor Image" class="doctor-image">
+                                <h1 class="doctor-name">Dr. Rachel Adams</h1>
+                                <h2 class="doctor-specialty">Trauma Therapy</h2>
+                                <div class="doctor-details">
+                                    <div class="doctor-detail">
+                                        <label for="degree">Degree:</label>
+                                        <span id="degree">PhD(Doctor of Philosophy)</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="experience">Experience:</label>
+                                        <span id="experience">15 years</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="hospital">Hospital:</label>
+                                        <span id="hospital"> Healing Horizons Hospital</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="timings">Timings:</label>
+                                        <span id="timings">9am-5pm</span>
+                                    </div>
+                                    <div class="doctor-detail">
+                                        <label for="fees">Fees:</label>
+                                        <span id="fees">$150 per consultation</span>
+                                    </div>
+                                </div>
+                                <button id="book-appointment">Book Appointment</button>
                             </div>
                         </div>
-                        <button id="book-appointment">Book Appointment</button>
-                    </div>
+                    </main>
 
-                    <div class="container">
-                        <img src="./mdoctor5.jpg" alt="Doctor Image" class="doctor-image">
-                        <h1 class="doctor-name">Dr. Khush Gupta </h1>
-                        <h2 class="doctor-specialty">Psychiatrist</h2>
-                        <div class="doctor-details">
-                            <div class="doctor-detail">
-                                <label for="degree">Degree:</label>
-                                <span id="degree">DNB(Diplomate of National Board) in Psychiatry</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="experience">Experience:</label>
-                                <span id="experience">15 years</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="hospital">Hospital:</label>
-                                <span id="hospital">DSP Main Hospital</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="timings">Timings:</label>
-                                <span id="timings">9am-5pm</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="fees">Fees:</label>
-                                <span id="fees">$150 per consultation</span>
-                            </div>
-                        </div>
-                        <button id="book-appointment">Book Appointment</button>
-                    </div>
+                   
+                    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-                    <div class="container">
-                        <img src="./fdoctor1.jpg" alt="Doctor Image" class="doctor-image">
-                        <h1 class="doctor-name">Dr. Sweta Kumari</h1>
-                        <h2 class="doctor-specialty">Clinical Psychology</h2>
-                        <div class="doctor-details">
-                            <div class="doctor-detail">
-                                <label for="degree">Degree:</label>
-                                <span id="degree"> PhD(Doctor of Philosophy)</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="experience">Experience:</label>
-                                <span id="experience">8 years</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="hospital">Hospital:</label>
-                                <span id="hospital">Health Hospital</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="timings">Timings:</label>
-                                <span id="timings">9am-5pm</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="fees">Fees:</label>
-                                <span id="fees">$150 per consultation</span>
-                            </div>
-                        </div>
-                        <button id="book-appointment">Book Appointment</button>
-                    </div>
-
-                    <div class="container">
-                        <img src="./mdoctor17.jpg" alt="Doctor Image" class="doctor-image">
-                        <h1 class="doctor-name">Dr. Rachel Adams</h1>
-                        <h2 class="doctor-specialty">Trauma Therapy</h2>
-                        <div class="doctor-details">
-                            <div class="doctor-detail">
-                                <label for="degree">Degree:</label>
-                                <span id="degree">PhD(Doctor of Philosophy)</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="experience">Experience:</label>
-                                <span id="experience">15 years</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="hospital">Hospital:</label>
-                                <span id="hospital"> Healing Horizons Hospital</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="timings">Timings:</label>
-                                <span id="timings">9am-5pm</span>
-                            </div>
-                            <div class="doctor-detail">
-                                <label for="fees">Fees:</label>
-                                <span id="fees">$150 per consultation</span>
-                            </div>
-                        </div>
-                        <button id="book-appointment">Book Appointment</button>
-                    </div>
-                </div>
-            </main>
-
-            <script>
-                document.getElementById("book-appointment").addEventListener("click", function () {
-                    alert("Appointment booked successfully!");
-                });
-            </script>
-
-            <% include ./partials/footer.ejs %>
+               
+                    <script>
+                        const progressCircle = document.querySelector(".autoplay-progress svg");
+                        const progressContent = document.querySelector(".autoplay-progress span");
+                        var swiper = new Swiper(".mySwiper", {
+                            spaceBetween: 30,
+                            centeredSlides: true,
+                            autoplay: {
+                                delay: 2500,
+                                disableOnInteraction: false
+                            },
+                            pagination: {
+                                el: ".swiper-pagination",
+                                clickable: true
+                            },
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev"
+                            },
+                            on: {
+                                autoplayTimeLeft(s, time, progress) {
+                                    progressCircle.style.setProperty("--progress", 1 - progress);
+                                    progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+                                }
+                            }
+                        });
+                    </script>
+                    <% include ./partials/footer.ejs %>

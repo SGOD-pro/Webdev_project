@@ -1,0 +1,46 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+main {
+	padding: 1.5rem;
+	height: 100vh;
+}
+
+.right{
+    color: var(--primary-text-color);
+    width: 100%;
+    padding-left: 1rem;
+
+}
+.content{
+    background-color: var(--secondary-bg-color);
+    padding: 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+    border-radius: 8px;
+}
+#calender-ico{
+    font-size: clamp(.9rem,.20rem + 4vw,1.8rem);
+}
+
+.card-mp{
+    background-color: var(--secondary-bg-color);
+    padding: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+    border-radius: 12px;
+    min-width: 200px;
+    color: var(--primary-text-color);
+}
+.card-mp span{
+    font-size: clamp(1rem,.22rem + 6vw,2.2rem);
+}
+#table-sec{
+    border: 1px solid var(--secondary-bg-color);
+}
+td button{
+    padding: 0 2px;
+}
+td button span{
+    padding: 4px;
+}

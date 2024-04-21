@@ -1,21 +1,22 @@
-const forms = document.querySelector(".forms")
+
+
+const form = document.querySelector(".forms")
 const userForm = document.querySelector(".forms .student")
 const adminForm = document.querySelector(".forms .admin")
 
-
 const user = () => {
-    forms.classList.remove("hidden")
+    form.classList.remove("hidden")
     adminForm.classList.add("hidden")
     userForm.classList.remove("hidden")
 }
 const admin = () => {
-    forms.classList.remove("hidden")
+    form.classList.remove("hidden")
     userForm.classList.add("hidden")
     adminForm.classList.remove("hidden")
 }
 
 document.getElementById("form-close").addEventListener("click", () => {
-    forms.classList.add("hidden")
+    form.classList.add("hidden")
     if (!adminForm.classList.contains("hidden")) {
         adminForm.classList.add("hidden")
     }
@@ -31,8 +32,9 @@ const showSignup = () => {
     student.style.transform = "translateX(-100%)"
 }
 
-
-
+// const toastLiveExample = document.querySelector('#page1')
+// console.log(toastLiveExample);
+// const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
 
 //Routes
 const signupForm = document.getElementById('userSignup');
@@ -41,15 +43,17 @@ signupForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formDataJSON = {};
-    console.log(formData);
     const btn = document.getElementById("user-register-btn")
+
+
     for (const [key, value] of formData.entries()) {
         formDataJSON[key] = value;
     }
     console.log(formDataJSON);
 
     if (!formDataJSON.fullname.trim()) {
-        alert("Please enter your fullname.");
+        //alert("Please enter your fullname.");
+        ShowToast("Please enter your fullname.", "warning")
         return false;
     }
 
@@ -72,7 +76,7 @@ signupForm.addEventListener('submit', function (event) {
     btn.setAttribute("disabled", true);
     axios.post("/users/register", formDataJSON)
         .then((response) => {
-            window.location.href = "/";
+            window.location.href = "/users";
         }).catch((error) => {
             console.log(error.response.data);
             console.log(error.response.status);
@@ -87,8 +91,7 @@ const loginForm = document.getElementById('userLogin');
 loginForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const btn = document.getElementById("user-login-btn")
-    btn.setAttribute("disabled", true);
-    console.log("hii");
+    
     const formData = new FormData(event.target);
 
     const formDataJSON = {};
@@ -106,25 +109,18 @@ loginForm.addEventListener('submit', function (event) {
         alert("Password must be at least 6 characters long.");
         return false;
     }
+    btn.setAttribute("disabled", true);
     axios.post("/users/login", formDataJSON)
-        .then(() => {
-            window.location.href = "/";
-        }).catch((error) => {
-            console.log(error.response.data);
+    .then(() => {
+        window.location.href = "/users";
+    }).catch((error) => {
+        console.log(error.response.data);
             console.log(error.response.status);
         }).finally(() => {
             btn.removeAttribute("disabled");
         });
 });
 
-const logout = () => {
-    axios.post("/users/logout")
-        .then(() => {
-            window.location.href = "/";
-        }).catch((error) => {
-            alert("Something went wrong.");
-        })
-}
 
 
 document.querySelector(".admin form").addEventListener("submit", function (e) {
@@ -145,9 +141,8 @@ document.querySelector(".admin form").addEventListener("submit", function (e) {
 
         })
         .catch((error) => {
-            console.log(error.response.data);
-            // alert(" wrong username or password");
-            console.log(error.response.status);
+            // console.log(error.response.data);
+            // console.log(error.response.status);
         })
         .finally(() => {
             btn.removeAttribute("disabled");

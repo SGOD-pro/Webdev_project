@@ -1,141 +1,105 @@
 <% include ./partials/header.ejs %>
-    <link rel="stylesheet" href="newstyle.css">
+    <link rel="stylesheet" href="/stylesheets/doctordashboard.css">
 
     <body>
-        <div class="head">
-            <h1 id="heading">OUR TOP DOCTORS</h1>
-        </div>
+    <% include ./partials/toast.ejs %>
 
-        <div class="container">
-            <img src="./mdoctor2.jpg" alt="Doctor Image" class="doctor-image">
-            <h1 class="doctor-name">Dr. John Doe</h1>
-            <h2 class="doctor-specialty">Social Psychology</h2>
-            <div class="doctor-details">
-                <div class="doctor-detail">
-                    <label for="degree">Degree</label>
-                    <span id="degree">: MD(Doctor of Mmedicine) in Psychiatry</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="experience">Experience</label>
-                    <span id="experience">:10 years</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="hospital">Hospital</label>
-                    <span id="hospital">:Maytri Hospital</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="timings">Timings</label>
-                    <span id="timings">:9am-5pm</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="fees">Fees</label>
-                    <span id="fees">:$100 per consultation</span>
-                </div>
-            </div>
-            <button id="book-appointment">Book Appointment</button>
-        </div>
+        <main class="flex gap-1">
+            <% include ./partials/doctorsnavbar.ejs %>
+                <div class="right">
+                    <nav class="w-full flex flex-end gap-3">
+                        <button class="btn btn-warning">
+                            <span class="material-symbols-outlined">
+                                emergency_home
+                            </span>
+                            Emergency
+                        </button>
+                        <div class="content flex items-center gap-1">
+                            <div class="text">
+                                <p class="text-xs opacity-6">Tuesday</p>
+                                <h3 class="text-basic">4/20/2024</h3>
+                            </div>
+                            <span class="material-symbols-outlined" id="calender-ico">
+                                calendar_month
+                            </span>
+                        </div>
 
+                    </nav>
+                    <section>
+                        <h2 class="text-underline">Status</h2>
 
+                        <div class="cards flex flex-wrap gap-4">
+                            <a href="#" class="card-mp flex items-center gap-2 justify-around">
+                                <div class="texts">
+                                    <p class="text-md">1</p>
+                                    <h3 class="text-basic">All Paitents</h3>
+                                </div><span class="material-symbols-outlined">
+                                    diversity_1
+                                </span>
+                            </a>
+                            <a href="#" class="card-mp flex items-center gap-2 justify-around">
+                                <div class="texts">
+                                    <p class="text-md">1</p>
+                                    <h3 class="text-basic">NewBookings</h3>
+                                </div>
+                                <span class="material-symbols-outlined">
+                                    fiber_new
+                                </span>
+                            </a>
+                            <a href="#" class="card-mp flex items-center gap-2 justify-around">
+                                <div class="texts">
+                                    <p class="text-md">1</p>
+                                    <h3 class="text-basic">Today</h3>
+                                </div>
+                                <span class="material-symbols-outlined">
+                                    today
+                                </span>
+                            </a>
+                        </div>
 
-
-
-
-        <div class="container">
-            <img src="./mdoctor5.jpg" alt="Doctor Image" class="doctor-image">
-            <h1 class="doctor-name">Dr. Khush Gupta </h1>
-            <h2 class="doctor-specialty">Psychiatrist</h2>
-            <div class="doctor-details">
-                <div class="doctor-detail">
-                    <label for="degree">Degree:</label>
-                    <span id="degree">DNB(Diplomate of National Board) in Psychiatry</span>
+                    </section>
+                    <section class="mt-3 w-full" id="table-sec">
+                        <h2>Todays Session</h2>
+                        <div class="table-div">
+                            <table class="table table-striped table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td><button class="btn btn-danger"><span class="material-symbols-outlined">
+                                                    backspace
+                                                </span></button></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td colspan="2">Larry the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
-                <div class="doctor-detail">
-                    <label for="experience">Experience:</label>
-                    <span id="experience">15 years</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="hospital">Hospital:</label>
-                    <span id="hospital">DSP Main Hospital</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="timings">Timings:</label>
-                    <span id="timings">9am-5pm</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="fees">Fees:</label>
-                    <span id="fees">$150 per consultation</span>
-                </div>
-            </div>
-            <button id="book-appointment">Book Appointment</button>
-        </div>
-
-
-
-        <div class="container">
-            <img src="./fdoctor1.jpg" alt="Doctor Image" class="doctor-image">
-            <h1 class="doctor-name">Dr. Sweta Kumari</h1>
-            <h2 class="doctor-specialty">Clinical Psychology</h2>
-            <div class="doctor-details">
-                <div class="doctor-detail">
-                    <label for="degree">Degree:</label>
-                    <span id="degree"> PhD(Doctor of Philosophy)</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="experience">Experience:</label>
-                    <span id="experience">8 years</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="hospital">Hospital:</label>
-                    <span id="hospital">Health Hospital</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="timings">Timings:</label>
-                    <span id="timings">9am-5pm</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="fees">Fees:</label>
-                    <span id="fees">$150 per consultation</span>
-                </div>
-            </div>
-            <button id="book-appointment">Book Appointment</button>
-        </div>
-
-
-        <div class="container">
-            <img src="./mdoctor17.jpg" alt="Doctor Image" class="doctor-image">
-            <h1 class="doctor-name">Dr. Rachel Adams</h1>
-            <h2 class="doctor-specialty">Trauma Therapy</h2>
-            <div class="doctor-details">
-                <div class="doctor-detail">
-                    <label for="degree">Degree:</label>
-                    <span id="degree">PhD(Doctor of Philosophy)</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="experience">Experience:</label>
-                    <span id="experience">15 years</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="hospital">Hospital:</label>
-                    <span id="hospital"> Healing Horizons Hospital</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="timings">Timings:</label>
-                    <span id="timings">9am-5pm</span>
-                </div>
-                <div class="doctor-detail">
-                    <label for="fees">Fees:</label>
-                    <span id="fees">$150 per consultation</span>
-                </div>
-            </div>
-            <button id="book-appointment">Book Appointment</button>
-        </div>
+        </main>
 
 
-
-        <script>
-            document.getElementById("book-appointment").addEventListener("click", function () {
-                alert("Appointment booked successfully!");
-            });
-        </script>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/javascripts/doctorDashboard.js"></script>
         <% include ./partials/footer.ejs %>

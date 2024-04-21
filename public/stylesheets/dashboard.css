@@ -1,0 +1,89 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+main {
+	max-width: 100vw;
+	height: 100vh;
+	background-color: #252525;
+	overflow: hidden;
+	max-height: 100vh;
+	padding: 1.5rem;
+    padding-right: .1rem;
+}
+section {
+	width: 100%;
+    height: 100%;
+	gap: 0.5rem;
+	padding: 0.6rem;
+    padding-left: 1rem;
+}
+
+
+.item{
+    background-color: #252525;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0,.8);
+    margin-top: 1rem;
+}
+.item h4,.item p{
+    margin: 0;
+}
+.right-side{
+    max-width: 50%;
+    color: #f4f4f4;
+}
+.left-side {
+    padding: clamp(.5rem,.15rem + 2vw,1.4rem);
+    width: 31%;
+}
+.left-side .box{
+    width: 100%;
+    min-height: 150px;
+    background-color: #3559E0;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .9);
+    margin-bottom: 1rem;
+}
+.top-appointment{
+    background-color: #252525;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #f4f4f4;
+    padding: 0.8rem;
+}
+.top-appointment h1{
+    line-height: 2.4rem;
+}
+.table-div{
+    margin-top: 0.5rem;
+}
+.table-div table{
+    height: 100%;
+    margin-bottom: 0;
+}
+.swiper{
+    background-color: var(--secondary-bg-color);
+    margin-top: 3rem;
+    border-radius: 2rem;
+    max-height: 460px;
+    width: 100%;
+}
+.swiper-slide{
+    background-color: var(--primary-bg-color);
+}
+.swiper-button-next{
+    color: var(--theme-color);
+    font-weight: bolder;
+}
+.swiper-button-prev{
+    color: var(--theme-color);
+    font-weight: bolder;
+}

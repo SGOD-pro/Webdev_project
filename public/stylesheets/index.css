@@ -17,7 +17,6 @@ button {
 	background-color: transparent;
 }
 
-
 #page1 {
 	background-color: var(--primary-bg-color);
 }
@@ -241,7 +240,9 @@ button {
 	text-decoration: underline;
 	margin-bottom: 0.6rem;
 }
-
+#btn1{
+	background: var(--secondary-bg-color)!important;
+}
 footer {
 	background: var(--primary-bg-color);
 	padding-block: 3rem;

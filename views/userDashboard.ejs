@@ -1,0 +1,128 @@
+<% include ./partials/header.ejs %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+    <body>
+        <main class="flex">
+            <% include ./partials/toast.ejs %>
+                <% include ./partials/userNavbar.ejs %>
+                    <section class="flex">
+                        <div class="right-side flex flex-col">
+                            <h1> Dashboard </h1>
+                            <div class="items flex justify-around gap-3">
+                                <div class="item flex flex-col gap-3 p-2 px-3">
+                                    <h4 class="text-basic">Appointments</h4>
+                                    <p class="text-md">69</p>
+                                </div>
+                                <div class="item flex flex-col gap-3 p-2 px-3">
+                                    <h4 class="text-basic">Appointments</h4>
+                                    <p class="text-md">69</p>
+                                </div>
+                                <div class="item flex flex-col gap-3 p-2 px-3">
+                                    <h4 class="text-basic">Appointments</h4>
+                                    <p class="text-md">69</p>
+                                </div>
+
+                            </div>
+                            <div class="swiper mySwiper h-full">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">Slide 1</div>
+                                    <div class="swiper-slide">Slide 2</div>
+                                    <div class="swiper-slide">Slide 3</div>
+                                    <div class="swiper-slide">Slide 4</div>
+                                    <div class="swiper-slide">Slide 5</div>
+                                    <div class="swiper-slide">Slide 6</div>
+                                    <div class="swiper-slide">Slide 7</div>
+                                    <div class="swiper-slide">Slide 8</div>
+                                    <div class="swiper-slide">Slide 9</div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination hidden"></div>
+                            </div>
+                                
+                          
+                        </div>
+                        <div class="left-side">
+                            <div class="box flex items-center">
+                                <h1 class="text-lg"> YOUR HEALTH IS <strong>OUR</strong> PRIORITY </h1>
+
+                            </div>
+
+                            <div class="top-appointment">
+                                <h1 class="text-lg"> Recent Appointments</h1>
+                                <div class="table-div">
+                                    <table class="table table-dark">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">First</th>
+                                                <th scope="col">Last</th>
+                                                <th scope="col">Handle</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td colspan="2">Larry the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
+        <script src="/javascripts/userScript.js"></script>
+
+        <% include ./partials/footer.ejs %>

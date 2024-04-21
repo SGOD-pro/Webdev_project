@@ -10,7 +10,7 @@ body {
 main {
 	font-family: Arial, sans-serif;
 	margin: 0;
-	padding: 0;
+	padding: 1rem;
 	background-color: var(--primary-bg-color);
 	width: 100%;
 	overflow: auto;
@@ -45,11 +45,10 @@ main::-webkit-scrollbar-thumb {
 		scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
 	}
 }
-#heading {
-	font-size: 150px;
+.heading {
 	font-weight: bolder;
-	height: 200px;
-	width: 100%;
+	width: 90%;
+	height: 400px;
 	text-align: center;
 	background-image: url("./health2.jpg");
 	background-size: contain;
@@ -58,7 +57,29 @@ main::-webkit-scrollbar-thumb {
 	-webkit-background-clip: text;
 	color: transparent;
 	z-index: 10;
+	margin: auto;
 }
+.swiper {
+	border-radius: 1rem;
+	background-color: var(--secondary-bg-color);
+}
+.swiper-slide{
+	background-color: var(--secondary-bg-color);
+}
+.swiper-button-prev {
+	color: var(--theme-color);
+}
+.swiper-button-next {
+	color: var(--theme-color);
+}
+.swiper-pagination span{
+	background-color: var(--theme-color);
+
+}
+.autoplay-progress{
+	color: var(--theme-color);
+}
+
 .container {
 	max-width: 600px;
 	margin: 50px auto;

@@ -35,7 +35,10 @@ document.querySelector("#add-doctors").addEventListener("submit", (e) => {
     }).then(response => {
         console.log(response.data);
         window.location.href = "/admin";
-    }).catch(error => { console.log(error); })
+    }).catch(error => {
+        console.log(error.response.data);
+        console.log(error.response.status);
+    })
 })
 
 const logout = () => {

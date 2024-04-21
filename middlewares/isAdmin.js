@@ -1,7 +1,7 @@
 const { request } = require("express");
 
 function isAdmin(req, _, next) {
-    if (req.session._id && (req.session.role === 2000 || request.session.role === 1999)) {
+    if (req.session._id && req.session.role) {
         return next();
     }
     const error = new Error("Restricted Area! Not allowed!");
