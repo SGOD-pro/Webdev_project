@@ -16,8 +16,11 @@ button {
 	text-transform: capitalize;
 	background-color: transparent;
 }
-#btn3{
+#btn3:hover{
 	background-color: var(--primary-text-color)!important;
+}
+#btn3{
+	background-color: var(--secondary-text-color)!important;
 }
 #page1 {
 	background-color: var(--primary-bg-color);
@@ -242,9 +245,7 @@ button {
 	text-decoration: underline;
 	margin-bottom: 0.6rem;
 }
-#btn3{
-	background: var(--secondary-bg-color)!important;
-}
+
 footer {
 	background: var(--primary-bg-color);
 	padding-block: 3rem;

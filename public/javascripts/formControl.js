@@ -101,12 +101,12 @@ loginForm.addEventListener('submit', function (event) {
     const { email, password } = formDataJSON;
     const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
     if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
+        ShowToast("Please enter a valid email address.","warning");
         return false;
     }
 
     if (password.length < 6) {
-        alert("Password must be at least 6 characters long.");
+        ShowToast("Password must be at least 6 characters long.","warning");
         return false;
     }
     btn.setAttribute("disabled", true);
@@ -131,7 +131,6 @@ document.querySelector(".admin form").addEventListener("submit", function (e) {
     for (const [key, value] of formData.entries()) {
         formDataJSON[key] = value;
     }
-    const { email, password } = formDataJSON;
     console.log(formDataJSON);
     btn.setAttribute("disabled", true);
     axios.post("/admin/login", formDataJSON)
@@ -141,6 +140,7 @@ document.querySelector(".admin form").addEventListener("submit", function (e) {
 
         })
         .catch((error) => {
+            ShowToast(error.response.data,"danger");
             // console.log(error.response.data);
             // console.log(error.response.status);
         })
