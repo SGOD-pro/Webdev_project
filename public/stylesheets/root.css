@@ -67,9 +67,12 @@ input[type="number"] {
 }
 #toast-div {
 	top: 15%;
-	right: 1%;
+	left: 1%;
 	display: none;
 }
 .my-toast {
 	transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.my-toast span{
+	cursor: pointer;
 }

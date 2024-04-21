@@ -34,7 +34,7 @@
 }
 .forms i {
 	right: 0;
-	color: #020d19;
+	color: var(--primary-text-color);
 	cursor: pointer;
 	z-index: 20;
 }

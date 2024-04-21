@@ -3,24 +3,7 @@
 const form = document.querySelector(".forms")
 const userForm = document.querySelector(".forms .student")
 const adminForm = document.querySelector(".forms .admin")
-let c = 0
-function ShowToast(error, type) {
-    var parent = document.getElementById('toast-div');
-    parent.style.display = "block"
-    let toast = document.createElement("div")
-    toast.style.opacity = "1"
-    toast.innerHTML = ` <div class="my-toast rounded-2 bg-${type} text-${type} p-2 my-1 py-1 border border-${type} bg-opacity-25 flex gap-2 items-center">
-${error}
-<span class="material-symbols-outlined text-lg">
-    disabled_by_default
-    </span>
-</div>`
-    parent.appendChild(toast)
-    setTimeout(() => {
-        parent.removeChild(toast)
-    }, 4000 + c * 1000);
-    c += 1
-}
+
 const user = () => {
     form.classList.remove("hidden")
     adminForm.classList.add("hidden")
@@ -108,8 +91,7 @@ const loginForm = document.getElementById('userLogin');
 loginForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const btn = document.getElementById("user-login-btn")
-    btn.setAttribute("disabled", true);
-    console.log("hii");
+    
     const formData = new FormData(event.target);
 
     const formDataJSON = {};
@@ -127,11 +109,12 @@ loginForm.addEventListener('submit', function (event) {
         alert("Password must be at least 6 characters long.");
         return false;
     }
+    btn.setAttribute("disabled", true);
     axios.post("/users/login", formDataJSON)
-        .then(() => {
-            window.location.href = "/users";
-        }).catch((error) => {
-            console.log(error.response.data);
+    .then(() => {
+        window.location.href = "/users";
+    }).catch((error) => {
+        console.log(error.response.data);
             console.log(error.response.status);
         }).finally(() => {
             btn.removeAttribute("disabled");
