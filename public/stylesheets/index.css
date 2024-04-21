@@ -17,6 +17,7 @@ button {
 	background-color: transparent;
 }
 
+
 #page1 {
 	background-color: var(--primary-bg-color);
 }
@@ -241,9 +242,6 @@ button {
 	margin-bottom: 0.6rem;
 }
 
-#page2 right button :hover{
-	background: var(--secondary-bg-color);
-}
 footer {
 	background: var(--primary-bg-color);
 	padding-block: 3rem;
