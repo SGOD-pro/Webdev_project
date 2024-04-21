@@ -16,7 +16,9 @@ button {
 	text-transform: capitalize;
 	background-color: transparent;
 }
-
+#btn3{
+	background-color: var(--primary-text-color)!important;
+}
 #page1 {
 	background-color: var(--primary-bg-color);
 }
