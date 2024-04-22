@@ -30,6 +30,8 @@ document.querySelector("#add-doctors").addEventListener("submit", (e) => {
     }
     const data = { ...jsonData, days: checkedValues }
     console.log(data);
+    const dr=document.getElementById("add-dr-btn");
+    dr.setAttribute("disabled",true);
     axios.post("/admin/newdoctors", data, {
         headers: { 'Content-Type': 'multipart/form-data' }
     }).then(response => {
@@ -39,6 +41,9 @@ document.querySelector("#add-doctors").addEventListener("submit", (e) => {
         console.log(error.response.data);
         console.log(error.response.status);
     })
+    .finally(() => {
+        dr.removeAttribute("disabled");
+    });
 })
 
 const logout = () => {
