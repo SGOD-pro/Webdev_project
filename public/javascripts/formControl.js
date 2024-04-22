@@ -91,7 +91,7 @@ const loginForm = document.getElementById('userLogin');
 loginForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const btn = document.getElementById("user-login-btn")
-    
+
     const formData = new FormData(event.target);
 
     const formDataJSON = {};
@@ -111,10 +111,10 @@ loginForm.addEventListener('submit', function (event) {
     }
     btn.setAttribute("disabled", true);
     axios.post("/users/login", formDataJSON)
-    .then(() => {
-        window.location.href = "/users";
-    }).catch((error) => {
-        console.log(error.response.data);
+        .then(() => {
+            window.location.href = "/users";
+        }).catch((error) => {
+            console.log(error.response.data);
             console.log(error.response.status);
         }).finally(() => {
             btn.removeAttribute("disabled");

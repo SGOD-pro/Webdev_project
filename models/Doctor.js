@@ -1,17 +1,23 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+
+const schema = new Schema({
+  degree: {
+    type: String,
+  },
+  group: {
+    type: String,
+  }
+})
 const doctorSchema = new Schema({
   name: {
     type: String,
     required: true
   },
-  qualification: {
-    type: String,
-    required: true
-  },
+  qualification: schema,
   experience: {
-    type: String,
+    type: Number,
     required: true
   },
   speciality: {
@@ -52,7 +58,7 @@ const doctorSchema = new Schema({
   image: {
     type: String,
   },
-  username:{
+  username: {
     type: String,
   },
   limit: {

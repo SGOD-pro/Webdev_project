@@ -50,3 +50,15 @@ const logout = () => {
             alert("Somethig went wrong.")
         })
 }
+function deleteDoc(event) {
+    const button = event.target;
+    const id = button.getAttribute("data-id");
+    console.log(id);
+    axios.get(`/admin/deletedoctor/${id}`)
+        .then((response) => {
+            window.location.href = "/admin"
+            console.log(response);
+        }).catch((error) => {
+            alert("Something went wrong.");
+        });
+}

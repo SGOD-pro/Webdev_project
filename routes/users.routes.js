@@ -7,7 +7,8 @@ var isVerified = require("../middlewares/verify")
 
 /* GET users listing. */
 router.get("/", isVerified, async (req, res) => {
-  res.render("userDashboard")
+  const user=await usersModel.findById(req.session._id)
+  res.render("userDashboard",{user})
 })
 
 router.post("/register", async function (req, res) {
@@ -85,11 +86,11 @@ router.post('/logout',isVerified, (req, res) => {
     res.status(404).send(error.message);
   }
 });
-router.post("/feedback:appId", isVerified, async function (req, res) {
+router.post("/feedback/:appId", isVerified, async function (req, res) {
   //res.send(req.session._id)
   try {
     const comments = req.body
-    const appId = req.query
+    const appId = req.params.id
     // TODO: fetch the doctor id from database
     const doctorId = nll
     const createdFeed = feedbackModel.create({

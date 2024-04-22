@@ -5,190 +5,196 @@
   <body>
     <% include ./partials/toast.ejs %>
 
-    <div class="container absolute form-container">
-      <span class="material-symbols-outlined absolute">
-        cancel
-      </span>
-      <h2>Doctor Registration Form</h2>
-      <form data-bs-theme="dark" id="add-doctors" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="name">Full Name:</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Danie Daniels" required>
-        </div>
-        <div class="form-group">
-          <label for="qualification">Qualification:</label>
-          <select class="form-select" name="qualification" aria-label="Default select example" required>
-            <option selected>Open this select menu</option>
-            <option value="1">MD(Doctor of Mmedicine) in Psychiatry</option>
-            <option value="2">DNB(Diplomate of National Board) in Psychiatry</option>
-            <option value="3">MA(Master of Arts) or MSc (Master of Science) in Psychology</option>
-            <option value="4">PhD(Doctor of Philosophy)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="experience">Experience:</label>
-          <input type="number" class="form-control" id="experience" name="experience" required>
-        </div>
-        <div class="form-group">
-          <label for="speciality">Speciality:</label>
-          <select class="form-select" aria-label="Default select example" name="speciality" required>
-            <option selected>Open this select menu</option>
-            <option value="1">Clinical Psychology</option>
-            <option value="2">Counselling Psychology</option>
-            <option value="3">Neuropsychology</option>
-            <option value="4">Industrial- Organisational Psychology</option>
-            <option value="5">Educational Psychology</option>
-            <option value="6">Social Psychology</option>
-            <option value="7">Child Psychology</option>
-            <option value="8">Psychiatry</option>
-            <option value="9">Psychotherapy</option>
-            <option value="10">Neuropsychiatry</option>
-            <option value="11">Eating Disorders</option>
-            <option value="12">Psychoanalyst</option>
-            <option value="13">Geriatric Psychiatry</option>
-            <option value="14">Addiction Psychiatry</option>
-            <option value="15">Educational Psychology</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="contactNo">Contact Number:</label>
-          <input type="tel" class="form-control" id="contactNo" name="contactNo" pattern="[0-9]{10,}"
-            placeholder="At least 10digits" required>
-        </div>
-        <div class="form-group">
-          <label for="timing">Timing:(From-To)</label>
-          <div class="from-group flex  gap-2">
-            <input type="time" class="form-control" id="timing" name="from">
-            <input type="time" class="form-control" id="timing" name="to" required>
+      <div class="container absolute form-container">
+        <span class="material-symbols-outlined absolute">
+          cancel
+        </span>
+        <h2>Doctor Registration Form</h2>
+        <form data-bs-theme="dark" id="add-doctors" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Danie Daniels" required>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="days">Days Available:</label>
-          <% const days=["S","M","T","W","T","F","S"] %>
-            <div class="flex gap-2 p-2 justify-between days-div" data-bs-theme="dark">
-              <% for (let index=0; index < days.length; index++) {%>
-                <div class="content">
-                  <label class="checkBox relative flex items-center justify-center">
-                    <input type="checkbox" id="<%=days[index]  %>" value="<%=days[index]  %>" name="days" />
-                    <div class="transition"></div>
-                    <label class="text" for="<%=days[index]  %>">
-                      <%=days[index] %>
-                    </label>
-                  </label>
-                </div>
-
-                <%} %>
-
+          <div class="form-group">
+            <label for="qualification">Qualification:</label>
+            <select class="form-select" name="qualification" aria-label="Default select example" required>
+              <option selected value="null">Open this select menu</option>
+              <option value="MD in Psychiatry">MD in Psychiatry</option>
+              <option value="DNB in Psychiatry">DNB in Psychiatry</option>
+              <option value="MA or MSc in Psycholog">MA or MSc in Psychology</option>
+              <option value="PhD in Psychology">PhD in Psychology</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="experience">Experience:</label>
+            <input type="number" class="form-control" id="experience" name="experience" required>
+          </div>
+          <div class="form-group">
+            <label for="speciality">Speciality:</label>
+            <select class="form-select" aria-label="Default select example" name="speciality" required>
+              <option selected value="null">Open this select menu</option>
+              <option value="Clinical Psychology">Clinical Psychology</option>
+              <option value="Counselling Psychology">Counselling Psychology</option>
+              <option value="Neuropsychology">Neuropsychology</option>
+              <option value="Industrial- Organisational Psychology">Industrial- Organisational Psychology</option>
+              <option value="Educational Psychology">Educational Psychology</option>
+              <option value="Social Psychology">Social Psychology</option>
+              <option value="Child Psycholog">Child Psychology</option>
+              <option value="Educational Psychology">Educational Psychology</option>
+              
+              <option value="Psychiatry">Psychiatry</option>
+              <option value="Psychotherapy">Psychotherapy</option>
+              <option value="Psychotherapy">Psychotherapy</option>
+              <option value="Eating Disorders">Eating Disorders</option>
+              <option value="Psychoanalyst">Psychoanalyst</option>
+              <option value="Geriatric Psychiatry">Geriatric Psychiatry</option>
+              <option value="Addiction Psychiatry">Addiction Psychiatry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="contactNo">Contact Number:</label>
+            <input type="tel" class="form-control" id="contactNo" name="contactNo" pattern="[0-9]{10,}"
+              placeholder="At least 10digits" required>
+          </div>
+          <div class="form-group">
+            <label for="timing">Timing:(From-To)</label>
+            <div class="from-group flex  gap-2">
+              <input type="time" class="form-control" id="timing" name="from">
+              <input type="time" class="form-control" id="timing" name="to" required>
             </div>
-
-        </div>
-        <div class="form-group">
-          <label for="clinicLocation">Clinic Location:</label>
-          <input type="text" class="form-control" id="clinicLocation" name="clinicLocation" required>
-        </div>
-        <div class="form-group">
-          <label for="charges">Charges:</label>
-          <input type="number" class="form-control" id="charges" name="charges" required>
-        </div>
-        <div class="form-group">
-          <label for="formFile" class="">Image</label>
-          <input class="form-control" type="file" id="formFile" name="image">
-        </div>
-
-        <div class="flex flex-end items-end"><button type="submit" class="btn btn-primary w-full">Submit</button></div>
-      </form>
-    </div>
-
-    <main class="w-screen h-screen flex flex-col">
-      <header class="flex justify-between items-center relative z-10">
-        <div class="search flex items-center">
-          <input type="text">
-          <i class='bx bx-search text-md'></i>
-        </div>
-        <div class="profile flex items-center">
-          <div class="text flex flex-col">
-            <h4 class="text-basic">
-              <%=username %>
-            </h4>
           </div>
-          <div class="image">
-            <img src="https://wallpapercave.com/wp/wp7925519.png" alt="">
-          </div>
-          <div class="icon">
-            <i class='bx bxs-chevron-down text-md' id="dropdown-trigger" onclick="showDropdown()"></i>
-          </div>
-          <div class="absolute dropdown z-100" id="dropdown">
-            <button class="btn btn-danger" onclick="logout()">Logout</button>
-          </div>
-        </div>
+          <div class="form-group">
+            <label for="days">Days Available:</label>
+            <% const days=["S","M","T","W","T","F","S"] %>
+              <div class="flex gap-2 p-2 justify-between days-div" data-bs-theme="dark">
+                <% for (let index=0; index < days.length; index++) {%>
+                  <div class="content">
+                    <label class="checkBox relative flex items-center justify-center">
+                      <input type="checkbox" id="<%=days[index]  %>" value="<%=days[index]  %>" name="days" />
+                      <div class="transition"></div>
+                      <label class="text" for="<%=days[index]  %>">
+                        <%=days[index] %>
+                      </label>
+                    </label>
+                  </div>
 
-      </header>
-      <section class="w-full h-full flex flex-col z-0">
-        <div class="button flex justify-between items-center">
-          <h1 class="text-capitalize text-md">Therapist list</h1>
-          <button class="text-capitalize flex items-center" id="add-btn">add<i class='bx bx-plus-circle'></i></button>
-        </div>
-        <div class=" rounded-md">
-          <div class="table-div w-full">
-            <table class="table table-hover" data-bs-theme="dark">
-              <thead>
-                <tr>
-                  <th scope="col">#Sl no</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Qualification</th>
-                  <th scope="col">Experience</th>
-                  <th scope="col">Speciality</th>
-                  <th scope="col">Clinic locaion</th>
-                  <th scope="col">Contact no.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% doctors.map((item, index)=> { %>
+                  <%} %>
+
+              </div>
+
+          </div>
+          <div class="form-group">
+            <label for="clinicLocation">Clinic Location:</label>
+            <input type="text" class="form-control" id="clinicLocation" name="clinicLocation" required>
+          </div>
+          <div class="form-group">
+            <label for="charges">Charges:</label>
+            <input type="number" class="form-control" id="charges" name="charges" required>
+          </div>
+          <div class="form-group">
+            <label for="formFile" class="">Image</label>
+            <input class="form-control" type="file" id="formFile" name="image">
+          </div>
+
+          <div class="flex flex-end items-end"><button type="submit" class="btn btn-primary w-full">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      <main class="w-screen h-screen flex flex-col">
+        <header class="flex justify-between items-center relative z-10">
+          <div class="search flex items-center">
+            <input type="text">
+            <i class='bx bx-search text-md'></i>
+          </div>
+          <div class="profile flex items-center">
+            <div class="text flex flex-col">
+              <h4 class="text-basic">
+                <%=username %>
+              </h4>
+            </div>
+            <div class="image">
+              <img src="https://wallpapercave.com/wp/wp7925519.png" alt="">
+            </div>
+            <div class="icon">
+              <i class='bx bxs-chevron-down text-md' id="dropdown-trigger" onclick="showDropdown()"></i>
+            </div>
+            <div class="absolute dropdown z-100" id="dropdown">
+              <button class="btn btn-danger" onclick="logout()">Logout</button>
+            </div>
+          </div>
+
+        </header>
+        <section class="w-full h-full flex flex-col z-0">
+          <div class="button flex justify-between items-center">
+            <h1 class="text-capitalize text-md">Therapist list</h1>
+            <button class="text-capitalize flex items-center" id="add-btn">add<i class='bx bx-plus-circle'></i></button>
+          </div>
+          <div class=" rounded-md">
+            <div class="table-div w-full">
+              <table class="table table-hover" data-bs-theme="dark">
+                <thead>
                   <tr>
-                    <th scope="row">
-                      <%= index + 1 %>
-                    </th>
-                    <td class="">
-                      <img src="/uploads/<%= item.image %>" class="rounded-circle" alt="..." width="40px" height="40px"
-                        style="background-color: aquamarine;margin-right: 8px;">
-                      <%= item.name %>
-                    </td>
-                    <td>
-                      <%= item.email %>
-                    </td>
-                    <td>
-                      <%= item.qualification %>
-                    </td>
-                    <td>
-                      <%= item.experience %>
-                    </td>
-                    <td>
-                      <%= item.speciality %>
-                    </td>
-                    <td>
-                      <%= item.clinicLocation %>
-                    </td>
-                    <td>
-                      <%= item.contactNo %>
-                    </td>
+                    <th scope="col">#Sl no</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Qualification</th>
+                    <th scope="col">Experience</th>
+                    <th scope="col">Speciality</th>
+                    <th scope="col">Clinic locaion</th>
+                    <th scope="col">Contact no.</th>
+                    <th scope="col">Action</th>
                   </tr>
-                  <% }) %>
-
-
-
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <% doctors.map((item, index)=> { %>
+                    <tr>
+                      <th scope="row">
+                        <%= index + 1 %>
+                      </th>
+                      <td class="">
+                        <img src="<%= item.image %>" class="rounded-circle" alt="..." width="40px"
+                          height="40px" style="background-color: aquamarine;margin-right: 8px; object-fit: cover; object-position: top;">
+                        <%= item.name %>
+                      </td>
+                      <td>
+                        <%= item.email %>
+                      </td>
+                      <td>
+                        <%= item.qualification.degree %>
+                      </td>
+                      <td>
+                        <%= item.experience %>
+                      </td>
+                      <td>
+                        <%= item.speciality %>
+                      </td>
+                      <td>
+                        <%= item.clinicLocation %>
+                      </td>
+                      <td>
+                        <%= item.contactNo %>
+                      </td>
+                      <td>
+                        <button onclick="deleteDoc(event)" data-id="<%=item._id %>" style="padding: 0; background-color: #D20062;"><span
+                            class="material-symbols-outlined p-2" style="pointer-events: none;">
+                            delete
+                          </span></button>
+                      </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="/javascripts/admin.js"></script>
-    <% include ./partials/footer.ejs %>
+      <script src="/javascripts/admin.js"></script>
+      <% include ./partials/footer.ejs %>

@@ -1,14 +1,20 @@
 var express = require('express');
 var router = express.Router()
-var isVerified = require("../middlewares/verify")
-var tipsModel = require('../models/Tips')
+const DoctorModel = require('../models/Doctor');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-
-  res.render('index', { isLoggedIn: req.session._id ? true : false });
+  res.render('index');
 });
-router.get('/doctorspage', function (req, res, next) {
-  res.render('doctorsPage')
+router.get('/doctorspage', async function (req, res, next) {
+  const doctors = await DoctorModel.aggregate([
+    {
+      $group: {
+        _id: "$qualification.group",
+        doctors: { $push: "$$ROOT" }
+      },
+    }
+  ])
+  res.render('doctorsPage', { doctors })
 });
 
 module.exports = router;

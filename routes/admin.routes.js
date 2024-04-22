@@ -12,9 +12,10 @@ function generatePassword(name, prefix) {
     return `${initials}/${prefix}-${randomNumber}`;
 }
 
-function generateUsername(prefix) {
+function generateUsername(name) {
+    const initials = name.split(" ").map(word => word[0]).join("").toUpperCase();
     const timestamp = new Date().getTime().toString();
-    return prefix + (+timestamp % 1000000);
+    return initials + (+timestamp % 1000000);
 }
 
 router.get('/', isAdmin, async (req, res) => {
@@ -98,17 +99,26 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
             error.status = 400;
             throw error;
         }
-        const path = req.file?.filename
+        let path = req.file?.filename
         const exists = await doctormodel.findOne({ email })
         if (exists) {
             const error = new Error("Already exists");
             error.status = 409;
             throw error;
         }
-
+        let qua = {
+            degree: qualification,
+            group: ""
+        }
+        if ("Psychology" in qualification) {
+            qua.group = "Psychology"
+        }
+        else {
+            qua.group = "Psychiatry"
+        }
         const newDoctor = await doctormodel.create({
             name,
-            qualification,
+            qualification: qua,
             experience,
             speciality,
             email,
@@ -117,7 +127,7 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
             days,
             clinicLocation,
             charges,
-            image: path || ""
+            image: "/uploads/" + path || ""
         });
         console.log(newDoctor);
         if (!newDoctor) {
@@ -135,6 +145,8 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
             password,
             role: 1999
         })
+        newDoctor.username = username;
+        await newDoctor.save()
         if (!asAdmin) {
             const error = new Error("Could not save");
             error.status = 500;
@@ -149,18 +161,20 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
     }
 });
 
-router.get("deletedoctor:id", isAdmin, async (req, res) => {
+router.get("/deletedoctor/:id", isAdmin, async (req, res) => {
     try {
         const _id = req.params.id;
+        console.log(_id);
         const deleted = await doctormodel.findByIdAndDelete(_id)
-        const frmAdmin = await adminModel.findByIdAndDelete(deleted._id)
+
+        const frmAdmin = await adminModel.findOneAndDelete({ username: deleted.username })
+
         if (!frmAdmin || !deleted) {
             const error = new Error("Cannot delete!Internal error");
             error.status = 500;
             throw error;
         }
-        // TODO:
-
+        res.status(200).json({ success: true, message: "Deleted!" })
     } catch (error) {
         res.status(error.status).send(error.message);
     }

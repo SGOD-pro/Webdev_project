@@ -20,31 +20,6 @@ main {
 	padding-top: 5rem;
 }
 
-main {
-	--sb-track-color: #232e3304;
-	--sb-thumb-color: var(--theme-color);
-	--sb-size: 5px;
-}
-
-main::-webkit-scrollbar {
-	width: var(--sb-size);
-}
-
-main::-webkit-scrollbar-track {
-	background: var(--sb-track-color);
-	border-radius: 6px;
-}
-
-main::-webkit-scrollbar-thumb {
-	background: var(--sb-thumb-color);
-	border-radius: 6px;
-}
-
-@supports not selector(::-webkit-scrollbar) {
-	main {
-		scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
-	}
-}
 .heading {
 	font-weight: bolder;
 	width: 90%;
@@ -63,7 +38,7 @@ main::-webkit-scrollbar-thumb {
 	border-radius: 1rem;
 	background-color: var(--secondary-bg-color);
 }
-.swiper-slide{
+.swiper-slide {
 	background-color: var(--secondary-bg-color);
 }
 .swiper-button-prev {
@@ -72,69 +47,46 @@ main::-webkit-scrollbar-thumb {
 .swiper-button-next {
 	color: var(--theme-color);
 }
-.swiper-pagination span{
+.swiper-pagination span {
 	background-color: var(--theme-color);
-
 }
-.autoplay-progress{
+.autoplay-progress {
 	color: var(--theme-color);
 }
-
-.container {
-	max-width: 600px;
-	margin: 50px auto;
-	background-color: rgba(0, 0, 0, 0);
-	box-sizing: border-box;
-	padding: 30px;
-	box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
-	border-radius: 10px;
+.container{
+	cursor:grab;
+}
+.container:active{
+	cursor: grabbing;
+}
+.container h1{
+    color: var(--primary-text-color);
+}
+.cards {
+	white-space: nowrap;
+	overflow: auto;
+    border-radius: 10px;
+}
+.card {
+	height: 65vh;
 	background-color: var(--secondary-bg-color);
-}
-.doctor-image {
-	width: 60%;
-	height: auto;
-	border-radius: 50%;
-	margin-bottom: 30px;
-	/* box-shadow: 2px 5px  rgb(212, 145, 208); */
-}
-.doctor-name {
-	font-size: 2rem;
-	margin-bottom: 10px;
-}
-.doctor-specialty {
-	font-size: 1.5rem;
-	color: #5d57cd;
-	margin-bottom: 30px;
-}
-.doctor-details {
-	margin-bottom: 20px;
-}
-.doctor-detail {
-	display: flex;
-	justify-content: flex-start;
-	margin-bottom: 10px;
-	line-height: 14px;
-}
-.doctor-detail label {
-	width: 70px;
-	margin-right: 10px;
-}
-.doctor-detail span {
-	margin-left: 10px;
-}
+	color: var(--primary-text-color);
 
-.container button {
-	height: 30px;
-	width: 200px;
-	font-size: medium;
-	background-color: rgba(0, 0, 0, 0);
-	outline: none;
-	border: none;
-	border: 1px solid #333;
-	border-radius: 8px;
-	transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.container button:hover {
-	box-shadow: 0px 5px 5px grey;
-	background-color: rgb(121, 188, 215);
+.card-body h5,.card-body p{
+    pointer-events: none;
+}
+.card-body{
+	height: 45%;
+}
+.card-body p{
+	line-height: .2rem;
+}
+.card img {
+	height: 55%;
+	object-fit: cover;
+	object-position: top;
+}
+.card-text {
+	white-space: wrap;
 }

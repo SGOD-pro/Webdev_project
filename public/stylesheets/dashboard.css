@@ -46,7 +46,7 @@ section {
 .left-side .box{
     width: 100%;
     min-height: 150px;
-    background-color: #3559E0;
+    background-color: #108ADF;
     padding: 10px;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 0, 0, .9);
@@ -68,6 +68,9 @@ section {
 .table-div table{
     height: 100%;
     margin-bottom: 0;
+}
+.mySwiper{
+    height: 50vh;
 }
 .swiper{
     background-color: var(--secondary-bg-color);
