@@ -90,6 +90,7 @@ async function sendMail({ email, username, password }) {
                     }
         
                     .mail .image img {
+                        border-radius: 50%;
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
@@ -129,7 +130,6 @@ async function sendMail({ email, username, password }) {
                     </div>
                 </main>
             </body>
-        
         </html> `// html body
         }
         const mailResponce = await transporter.sendMail(mailOpions)

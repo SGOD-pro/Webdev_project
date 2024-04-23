@@ -1,0 +1,575 @@
+<% include ./partials/header.ejs %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .mycard {
+            width: 350px;
+            background-color: var(--secondary-bg-color);
+
+        }
+
+        .appdetails {
+            background-color: var(--theme-color);
+            color: var(--primary-text-color);
+        }
+
+        .text-basic:last-child {
+            text-align: justify;
+            line-height: .8rem;
+
+        }
+
+        textarea {
+            resize: none;
+            height: 150px;
+            background-color: var(--primary-bg-color);
+            outline: none;
+            border: none;
+            color: var(--primary-text-color);
+        }
+
+        button {
+            float: right;
+        }
+
+        button i {
+            transform: rotate(-10deg);
+            transition: .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            pointer-events: none;
+        }
+
+        button:hover i {
+            transform: rotate(0deg);
+        }
+
+        td {
+            line-height: 1.2rem;
+        }
+        section{
+            overflow: auto;
+        }
+        section h1{
+            color: var(--primary-text-color);
+        }
+    </style>
+
+    <body>
+        <main class="flex">
+            <% include ./partials/toast.ejs %>
+                <% include ./partials/userNavbar.ejs %>
+                    <section class=" scrollbar">
+                        <h1 class="text-lg">Feedback</h1>
+                        <div class="feedbacks flex flex-wrap gap-2 justify-center scrollbar">
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                            <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-semibold">Name</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Doctor</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Jarvis</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Date</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;12/5/2024</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-semibold">Status</td>
+                                                <td>&nbsp;-&nbsp;</td>
+                                                <td>&nbsp;Pending</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-basic mt-2">Issue- <span class="text-sm">Lorem, ipsum dolor sit amet
+                                            consectetur
+                                            adipisicing elit. Quia
+                                            laboriosam doloremque aliquid, molestias consequatur ab in dignissimos
+                                            cupiditate quis
+                                            maxime aspernatur rerum officiis facere similique vitae quas placeat ad.
+                                            Nostrum!</span>
+                                    </p>
+                                </div>
+                                <div class="feedback mt-4">
+                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                        class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."></textarea>
+                                    <button class="btn btn-info flex items-center justify-center"><i
+                                            class='bx bxs-send text-md px-2'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+        <script src="/javascripts/userScript.js"></script>
+
+        <% include ./partials/footer.ejs %>

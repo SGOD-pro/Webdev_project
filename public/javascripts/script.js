@@ -114,3 +114,7 @@ for (let index = 0; index < tips2.length / 2; index++) {
 
 }
 document.querySelector(".cards").innerHTML = html
+
+window.onload = function () {
+    localStorage.clear()
+}

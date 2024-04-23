@@ -7,10 +7,13 @@ var isVerified = require("../middlewares/verify")
 
 /* GET users listing. */
 router.get("/", isVerified, async (req, res) => {
-  const user=await usersModel.findById(req.session._id)
-  res.render("userDashboard",{user})
+  const user = await usersModel.findById(req.session._id)
+  res.render("userDashboard", { user })
 })
-
+router.get("/feedback", isVerified, async (req, res) => {
+  const user = await usersModel.findById(req.session._id)
+  res.render("feedback", { user })
+})
 router.post("/register", async function (req, res) {
   try {
     const { fullname, phoneNumber, email, password } = req.body
@@ -34,7 +37,7 @@ router.post("/register", async function (req, res) {
     }
     req.session._id = createdUser._id;
     req.session.fullname = createdUser.fullname;
-    res.status(200).json({message:"Done!"});
+    res.status(200).json({ message: "Done!" });
   } catch (error) {
     const statusCode = error.status || 500; // Set default status code
     console.log(statusCode);
@@ -62,14 +65,14 @@ router.post('/login', async (req, res) => {
     }
     req.session._id = user._id;
     req.session.fullname = user.fullname;
-    
+
     res.status(200).redirect("/users");
   } catch (error) {
     res.status(error.status).send(error.message);
   }
 })
 
-router.post('/logout',isVerified, (req, res) => {
+router.post('/logout', isVerified, (req, res) => {
   try {
     if (req.session._id == null) {
       throw new Error("User is not logged in");

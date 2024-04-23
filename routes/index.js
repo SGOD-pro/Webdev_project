@@ -3,7 +3,7 @@ var router = express.Router()
 const DoctorModel = require('../models/Doctor');
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index');
+  res.render('index', { search: false });
 });
 router.get('/doctorspage', async function (req, res, next) {
   const doctors = await DoctorModel.aggregate([
@@ -14,7 +14,7 @@ router.get('/doctorspage', async function (req, res, next) {
       },
     }
   ])
-  res.render('doctorsPage', { doctors })
+  res.render('doctorsPage', { doctors, search: true })
 });
 
 module.exports = router;

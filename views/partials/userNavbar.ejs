@@ -8,16 +8,17 @@
         </div>
         <h3 class="text-md"> MIND PEACE </h3>
     </div>
-    <div class="upper flex flex-col items-center gap-1 realtive">
+    <div class="upper flex flex-col items-center gap-1 relative">
        <input type="file" name="image" id="image" class="">
         <img src="<%=user.image??"/images/default_user.png" %>">
         <h2 class="text-capitalize text-lg text-center"> <%=user.fullname %> </h2>
     </div>
     <div class="lower flex flex-col gap-4">
+        <a href="/users" class="flex items-center gap-1 text-basic"><i class='bx bx-home-heart text-md'></i> Home</a>
         <a href="#" class="flex items-center gap-1 text-basic"><span class="material-symbols-outlined">
             clinical_notes
             </span> Consult Theripst</a>
-        <a href="#" class="flex items-center gap-1 text-basic"><span class="material-symbols-outlined">
+        <a href="/users/feedback" class="flex items-center gap-1 text-basic"><span class="material-symbols-outlined">
             communication
             </span> Feedback</a>
         <a href="#" onclick="logout()" class="flex items-center gap-1 text-basic"> <span class="material-symbols-outlined">
