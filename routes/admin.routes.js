@@ -110,7 +110,7 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
             degree: qualification,
             group: ""
         }
-        if ("Psychology" in qualification) {
+        if (qualification.includes("Psychology")) {
             qua.group = "Psychology"
         }
         else {

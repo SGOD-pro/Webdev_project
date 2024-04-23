@@ -34,7 +34,7 @@ const fakeData = [
     "name": "Dr. Jane Smith",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 15,
     "speciality": "Philosopher",
@@ -70,7 +70,7 @@ const fakeData = [
     "name": "Dr. Sarah Williams",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 12,
     "speciality": "Philosopher",
@@ -106,7 +106,7 @@ const fakeData = [
     "name": "Dr. Lisa Miller",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 14,
     "speciality": "Philosopher",
@@ -142,7 +142,7 @@ const fakeData = [
     "name": "Dr. Amanda Taylor",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 13,
     "speciality": "Philosopher",
@@ -178,7 +178,7 @@ const fakeData = [
     "name": "Dr. Jennifer Garcia",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 16,
     "speciality": "Philosopher",
@@ -214,7 +214,7 @@ const fakeData = [
     "name": "Dr. Mary Rodriguez",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 14,
     "speciality": "Philosopher",
@@ -250,7 +250,7 @@ const fakeData = [
     "name": "Dr. Patricia Perez",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 13,
     "speciality": "Philosopher",
@@ -286,7 +286,7 @@ const fakeData = [
     "name": "Dr. Elizabeth Hernandez",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 15,
     "speciality": "Philosopher",
@@ -322,7 +322,7 @@ const fakeData = [
     "name": "Dr. Karen Johnson",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 12,
     "speciality": "Philosopher",
@@ -358,7 +358,7 @@ const fakeData = [
     "name": "Dr. Laura Martinez",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 16,
     "speciality": "Philosopher",
@@ -394,7 +394,7 @@ const fakeData = [
     "name": "Dr. Michelle Garcia",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 14,
     "speciality": "Philosopher",
@@ -430,7 +430,7 @@ const fakeData = [
     "name": "Dr. Angela Rodriguez",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 13,
     "speciality": "Philosopher",
@@ -466,7 +466,7 @@ const fakeData = [
     "name": "Dr. Amanda Clark",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 15,
     "speciality": "Philosopher",
@@ -502,7 +502,7 @@ const fakeData = [
     "name": "Dr. Kimberly Hill",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 16,
     "speciality": "Philosopher",
@@ -538,7 +538,7 @@ const fakeData = [
     "name": "Dr. Nicole Martinez",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 14,
     "speciality": "Philosopher",
@@ -574,7 +574,7 @@ const fakeData = [
     "name": "Dr. Heather Brown",
     "qualification": {
       "degree": "PhD",
-      "group": "Philosophy"
+      "group": "Psychology"
     },
     "experience": 13,
     "speciality": "Philosopher",

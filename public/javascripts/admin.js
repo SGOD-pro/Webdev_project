@@ -28,10 +28,17 @@ document.querySelector("#add-doctors").addEventListener("submit", (e) => {
     if (checkedValues.length === 0) {
         alert('Please select days')
     }
+    if (jsonData.speciality === "null") {
+        alert('Please select speciality')
+    }
+    if (jsonData.experience === "null") {
+        alert('Please select speciality')
+    }
     const data = { ...jsonData, days: checkedValues }
     console.log(data);
-    const dr=document.getElementById("add-dr-btn");
-    dr.setAttribute("disabled",true);
+    const dr = document.getElementById("add-dr-btn");
+    dr.setAttribute("disabled", true);
+    dr.innerHTML = "Saving.. <i class='bx bx-loader bx-spin text-md'></i>"
     axios.post("/admin/newdoctors", data, {
         headers: { 'Content-Type': 'multipart/form-data' }
     }).then(response => {
@@ -41,9 +48,10 @@ document.querySelector("#add-doctors").addEventListener("submit", (e) => {
         console.log(error.response.data);
         console.log(error.response.status);
     })
-    .finally(() => {
-        dr.removeAttribute("disabled");
-    });
+        .finally(() => {
+            dr.removeAttribute("disabled");
+            dr.innerHTML = "Submit"
+        });
 })
 
 const logout = () => {
