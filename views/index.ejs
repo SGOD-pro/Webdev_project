@@ -13,142 +13,150 @@
     <link rel="stylesheet" href="/stylesheets/utlis.css">
     <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/index.css">
+    <script>
+      window.addEventListener('offline', function reload() {
+        var result = confirm('Please connect to internet')
+        if (result) {
+          reload();
+        }
+      });
+    </script>
   </head>
 
 
   <body>
     <% include ./partials/navbar.ejs %>
-    <% include ./partials/forms.ejs %>
-    
-    <% include ./partials/toast.ejs %>
-      <main data-scroll-container>
-          <div id="page1" data-scroll data-scroll-speed="-8" class="h-screen w-full flex justify-between relative">
-            <div class="left flex justify-center items-center">
-              <h1 class="text-xl">Start your peaceful journey from today.</h1>
-            </div>
+      <% include ./partials/forms.ejs %>
 
-            <div class="right flex justify-center items-center">
-              <div class="image w-full">
-                <img src="/images/7324680.png" alt="">
+        <% include ./partials/toast.ejs %>
+          <main data-scroll-container>
+            <div id="page1" data-scroll data-scroll-speed="-8" class="h-screen w-full flex justify-between relative">
+              <div class="left flex justify-center items-center">
+                <h1 class="text-xl">Start your peaceful journey from today.</h1>
               </div>
-            </div>
 
-          </div>
-
-          <div id="page2" data-scroll data-scroll-speed="-.2" class=" w-full relative">
-            <div class="custom-shape-divider-bottom-1712487496">
-              <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                preserveAspectRatio="none">
-                <path
-                  d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                  class="shape-fill"></path>
-              </svg>
-            </div>
-            <div>
-              <h1 id="message"> Consult top therapists online for any mental concern </h1>
-            </div>
-            <div class="left flex justify-between items-center">
-              <div class="image w-full" data-scroll data-scroll-speed="-1.5">
-                <img src="/images/undraw_doctor_kw5l (1).png" alt="">
-              </div>
-              <div class="right flex justify-center items-center" data-scroll data-scroll-speed="-1.5">
-                <h1 class="text-xl "> Urgent <span class="material-symbols-outlined text-lg">
-                    ecg_heart
-                  </span>appointment </h1>
-                <p> Book your schedule with the top therapists and consultants for any kind of mental issues.</p>
-                <button class="text-basic" id="btn3">appointment</button>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-
-          <div id="page3" class="" data-scroll data-scroll-speed="-.1">
-            <h1 class="text-lg text-capitalize">do-dont's: - <span class="material-symbols-outlined text-lg">
-                pulse_alert
-              </span></h1>
-            <div class="flex justify-between items-center tips-section h-full w-full">
-              <div class="left flex justify-around" data-scroll-scetion data-scroll data-scroll-speed="-.8">
-                <div id="to-do">
-                  <h4 class="text-md text-capitalize text-center">To-Do</h4>
-                  <ul class=" flex flex-col justify-between h-full">
-                    <li>bsdk</li>
-                    <li>lmjp</li>
-                    <li>alla hu akbar💣💥</li>
-                  </ul>
-                </div>
-                <div id="not-to-do">
-                  <h4 class="text-md text-capitalize text-center">not-to-do</h4>
-                  <ul class=" flex flex-col justify-between h-full">
-                    <li>bsdk</li>
-                    <li>lmjp</li>
-                    <li>alla hu akbar</li>
-                  </ul>
+              <div class="right flex justify-center items-center">
+                <div class="image w-full">
+                  <img src="/images/7324680.png" alt="">
                 </div>
               </div>
-              <div class="right relative" data-scroll-scetion data-scroll data-scroll-speed="1.5">
-                <div class="img">
-                  <img src="/images/tips.png" alt="" class="w-full h-full">
+
+            </div>
+
+            <div id="page2" data-scroll data-scroll-speed="-.2" class=" w-full relative">
+              <div class="custom-shape-divider-bottom-1712487496">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                  preserveAspectRatio="none">
+                  <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+                </svg>
+              </div>
+              <div>
+                <h1 id="message"> Consult top therapists online for any mental concern </h1>
+              </div>
+              <div class="left flex justify-between items-center">
+                <div class="image w-full" data-scroll data-scroll-speed="-1.5">
+                  <img src="/images/undraw_doctor_kw5l (1).png" alt="">
+                </div>
+                <div class="right flex justify-center items-center" data-scroll data-scroll-speed="-1.5">
+                  <h1 class="text-xl "> Urgent <span class="material-symbols-outlined text-lg">
+                      ecg_heart
+                    </span>appointment </h1>
+                  <p> Book your schedule with the top therapists and consultants for any kind of mental issues.</p>
+                  <button class="text-basic" id="btn3">appointment</button>
                 </div>
               </div>
-              <div class="circle absolute top-0" data-scroll-scetion data-scroll data-scroll-speed="-.2"></div>
             </div>
-          </div>
 
-          <div id="page4" data-scroll data-scroll-speed=".2" class="flex flex-col">
-            <h1 class="text-lg text-capitalize">Tips: - <span class="material-symbols-outlined text-lg">
-                stethoscope_check
-              </span></h1>
-            <div class="cards">
-              <div class="flex w-full h-full flex-col card-section">
-                <div class="card">
-                  <div class="image">
-                    <img src="/images/tips.png" alt="">
+            </div>
+            </div>
+
+            <div id="page3" class="" data-scroll data-scroll-speed="-.1">
+              <h1 class="text-lg text-capitalize">do-dont's: - <span class="material-symbols-outlined text-lg">
+                  pulse_alert
+                </span></h1>
+              <div class="flex justify-between items-center tips-section h-full w-full">
+                <div class="left flex justify-around" data-scroll-scetion data-scroll data-scroll-speed="-.8">
+                  <div id="to-do">
+                    <h4 class="text-md text-capitalize text-center">To-Do</h4>
+                    <ul class=" flex flex-col justify-between h-full">
+                      <li>bsdk</li>
+                      <li>lmjp</li>
+                      <li>alla hu akbar💣💥</li>
+                    </ul>
                   </div>
-                  <div class="text">
-                    <h3 class="text-md">Practice Self-Care Daily</h3>
-                    <p class="text-sm">
-                      Physical activity is not only good for your body but also for your mind. Aim for at least 30
-                      minutes
-                      of
-                      exercise most days of the week.
-                    </p>
+                  <div id="not-to-do">
+                    <h4 class="text-md text-capitalize text-center">not-to-do</h4>
+                    <ul class=" flex flex-col justify-between h-full">
+                      <li>bsdk</li>
+                      <li>lmjp</li>
+                      <li>alla hu akbar</li>
+                    </ul>
                   </div>
                 </div>
+                <div class="right relative" data-scroll-scetion data-scroll data-scroll-speed="1.5">
+                  <div class="img">
+                    <img src="/images/tips.png" alt="" class="w-full h-full">
+                  </div>
+                </div>
+                <div class="circle absolute top-0" data-scroll-scetion data-scroll data-scroll-speed="-.2"></div>
               </div>
-
             </div>
-          </div>
-          
-          <footer class="text-center p-1 pb-3 flex items-center justify-center flex-col">
-            <h2 class="text-basic">Copyright © [2024] [Mental Peace]. All rights reserved. No part of this website may
-              be
-              reproduced, distributed, or transmitted in any form or by any means.</h2>
-            <p class="text-sm">For permission requests, contact sgod@gmail.com.</p>
-          </footer>
-        </main>
+
+            <div id="page4" data-scroll data-scroll-speed=".2" class="flex flex-col">
+              <h1 class="text-lg text-capitalize">Tips: - <span class="material-symbols-outlined text-lg">
+                  stethoscope_check
+                </span></h1>
+              <div class="cards">
+                <div class="flex w-full h-full flex-col card-section">
+                  <div class="card">
+                    <div class="image">
+                      <img src="/images/tips.png" alt="">
+                    </div>
+                    <div class="text">
+                      <h3 class="text-md">Practice Self-Care Daily</h3>
+                      <p class="text-sm">
+                        Physical activity is not only good for your body but also for your mind. Aim for at least 30
+                        minutes
+                        of
+                        exercise most days of the week.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <footer class="text-center p-1 pb-3 flex items-center justify-center flex-col">
+              <h2 class="text-basic">Copyright © [2024] [Mental Peace]. All rights reserved. No part of this website may
+                be
+                reproduced, distributed, or transmitted in any form or by any means.</h2>
+              <p class="text-sm">For permission requests, contact sgod@gmail.com.</p>
+            </footer>
+          </main>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
-          integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+            integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script src="
+          <script src="
 https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js
 "></script>
-        <script src="https://cdn.jsdelivr.net/npm/@nicesapien0/typewriter.js/typewriter.js"></script>
-        <script src="/javascripts/script.js"></script>
-        <script src="/javascripts/formControl.js"></script>
-        <script>
-          (function () {
-            const scroll = new LocomotiveScroll({
-              el: document.querySelector('[data-scroll-container]'),
-              smooth: true
-            });
-          })();
-        </script>
+          <script src="https://cdn.jsdelivr.net/npm/@nicesapien0/typewriter.js/typewriter.js"></script>
+          <script src="/javascripts/script.js"></script>
+          <script src="/javascripts/formControl.js"></script>
+          <script>
+            (function () {
+              const scroll = new LocomotiveScroll({
+                el: document.querySelector('[data-scroll-container]'),
+                smooth: true
+              });
+            })();
+          </script>
   </body>
 
 </html>
