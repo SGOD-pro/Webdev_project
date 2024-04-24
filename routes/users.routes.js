@@ -8,6 +8,7 @@ var isVerified = require("../middlewares/verify")
 /* GET users listing. */
 router.get("/", isVerified, async (req, res) => {
   const user = await usersModel.findById(req.session._id)
+  // console.log(user);
   res.render("userDashboard", { user })
 })
 router.get("/feedback", isVerified, async (req, res) => {
