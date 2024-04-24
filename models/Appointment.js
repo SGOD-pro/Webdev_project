@@ -33,13 +33,14 @@ const appointmentSchema = new Schema({
     dateTime: {
         type: Date
     },
-    feedback:{
+    feedback: {
         type: Schema.Types.ObjectId,
         ref: 'feedbacks',
     },
-    status:{
-        type: Boolean,
-        default:false
+    status: {
+        type: String,
+        default: "PENDING",
+        enum: ['PENDING', 'CANCEL', 'SUCCESS']
     }
 }, {
     timestamps: true

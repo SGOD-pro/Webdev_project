@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-async function sendMail({ email, username, password }) {
+async function sendMail({ email, username, password, type = "DOCTOR" }) {
     try {
         const transporter = nodemailer.createTransport(
             {
@@ -10,13 +10,7 @@ async function sendMail({ email, username, password }) {
                     pass: process.env.PASSWORD,
                 }
             });
-
-        const mailOpions = {
-            from: process.env.MYGMAIL,
-            to: email, // list of receivers
-            subject: "New registration on MIND PEACE.", // Subject line
-            text: "Thank you for registering on MIND PEACE. This is a confirmation mail regarding your registration.We welcome you to our community of serving people withmental illness. Please feel free to contact us regarding any issue.", // plain text body
-            html: `<html lang="en">
+        let mailHTML = `<html lang="en">
 
             <head>
                 <title> Mail </title>
@@ -130,7 +124,19 @@ async function sendMail({ email, username, password }) {
                     </div>
                 </main>
             </body>
-        </html> `// html body
+        </html> `
+        if (type === "USERS") {
+            mailHTML = "Your appointment is booked on 25/12/2024 "
+        }
+        else if (type === "RESEDULED") {
+            mailHTML = "Your booking on 25/12/2024 is reseduled on 26/12/2024"
+        }
+        const mailOpions = {
+            from: process.env.MYGMAIL,
+            to: email,
+            subject: "New registration on MIND PEACE.", 
+            text: "Thank you for registering on MIND PEACE. This is a confirmation mail regarding your registration.We welcome you to our community of serving people withmental illness. Please feel free to contact us regarding any issue.",
+            html: mailHTML
         }
         const mailResponce = await transporter.sendMail(mailOpions)
         console.log(mailResponce);

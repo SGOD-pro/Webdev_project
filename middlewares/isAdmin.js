@@ -5,7 +5,7 @@ function isAdmin(req, _, next) {
         return next();
     }
     const error = new Error("Restricted Area! Not allowed!");
-    error.status = "500"; // Adding status property to the error object
+    error.status = "500";
     throw error;
 }
 
