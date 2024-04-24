@@ -7,8 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('mentalhealthsupport:server');
 var http = require('http');
-var dotenv=require('dotenv');
-var connectDB=require("../db/index")
+var dotenv = require('dotenv');
+var connectDB = require("../db/index")
 dotenv.config('../.env')
 /**
  * Get port from environment and store in Express.
@@ -26,9 +26,11 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-connectDB().then(server.listen(port,function () {
-  console.log(`Servers are running on ${port}`);
-})).catch((error) => {console.log("Mongodb connection failed");})
+connectDB().then(() => {
+  server.listen(port, function () {
+    console.log(`Servers are running on ${port}`);
+  })
+}).catch((error) => { console.log("Mongodb connection failed"); })
 
 server.on('error', onError);
 server.on('listening', onListening);
