@@ -3,6 +3,6 @@ const logout = () => {
         .then(() => {
             window.location.href = "/";
         }).catch((error) => {
-            alert("Something went wrong.");
+            ShowToast(error.response.data, "danger")
         })
 }

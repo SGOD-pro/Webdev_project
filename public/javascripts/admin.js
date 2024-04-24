@@ -46,6 +46,8 @@ document.querySelector("#add-doctors").addEventListener("submit", (e) => {
         window.location.href = "/admin";
     }).catch(error => {
         console.log(error.response.data);
+        ShowToast(error.response.data, "danger")
+
         console.log(error.response.status);
     })
         .finally(() => {
@@ -60,7 +62,7 @@ const logout = () => {
             window.location.href = "/"
 
         }).catch((error) => {
-            alert("Somethig went wrong.")
+            ShowToast(error.response.data, "danger")
         })
 }
 function deleteDoc(event) {
@@ -72,6 +74,6 @@ function deleteDoc(event) {
             window.location.href = "/admin"
             console.log(response);
         }).catch((error) => {
-            alert("Something went wrong.");
+            ShowToast(error.response.data, "danger")
         });
 }

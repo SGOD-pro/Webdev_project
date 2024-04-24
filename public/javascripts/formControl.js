@@ -59,18 +59,20 @@ signupForm.addEventListener('submit', function (event) {
 
     const phonePattern = /^\d{10}$/;
     if (!phonePattern.test(formDataJSON.phoneNumber)) {
-        alert("Please enter a valid 10-digit phone number.");
+        ShowToast("Please enter a valid 10-digit phone number.", "warning")
         return false;
     }
 
     const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
     if (!emailPattern.test(formDataJSON.email)) {
-        alert("Please enter a valid email address.");
+        ShowToast("Please enter a valid email address.", "warning")
+
         return false;
     }
 
     if (formDataJSON.password.length < 6) {
-        alert("Password must be at least 6 characters long.");
+        ShowToast("Password must be at least 6 characters long.", "warning")
+
         return false;
     }
     btn.setAttribute("disabled", true);
@@ -78,6 +80,8 @@ signupForm.addEventListener('submit', function (event) {
         .then((response) => {
             window.location.href = "/users";
         }).catch((error) => {
+            ShowToast(error.response.data, "danger")
+
             console.log(error.response.data);
             console.log(error.response.status);
         }).finally(() => {
@@ -101,12 +105,12 @@ loginForm.addEventListener('submit', function (event) {
     const { email, password } = formDataJSON;
     const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
     if (!emailPattern.test(email)) {
-        ShowToast("Please enter a valid email address.","warning");
+        ShowToast("Please enter a valid email address.", "warning");
         return false;
     }
 
     if (password.length < 6) {
-        ShowToast("Password must be at least 6 characters long.","warning");
+        ShowToast("Password must be at least 6 characters long.", "warning");
         return false;
     }
     btn.setAttribute("disabled", true);
@@ -115,6 +119,8 @@ loginForm.addEventListener('submit', function (event) {
             window.location.href = "/users";
         }).catch((error) => {
             console.log(error.response.data);
+            ShowToast(error.response.data, "danger")
+
             console.log(error.response.status);
         }).finally(() => {
             btn.removeAttribute("disabled");
@@ -140,7 +146,7 @@ document.querySelector(".admin form").addEventListener("submit", function (e) {
 
         })
         .catch((error) => {
-            ShowToast(error.response.data,"danger");
+            ShowToast(error.response.data, "danger");
             // console.log(error.response.data);
             // console.log(error.response.status);
         })
