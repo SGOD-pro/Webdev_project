@@ -17,14 +17,25 @@ function generateUsername(name) {
     const timestamp = new Date().getTime().toString();
     return initials + (+timestamp % 1000000);
 }
-
+function getCurrentDate() {
+    const currentDate = new Date();
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayOfWeek = days[currentDate.getDay()];
+    const month = currentDate.getMonth() + 1;
+    const day = currentDate.getDate();
+    const year = currentDate.getFullYear();
+    return { date: `${month}/${day}/${year}`, dayOfWeek };
+}
 router.get('/', isAdmin, async (req, res) => {
     try {
-        console.log(req.session.role);
+        console.log(req.session._id);
         if (req.session.role === 1999) {
-            res.render('doctorsDashboard');
+            const doctors = await doctormodel.findOne({ username: req.session.username }).select("-experience -speciality -contactNo -timing -days -clinicLocation -limit -qualification -charges -username");
+            console.log(doctors);
+            res.render('doctorsDashboard', { doctors, date: getCurrentDate() });
         } else {
-            const doctors = await doctormodel.find().select("-timing -days -charges -limit");
+            const doctors = await doctormodel.find();
+            console.log(doctors);
             res.render('admin', { doctors, username: req.session.username });
         }
     } catch (error) {
@@ -39,6 +50,7 @@ router.post('/login', async (req, res) => {
         console.log(req.body);
 
         const user = await adminModel.findOne({ username });
+
         if (!user) {
             const error = new Error("Invalid username or password");
             error.status = 404;
@@ -137,7 +149,7 @@ router.post('/newdoctors', uploads.single("image"), async (req, res) => {
         }
 
         const password = generatePassword(name, "MP")
-        const username = generateUsername("MP")
+        const username = generateUsername(name)
         console.log(username, password);
         const asAdmin = await adminModel.create({
             fullname: name,

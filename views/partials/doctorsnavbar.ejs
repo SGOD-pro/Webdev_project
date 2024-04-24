@@ -1,13 +1,17 @@
 <link rel="stylesheet" href="/stylesheets/docDashboard.css">
 
 <div class="left relative">
-    <div class="navbar flex gap-1">
+    <div class="navbar flex ">
         <div class="image">
-            <img src="sweta img.jpg">
+            <img src="<%=doctors.image %>">
         </div>
         <div class="data">
-            <h2 class="text-basic"> SWETA KUMARI </h2>
-            <p class="text-sm opacity-6"> sweta@gmail.com</p>
+            <h2 class="text-basic">
+                <%=doctors.name %>
+            </h2>
+            <p class="text-sm opacity-6">
+                <%=doctors.email %>
+            </p>
         </div>
     </div>
 
@@ -16,13 +20,13 @@
             <span class="material-symbols-outlined">
                 home
             </span>
-            <a href="#">Home</a>
+            <a href="/admin">Home</a>
         </div>
         <div class="links flex items-center gap-2">
             <span class="material-symbols-outlined">
-                bookmark
+                diversity_1
             </span>
-            <a href="#">My Bookings</a>
+            <a href="#">All paitent</a>
         </div>
         <div class="links flex items-center gap-2">
             <span class="material-symbols-outlined">

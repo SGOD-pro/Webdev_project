@@ -2,21 +2,32 @@ main .left {
 	background-color: rgb(27, 27, 109);
 	color: white;
 	height: 100%;
-	width: 20%;
+	width: 320px;
 	border-radius: 2rem;
 	padding: 0.5rem;
 }
-
-main .left .navbar .image img {
+main .left .navbar .image {
 	height: 70px;
 	width: 70px;
+	border-radius: 50%;
+}
+main .left .navbar .image img {
+	height: 100%;
+	width: 100%;
 	border-radius: 50%;
 	margin-top: 10px;
 	object-fit: cover;
 }
 main .navbar .data {
 	margin-top: 15px;
-	text-align: center;
+}
+main .navbar .data>*{
+	margin: 0;
+}
+main .navbar .data p{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 main .left .items {
 	margin-top: 5rem;
@@ -30,4 +41,14 @@ main .left .links a {
 .left .footer {
 	bottom: 5%;
 	right: 10%;
+}
+#table-sec {
+	height: 550vh;
+}
+.rounded-4 {
+	overflow: hidden;
+}
+.table-div {
+	overflow: auto;
+	height: 55vh;
 }
