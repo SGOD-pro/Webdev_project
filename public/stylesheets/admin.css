@@ -73,9 +73,7 @@ section button {
 	border-radius: 10px;
 	margin-top: 10px;
 }
-.table {
-	padding: 10px;
-}
+
 .table-div {
 	overflow: auto;
 	height: 75vh;

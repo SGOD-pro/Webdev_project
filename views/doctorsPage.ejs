@@ -95,7 +95,9 @@
                                     <div class="cards scrollbar">
                                         <% element.doctors.forEach(item=> {%>
                                             <div class="card inline-block" style="width: 18rem;">
-                                                <img src="<%=item.image %>" class="card-img-top" alt="...">
+                                                <div class="image">
+                                                    <img src="<%=item.image %>" class="card-img-top" alt="...">
+                                                </div>
                                                 <div class="card-body">
                                                     <h5 class="card-title">
                                                         <%=item.name %>
@@ -181,11 +183,12 @@
                                 container.scrollLeft = scrollLeft - walk;
                             });
                         });
-                        
-                        
+
+
                         function book(event) {
                             const id = event.target.getAttribute('data-id')
                             localStorage.setItem("id", id)
+                            document.getElementById("user-login-btn").click()
                         }
                     </script>
                     <% include ./partials/footer.ejs %>

@@ -65,17 +65,7 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
 	-moz-appearance: textfield;
 }
-#toast-div {
-	top: 15%;
-	left: 1%;
-	display: none;
-}
-.my-toast {
-	transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-.my-toast span{
-	cursor: pointer;
-}
+
 .scrollbar {
 	--sb-track-color: #232e3304;
 	--sb-thumb-color: var(--theme-color);

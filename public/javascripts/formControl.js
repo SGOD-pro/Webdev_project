@@ -78,6 +78,9 @@ signupForm.addEventListener('submit', function (event) {
     btn.setAttribute("disabled", true);
     axios.post("/users/register", formDataJSON)
         .then((response) => {
+            if (localStorage.getItem("id")) {
+                window.location.href = "/users/therapist"
+            }
             window.location.href = "/users";
         }).catch((error) => {
             ShowToast(error.response.data, "danger")
@@ -116,7 +119,11 @@ loginForm.addEventListener('submit', function (event) {
     btn.setAttribute("disabled", true);
     axios.post("/users/login", formDataJSON)
         .then(() => {
-            window.location.href = "/users";
+            if (localStorage.getItem("id")) {
+                window.location.href = "/users/therapist"
+            } else {
+                window.location.href = "/users";
+            }
         }).catch((error) => {
             console.log(error.response.data);
             ShowToast(error.response.data, "danger")

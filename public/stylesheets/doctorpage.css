@@ -82,8 +82,11 @@ main {
 .card-body p{
 	line-height: .2rem;
 }
-.card img {
+.card .image{
 	height: 55%;
+}
+.card img {
+	height: 100%;
 	object-fit: cover;
 	object-position: top;
 }

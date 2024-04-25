@@ -10,7 +10,7 @@ main {
 
 nav {
 	height: 100%;
-	width: 280px;
+	width: 250px;
 	background-color: #905fe4;
 	border-radius: 2rem;
 	display: flex;
@@ -21,11 +21,11 @@ nav {
 }
 
 section {
-	width: calc(100% - 280px);
+	width: calc(100% - 250px);
 	height: 100%;
 	gap: 0.5rem;
 	padding: 0.6rem;
-	padding-left: 1rem;
+	padding-left: .8rem;
 }
 .logo .image {
 	height: clamp(40px, 0.15rem + 6vw, 60px);

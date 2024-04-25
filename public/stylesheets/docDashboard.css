@@ -2,9 +2,16 @@ main .left {
 	background-color: rgb(27, 27, 109);
 	color: white;
 	height: 100%;
-	width: 320px;
+	width: 280px;
 	border-radius: 2rem;
 	padding: 0.5rem;
+}
+section {
+	width: calc(100% - 280px);
+	height: 95vh;
+	color: var(--primary-text-color);
+	padding-left: 0.8rem;
+	overflow: hidden;
 }
 main .left .navbar .image {
 	height: 70px;
@@ -21,10 +28,22 @@ main .left .navbar .image img {
 main .navbar .data {
 	margin-top: 15px;
 }
-main .navbar .data>*{
+main .navbar .data > * {
 	margin: 0;
 }
-main .navbar .data p{
+.navbar button.invisible {
+	transform: translateY(90%);
+	opacity: 0;
+}
+.navbar button {
+	transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+	transform: translateY(110%);
+	opacity: 1;
+}
+.navbar button span {
+	pointer-events: none;
+}
+main .navbar .data p {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
