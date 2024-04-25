@@ -188,6 +188,7 @@
                         function book(event) {
                             const id = event.target.getAttribute('data-id')
                             localStorage.setItem("id", id)
+                            document.getElementById("user-login-btn").click()
                         }
                     </script>
                     <% include ./partials/footer.ejs %>

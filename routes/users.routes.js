@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var usersModel = require("../models/User")
+var doctorsModel = require("../models/Doctor")
 var appointmentModel = require("../models/Appointment")
 var feedbackModel = require("../models/Feedback")
 var isVerified = require("../middlewares/verify")
@@ -14,6 +15,11 @@ router.get("/", isVerified, async (req, res) => {
 router.get("/feedback", isVerified, async (req, res) => {
   const user = await usersModel.findById(req.session._id)
   res.render("feedback", { user })
+})
+router.get("/therapist", isVerified, async (req, res) => {
+  const allDoctors = await doctorsModel.find()
+  const user = await usersModel.findById(req.session._id)
+  res.render("BookTherapist", { user, allDoctors })
 })
 router.post("/register", async function (req, res) {
   try {
@@ -73,23 +79,20 @@ router.post('/login', async (req, res) => {
   }
 })
 
-router.post('/logout', isVerified, (req, res) => {
-  try {
-    if (req.session._id == null) {
-      throw new Error("User is not logged in");
+
+router.get('/logout', isVerified, (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error destroying session:', err);
+      const error = new Error("Not verified");
+      error.status = 401;
+      throw error;
+    } else {
+      res.redirect("/");
     }
-    req.session.destroy((err) => {
-      if (err) {
-        console.error('Error destroying session:', err);
-        res.status(500).json({ message: 'Failed to logout' });
-      } else {
-        res.status(200).json({ message: 'Logout successful' });
-      }
-    });
-  } catch (error) {
-    res.status(404).send(error.message);
-  }
+  });
 });
+
 router.post("/feedback/:appId", isVerified, async function (req, res) {
   //res.send(req.session._id)
   try {

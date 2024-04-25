@@ -1,3 +1,23 @@
+<style>
+    #toast-div {
+        top: 15%;
+        left: 1%;
+        display: none;
+    }
+
+    .my-toast {
+        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .my-toast span {
+        cursor: pointer;
+    }
+
+    .error-num {
+        font-size: 1rem !important;
+    }
+</style>
+
 <div id="toast-div" class="fixed z-100">
 
 </div>
@@ -15,7 +35,7 @@
         let toast = document.createElement("div")
         toast.style.opacity = "1"
         toast.innerHTML = ` <div class="my-toast rounded-2 bg-${type} text-${type} p-2 my-1 py-1 border border-${type} bg-opacity-25 flex gap-2 items-center">
-${error}
+            ${error}
 <span class="material-symbols-outlined text-lg" onclick="deleteParent(this)">
     disabled_by_default
     </span>
@@ -23,7 +43,7 @@ ${error}
         parent.appendChild(toast)
         setTimeout(() => {
             parent.removeChild(toast)
-        }, 4000 + c * 1000);
+        }, 40000 + c * 1000);
         c += 1
     }
 </script>

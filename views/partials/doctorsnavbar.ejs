@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/stylesheets/docDashboard.css">
 
 <div class="left relative">
-    <div class="navbar flex ">
+    <div class="navbar flex relative" role="button" onclick="editProfile()">
         <div class="image">
             <img src="<%=doctors.image %>">
         </div>
@@ -13,6 +13,9 @@
                 <%=doctors.email %>
             </p>
         </div>
+        <button class="btn btn-secondary flex items-center gap-1 absolute bottom-0 end-0 invisible"><span class="material-symbols-outlined">
+            manage_accounts
+            </span> Edit</button>
     </div>
 
     <div class="items p-3 flex flex-col gap-4">
@@ -26,21 +29,26 @@
             <span class="material-symbols-outlined">
                 diversity_1
             </span>
-            <a href="#">All paitent</a>
+            <a href="/doctor/allpatients">All paitent</a>
         </div>
         <div class="links flex items-center gap-2">
             <span class="material-symbols-outlined">
                 calendar_add_on
             </span>
-            <a href="#">Sessions Info</a>
+            <a href="/doctor/sessioninfo">Sessions Info</a>
         </div>
     </div>
 
 
     <div class="footer absolute">
-        <button id="logout" class="btn btn-danger flex gap-1" onclick="logout()"> Log out <span
+        <a href="/admin/logout" id="logout" class="btn btn-danger flex gap-1" onclick="logout()"> Log out <span
                 class="material-symbols-outlined">
                 logout
-            </span></button>
+            </span></a>
     </div>
 </div>
+<script>
+    const editProfile=()=>{
+        document.querySelector(".navbar button").classList.toggle("invisible");
+    }
+</script>

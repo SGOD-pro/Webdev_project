@@ -5,6 +5,16 @@ var appointmentModel = require("../models/Appointment")
 var feedbackModel = require("../models/Feedback")
 var isVerified = require("../middlewares/verify")
 
+router.get('/allpatients', async (req, res) => {
+    const doctors = await doctorModel.findOne({ username: req.session.username }).select("-experience -speciality -contactNo -timing -days -clinicLocation -limit -qualification -charges -username");
+    console.log(doctors);
+    res.render('allPatient',{doctors})
+})
+router.get('/sessioninfo', async (req, res) => {
+    const doctors = await doctorModel.findOne({ username: req.session.username }).select("-experience -speciality -contactNo -timing -days -clinicLocation -limit -qualification -charges -username");
+    console.log(doctors);
+    res.render('sessionInfo',{doctors})
+})
 
 router.get('/all-appointments', isVerified, async (req, res) => {
 
@@ -19,8 +29,9 @@ router.get('/all-appointments', isVerified, async (req, res) => {
 
     }
 })
+
 router.get("/emergency", isVerified, async function (req, res) {
-    const id=req.session._id
-    
+    const id = req.session._id
+
 })
 module.exports = router;

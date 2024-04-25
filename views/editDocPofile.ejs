@@ -1,5 +1,15 @@
 <% include ./partials/header.ejs %>
     <link rel="stylesheet" href="/stylesheets/doctordashboard.css">
+    <style>
+        .rounded-4 {
+            overflow: hidden;
+        }
+
+        .table-div {
+            overflow: auto;
+            height: 95vh !important;
+        }
+    </style>
 
     <body>
         <% include ./partials/toast.ejs %>
@@ -7,6 +17,11 @@
             <main class="flex gap-1">
                 <% include ./partials/doctorsnavbar.ejs %>
 
+                    <section class="pt-3">
+                        <h2 class="text-lg">Edit Profile</h2>
+                        NOTE:Add the form right here
+                        
+                    </section>
 
 
 

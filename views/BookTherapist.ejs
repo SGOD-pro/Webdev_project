@@ -1,0 +1,136 @@
+<% include ./partials/header.ejs %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        section {
+            color: var(--primary-text-color);
+            overflow: auto;
+        }
+
+        .card {
+            height: 60vh;
+            background-color: var(--primary-bg-color);
+            color: var(--primary-text-color);
+        }
+
+        .card .image {
+            height: 55%;
+
+        }
+
+        .card .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .card-text p {
+            line-height: .4rem;
+        }
+
+        .app-form {
+            height: fit-content;
+            max-height: 60vh;
+            width: 50%;
+            min-width: 414px;
+            border: 1px solid var(--secondary-bg-color);
+            color: var(--primary-text-color);
+            backdrop-filter: blur(4px);
+            background-color: #0000003f;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.801)
+        }
+
+        .doc-detials {
+            width: 280px;
+        }
+
+        .doc-detials img {
+            object-fit: cover;
+            object-position: top;
+        }
+    </style>
+
+    <body>
+        <main class="flex">
+            <% include ./partials/toast.ejs %>
+                <% include ./partials/userNavbar.ejs %>
+                    <div class="app-form absolute rounded-4 p-2 top-50 start-50 translate-middle z-100 invisible">
+                        <h2 class="text-md">New Appointment</h2>
+                        <span class="material-symbols-outlined absolute end-0 top-0 p-2" role="button" onclick="hideAppForm()">
+                            cancel
+                        </span>
+                        <div class="flex gap-1">
+                            <form class="row g-3" data-bs-theme="dark" onsubmit="submit(event)">
+                                <div class="col-md-6">
+                                    <label for="fullname" class="form-label text-capitalize">paitent name</label>
+                                    <input type="text" class="form-control" id="fullname" value="<%=user.fullname %>"
+                                        name="fullname" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="age" class="form-label">Age</label>
+                                    <input type="number" class="form-control" id="age" name="age" required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select id="gender" class="form-select" name="gender" required>
+                                        <option selected>Choose...</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control text-sm" placeholder="Leave a comment here" id="issue"
+                                        name="issue" style="height: 150px; resize: none;" required></textarea>
+                                    <label for="issue" class=" ms-2">Your Issue</label>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary flex items-center" id="submit-btn">Book<div
+                                            class="spinner-grow text-secondary" role="status">
+
+                                        </div></button>
+                                </div>
+                            </form>
+                            <div class="doc-detials h-full">
+                                <div class="image w-full h-full">
+                                    <img id="doctor-image" src="/images/default_user.png" alt=""
+                                        class="w-full h-full rounded-3">
+                                </div>
+                                <h3 class="text-basic text-underline" id="doctor-name">Unknown</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="h-full scrollbar">
+                        <h1 class="text-lg">Our Therapist</h1>
+                        <div class="container scrollbar">
+                            <% allDoctors.forEach(item=> {%>
+                                <div class="card inline-block m-1" style="width: 18rem;">
+                                    <div class="image">
+                                        <img src="<%=item.image %>" class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title text underline">
+                                            <%=item.name %>
+                                        </h5>
+                                        <div class="card-text text-sm">
+                                            <p class="">Speciality:<%=item.speciality %>
+                                            </p>
+                                            <p class="">Qualification:<%=item.qualification.degree %>
+                                            </p>
+                                            <p class="">Contact No:<%=item.contactNo %>
+                                            </p>
+                                            <p class="">Charges:<%=item.charges %>
+                                            </p>
+                                        </div>
+                                        <button data-id="<%=item._id%>" data-name="<%=item.name%>" data-image="<%=item.image%>" class="btn btn-info"
+                                            onclick="book(event)">Book</button>
+                                    </div>
+                                </div>
+                                <% }); %>
+                        </div>
+                    </section>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/javascripts/userScript.js"></script>
+        <% include ./partials/footer.ejs %>

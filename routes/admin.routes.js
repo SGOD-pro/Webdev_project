@@ -71,17 +71,14 @@ router.post('/login', async (req, res) => {
         res.status(error.status).send(error.message);
     }
 });
-router.get('/logout', (req, res) => {
+router.get('/logout',isAdmin, (req, res) => {
     try {
-        if (req.session._id == null) {
-            throw new Error("User is not logged in");
-        }
         req.session.destroy((err) => {
             if (err) {
                 console.error('Error destroying session:', err);
                 res.status(500).json({ message: 'Failed to logout' });
             } else {
-                res.status(200).json({ message: 'Logout successful' });
+                res.redirect("/");
             }
         });
     } catch (error) {
@@ -89,7 +86,7 @@ router.get('/logout', (req, res) => {
     }
 })
 
-router.post('/newdoctors', uploads.single("image"), async (req, res) => {
+router.post('/newdoctors',isAdmin, uploads.single("image"), async (req, res) => {
     try {
         const {
             name,
