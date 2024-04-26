@@ -13,9 +13,10 @@
                 <%=doctors.email %>
             </p>
         </div>
-        <button class="btn btn-secondary flex items-center gap-1 absolute bottom-0 end-0 invisible"><span class="material-symbols-outlined">
-            manage_accounts
-            </span> Edit</button>
+        <button class="btn btn-secondary flex items-center gap-1 absolute bottom-0 end-0 invisible" onclick="profilePage()">
+            <span class="material-symbols-outlined">manage_accounts</span> Edit
+        </button>
+        
     </div>
 
     <div class="items p-3 flex flex-col gap-4">
@@ -48,7 +49,12 @@
     </div>
 </div>
 <script>
-    const editProfile=()=>{
+      const profilePage = () => {
+        console.log("kii");
+        window.location.href = "/doctor/profile";
+    };
+    const editProfile = () => {
         document.querySelector(".navbar button").classList.toggle("invisible");
     }
+   
 </script>

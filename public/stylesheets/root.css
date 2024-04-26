@@ -70,6 +70,7 @@ input[type="number"] {
 	--sb-track-color: #232e3304;
 	--sb-thumb-color: var(--theme-color);
 	--sb-size: 5px;
+	scroll-behavior: smooth;
 }
 
 .scrollbar::-webkit-scrollbar {

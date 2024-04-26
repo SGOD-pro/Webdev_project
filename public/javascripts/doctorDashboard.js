@@ -1,4 +1,3 @@
-
 const addTipsForm = () => {
     document.getElementById("add-tips-card").classList.remove("invisible")
 }
