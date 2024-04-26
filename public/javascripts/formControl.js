@@ -76,6 +76,7 @@ signupForm.addEventListener('submit', function (event) {
         return false;
     }
     btn.setAttribute("disabled", true);
+    btn.innerHTML = "Saving.. <i class='bx bx-loader bx-spin text-md'></i>"
     axios.post("/users/register", formDataJSON)
         .then((response) => {
             if (localStorage.getItem("id")) {
@@ -90,6 +91,7 @@ signupForm.addEventListener('submit', function (event) {
         }).finally(() => {
             console.log("jiii");
             btn.removeAttribute("disabled");
+            btn.innerHTML="Submit"
         });
 });
 
@@ -117,6 +119,7 @@ loginForm.addEventListener('submit', function (event) {
         return false;
     }
     btn.setAttribute("disabled", true);
+    btn.innerHTML = "Saving.. <i class='bx bx-loader bx-spin text-md'></i>"
     axios.post("/users/login", formDataJSON)
         .then(() => {
             if (localStorage.getItem("id")) {
@@ -131,6 +134,7 @@ loginForm.addEventListener('submit', function (event) {
             console.log(error.response.status);
         }).finally(() => {
             btn.removeAttribute("disabled");
+            btn.innerHTML="Submit";
         });
 });
 
@@ -146,6 +150,7 @@ document.querySelector(".admin form").addEventListener("submit", function (e) {
     }
     console.log(formDataJSON);
     btn.setAttribute("disabled", true);
+    btn.innerHTML = "Saving.. <i class='bx bx-loader bx-spin text-md'></i>"
     axios.post("/admin/login", formDataJSON)
         .then((response) => {
             console.log(response);
@@ -159,5 +164,6 @@ document.querySelector(".admin form").addEventListener("submit", function (e) {
         })
         .finally(() => {
             btn.removeAttribute("disabled");
+            btn.innerHTML="Submit";
         });
 })
