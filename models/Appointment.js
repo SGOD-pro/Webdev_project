@@ -19,7 +19,11 @@ const appointmentSchema = new Schema({
         issue: {
             type: String,
             required: true
-        }
+        },
+        dateTime: {
+            type: String,
+            required: true
+        },
     },
     doctorId: {
         type: Schema.Types.ObjectId,
@@ -30,9 +34,7 @@ const appointmentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users',
     },
-    dateTime: {
-        type: Date
-    },
+
     feedback: {
         type: Schema.Types.ObjectId,
         ref: 'feedbacks',

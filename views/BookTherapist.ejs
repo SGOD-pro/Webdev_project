@@ -31,22 +31,25 @@
         .app-form {
             height: fit-content;
             max-height: 60vh;
-            width: 50%;
+            width: 55%;
             min-width: 414px;
             border: 1px solid var(--secondary-bg-color);
             color: var(--primary-text-color);
             backdrop-filter: blur(4px);
-            background-color: #0000003f;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.801)
+            background-color: hsla(0, 0%, 0%, 0.4);
+            box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.85)
         }
 
         .doc-detials {
-            width: 280px;
+            width: 200px;
         }
 
         .doc-detials img {
             object-fit: cover;
             object-position: top;
+        }
+        #app-form-grp form{
+            width: calc(100% - 200px);
         }
     </style>
 
@@ -56,11 +59,12 @@
                 <% include ./partials/userNavbar.ejs %>
                     <div class="app-form absolute rounded-4 p-2 top-50 start-50 translate-middle z-100 invisible">
                         <h2 class="text-md">New Appointment</h2>
-                        <span class="material-symbols-outlined absolute end-0 top-0 p-2" role="button" onclick="hideAppForm()">
+                        <span class="material-symbols-outlined absolute end-0 top-0 p-2" role="button"
+                            onclick="hideAppForm()">
                             cancel
                         </span>
-                        <div class="flex gap-1">
-                            <form class="row g-3" data-bs-theme="dark" onsubmit="submit(event)">
+                        <div class="flex gap-1" id="app-form-grp">
+                            <form class="row g-3" data-bs-theme="dark" id="add-app-form">
                                 <div class="col-md-6">
                                     <label for="fullname" class="form-label text-capitalize">paitent name</label>
                                     <input type="text" class="form-control" id="fullname" value="<%=user.fullname %>"
@@ -79,16 +83,26 @@
                                         <option value="Others">Others</option>
                                     </select>
                                 </div>
+                                <div class="col-md-4">
+                                    <label for="age" class="form-label">Time</label>
+                                    <input type="time" class="form-control" id="time" name="time" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="date" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="date" name="date" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mode" class="form-label">Mode</label>
+                                    <input type="text" class="form-control" id="mode" name="mode" value="Online"
+                                        readonly>
+                                </div>
                                 <div class="form-floating">
                                     <textarea class="form-control text-sm" placeholder="Leave a comment here" id="issue"
                                         name="issue" style="height: 150px; resize: none;" required></textarea>
                                     <label for="issue" class=" ms-2">Your Issue</label>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary flex items-center" id="submit-btn">Book<div
-                                            class="spinner-grow text-secondary" role="status">
-
-                                        </div></button>
+                                    <button class="btn btn-primary flex items-center" id="submit-btn">Book</button>
                                 </div>
                             </form>
                             <div class="doc-detials h-full">
@@ -122,7 +136,8 @@
                                             <p class="">Charges:<%=item.charges %>
                                             </p>
                                         </div>
-                                        <button data-id="<%=item._id%>" data-name="<%=item.name%>" data-image="<%=item.image%>" class="btn btn-info"
+                                        <button data-id="<%=item._id%>" data-name="<%=item.name%>"
+                                            data-image="<%=item.image%>" class="btn btn-info"
                                             onclick="book(event)">Book</button>
                                     </div>
                                 </div>

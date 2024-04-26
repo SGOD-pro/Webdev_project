@@ -9,6 +9,7 @@ document.querySelector(".form-container>span").addEventListener('click', functio
 const showDropdown = () => {
     document.querySelector("#dropdown").classList.toggle("active")
 }
+ 
 document.querySelector("#add-doctors").addEventListener("submit", (e) => {
     e.preventDefault();
     const form = document.getElementById('add-doctors');
@@ -49,8 +50,7 @@ document.querySelector("#add-doctors").addEventListener("submit", (e) => {
         ShowToast(error.response.data, "danger")
 
         console.log(error.response.status);
-    })
-        .finally(() => {
+    }).finally(() => {
             dr.removeAttribute("disabled");
             dr.innerHTML = "Submit"
         });
