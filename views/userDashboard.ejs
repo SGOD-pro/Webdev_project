@@ -74,35 +74,43 @@
                             <div class="top-appointment">
                                 <h1 class="text-lg"> Recent Appointments</h1>
                                 <div class="table-div">
-                                    <table class="table table-dark">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">First</th>
-                                                <th scope="col">Last</th>
-                                                <th scope="col">Handle</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td colspan="2">Larry the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <% if (lastAppointments.length>0) {%>
+
+
+                                        <table class="table table-dark">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Dr.</th>
+                                                    <th scope="col">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% lastAppointments.forEach((element,index)=> { %>
+                                                    <tr>
+                                                        <th scope="row">
+                                                            <%=index+1 %>
+                                                        </th>
+                                                        <td>
+                                                            <%=element.user.fullname %>
+                                                        </td>
+                                                        <td>
+                                                            <%=element.doctor.name %>
+                                                        </td>
+                                                        <td>
+                                                            <%=element.status %>
+                                                        </td>
+                                                    </tr>
+                                                    <% }); %>
+
+
+                                            </tbody>
+                                        </table>
+                                        <% }else{%>
+                                            <h3 class="text-md opacity-6 mt-4">Nothing to show</h3>
+                                            <a href="/users/therapist" class="text-center ">Consult Therapist</a>
+                                            <% } %>
                                 </div>
                             </div>
                         </div>

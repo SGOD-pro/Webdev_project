@@ -58,6 +58,10 @@
         section h1 {
             color: var(--primary-text-color);
         }
+
+        h3 {
+            color: var(--primary-text-color);
+        }
     </style>
 
     <body>
@@ -67,62 +71,65 @@
                     <section class=" scrollbar">
                         <h1 class="text-lg">Feedback</h1>
                         <div class="feedbacks flex flex-wrap gap-2 justify-center scrollbar">
-                            <% appointments.forEach(element=> {%>
-                                <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
-                                    <div class="appdetails p-2 pt-3 rounded-2 pb-1">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="fw-semibold">Name</td>
-                                                    <td>&nbsp;-&nbsp;</td>
-                                                    <td>&nbsp;<%=element.user.fullname %>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="fw-semibold">Doctor</td>
-                                                    <td>&nbsp;-&nbsp;</td>
-                                                    <td>&nbsp;<%=element.doctor.name %>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="fw-semibold">Date</td>
-                                                    <td>&nbsp;-&nbsp;</td>
-                                                    <td>&nbsp;<%=element.user.dateTime %>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="fw-semibold">Status</td>
-                                                    <td>&nbsp;-&nbsp;</td>
-                                                    <td>&nbsp;<%=element.status %>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <p class="text-basic mt-2">Issue- <span class="text-sm">
-                                                <%=element.user.issue %>
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <div class="feedback mt-4">
-                                        <% if (element.status==="SUCCESS" ) {%>
-                                            <textarea name="feedback" id="" cols="30" rows="10"
-                                                class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."
-                                                name="comment">success</textarea>
-                                            <button class="btn btn-info flex items-center justify-center"
-                                                data-id="<%=element._id %>"><i
-                                                    class='bx bxs-send text-md px-2'></i></button>
-                                            <% }else{%>
-                                                <textarea name="feedback" id="" cols="30" rows="10"
-                                                    class="w-full rounded-2 p-1 text-sm" placeholder="Write Feedback.."
-                                                    readonly>readonly</textarea>
-                                                <button class="btn btn-info flex items-center justify-center"
-                                                    data-id="<%=element._id %>" disabled><i
-                                                        class='bx bxs-send text-md px-2'></i></button>
-                                                <% } %>
+                            <%if (appointments.length===0) {%>
+                                <h3 class="text-center text-md">Nothing to send feedback</h3>
+                                <% } %>
+                                    <% appointments.forEach(element=> {%>
+                                        <div class="mycard p-3 rounded-4 border-1 border-light-subtle">
+                                            <div class="appdetails p-2 pt-3 rounded-2 pb-1">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="fw-semibold">Name</td>
+                                                            <td>&nbsp;-&nbsp;</td>
+                                                            <td>&nbsp;<%=element.user.fullname %>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fw-semibold">Doctor</td>
+                                                            <td>&nbsp;-&nbsp;</td>
+                                                            <td>&nbsp;<%=element.doctor.name %>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fw-semibold">Date</td>
+                                                            <td>&nbsp;-&nbsp;</td>
+                                                            <td>&nbsp;<%=element.user.dateTime %>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="fw-semibold">Status</td>
+                                                            <td>&nbsp;-&nbsp;</td>
+                                                            <td>&nbsp;<%=element.status %>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p class="text-basic mt-2">Issue- <span class="text-sm">
+                                                        <%=element.user.issue %>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <div class="feedback mt-4">
+                                                <% if (element.status==="SUCCESS" ) {%>
+                                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                                        class="w-full rounded-2 p-1 text-sm"
+                                                        placeholder="Write Feedback.." name="comment">success</textarea>
+                                                    <button class="btn btn-info flex items-center justify-center"
+                                                        data-id="<%=element._id %>"><i
+                                                            class='bx bxs-send text-md px-2'></i></button>
+                                                    <% }else{%>
+                                                        <textarea name="feedback" id="" cols="30" rows="10"
+                                                            class="w-full rounded-2 p-1 text-sm"
+                                                            placeholder="Write Feedback.." readonly></textarea>
+                                                        <button class="btn btn-info flex items-center justify-center"
+                                                            data-id="<%=element._id %>" disabled><i
+                                                                class='bx bxs-send text-md px-2'></i></button>
+                                                        <% } %>
 
-                                    </div>
-                                </div>
-                                <% }); %>
+                                            </div>
+                                        </div>
+                                        <% }); %>
 
                         </div>
                     </section>

@@ -7,8 +7,9 @@ const tipsSchema = new Schema({
         type: String
     },
     uploder: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "doctors"
     },
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model('tips', tipsSchema);

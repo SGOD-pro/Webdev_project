@@ -56,23 +56,24 @@ signupForm.addEventListener('submit', function (event) {
         ShowToast("Please enter your fullname.", "warning")
         return false;
     }
-
+    const regex = /^[a-zA-Z\s]+$/;
+    if (regex.test(formDataJSON.fullname)) {
+        ShowToast("Please enter valid fullname.", "warning")
+        return false;
+    }
     const phonePattern = /^\d{10}$/;
     if (!phonePattern.test(formDataJSON.phoneNumber)) {
         ShowToast("Please enter a valid 10-digit phone number.", "warning")
         return false;
     }
-
     const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
     if (!emailPattern.test(formDataJSON.email)) {
         ShowToast("Please enter a valid email address.", "warning")
-
         return false;
     }
 
     if (formDataJSON.password.length < 6) {
         ShowToast("Password must be at least 6 characters long.", "warning")
-
         return false;
     }
     btn.setAttribute("disabled", true);
@@ -88,7 +89,6 @@ signupForm.addEventListener('submit', function (event) {
             console.log(error.response.data);
             console.log(error.response.status);
         }).finally(() => {
-            console.log("jiii");
             btn.removeAttribute("disabled");
         });
 });
