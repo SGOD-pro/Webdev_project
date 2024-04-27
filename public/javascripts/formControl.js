@@ -127,7 +127,6 @@ loginForm.addEventListener('submit', function (event) {
         }).catch((error) => {
             console.log(error.response.data);
             ShowToast(error.response.data, "danger")
-
             console.log(error.response.status);
         }).finally(() => {
             btn.removeAttribute("disabled");
