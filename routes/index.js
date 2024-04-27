@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router()
 const DoctorModel = require('../models/Doctor');
-/* GET home page. */
+
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -9,11 +10,6 @@ function shuffleArray(array) {
   }
   return array;
 }
-function getRandomValues(array, count) {
-  const shuffled = array.sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
-}
-
 router.get('/doctorspage', async function (req, res, next) {
   let doctors = await DoctorModel.aggregate([
     {
@@ -39,5 +35,14 @@ router.get('/doctorspage', async function (req, res, next) {
   console.log(slider);
   res.render('doctorsPage', { doctors, search: true, slider })
 });
+router.get('/',(req, res)=>{
+  res.render('index',{search:false})
+})
+router.get('/doctorspage',(req, res)=>{
+  res.render('doctorsPage',{search:true})
+})
+router.get('/contactus',(req,res) => {
+  res.render('contactus')
 
+})
 module.exports = router;
