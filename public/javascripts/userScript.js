@@ -56,7 +56,6 @@ document.getElementById("add-app-form").addEventListener("submit", (event) => {
         ShowToast("Required date is within 3 months from now", "info");
         return;
     }
-    return;
     const btn = document.getElementById("submit-btn")
     btn.setAttribute("disabled", true)
     localStorage.setItem("data", JSON.stringify(data));

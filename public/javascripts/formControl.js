@@ -56,11 +56,11 @@ signupForm.addEventListener('submit', function (event) {
         ShowToast("Please enter your fullname.", "warning")
         return false;
     }
-    const regex = /^[a-zA-Z\s]+$/;
-    if (regex.test(formDataJSON.fullname)) {
-        ShowToast("Please enter valid fullname.", "warning")
-        return false;
-    }
+    // const regex = /^[a-zA-Z\s]+$/;
+    // if (regex.test(formDataJSON.fullname)) {
+        // ShowToast("Please enter valid fullname.", "warning")
+        // return false;
+    // }
     const phonePattern = /^\d{10}$/;
     if (!phonePattern.test(formDataJSON.phoneNumber)) {
         ShowToast("Please enter a valid 10-digit phone number.", "warning")
