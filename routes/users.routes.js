@@ -3,16 +3,71 @@ var router = express.Router();
 var usersModel = require("../models/User")
 var doctorsModel = require("../models/Doctor")
 var appointmentModel = require("../models/Appointment")
+var tipsModel = require("../models/Tips")
 var feedbackModel = require("../models/Feedback")
 var isVerified = require("../middlewares/verify");
-const sendMain = require("../utils/sendMail")
+const sendMail = require("../utils/sendMail")
 const { default: mongoose } = require('mongoose');
-
-/* GET users listing. */
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 router.get("/", isVerified, async (req, res) => {
   const user = await usersModel.findById(req.session._id)
-  // console.log(user);
-  res.render("userDashboard", { user })
+
+  const lastAppointments = await appointmentModel.aggregate(
+    [
+      {
+        $match: { userId: new mongoose.Types.ObjectId(req.session._id) }
+      },
+
+      {
+        $sort: {
+          createdAt: -1,
+        }
+      },
+      {
+        $limit: 3
+      },
+      {
+        $lookup: {
+          localField: "doctorId",
+          from: "doctors",
+          foreignField: "_id",
+          as: "doctor",
+          pipeline: [
+            {
+              $project: {
+                name: 1,
+              }
+            }
+          ]
+        }
+      },
+      {
+        $addFields: {
+          doctor: { $arrayElemAt: ["$doctor", 0] } // Get the first element of the doctor array
+        }
+      },
+
+      {
+        $project: {
+          "doctor.name": 1,
+          "user.fullname": 1,
+          "status": 1
+        }
+      }
+
+    ]
+  )
+  const tips = await tipsModel.aggregate([
+    { $sample: { size: 5 } }
+  ])
+  console.log(lastAppointments);
+  res.render("userDashboard", { user, lastAppointments, tips })
 })
 router.get("/feedback", isVerified, async (req, res) => {
 
@@ -26,15 +81,20 @@ router.get("/feedback", isVerified, async (req, res) => {
         }
       },
       {
+        $sort: {
+          createdAt: -1,
+        }
+      },
+      {
         $lookup: {
-          localField: "doctorId", // Field from the current collection (appointments)
-          from: "doctors", // Collection to perform the lookup
-          foreignField: "_id", // Field from the "doctors" collection
-          as: "doctor", // Name of the field to add the result to
+          localField: "doctorId",
+          from: "doctors",
+          foreignField: "_id",
+          as: "doctor",
           pipeline: [
             {
               $project: {
-                name: 1, // Project only the 'name' field from the 'doctors' collection
+                name: 1,
               }
             }
           ]
@@ -49,7 +109,7 @@ router.get("/feedback", isVerified, async (req, res) => {
         $project: {
           "doctor": 1,
           "user": 1,
-          "status":1
+          "status": 1
         }
       }
     ]);
@@ -68,8 +128,8 @@ router.get("/payment", isVerified, async (_, res) => {
 })
 router.get("/therapist", isVerified, async (req, res) => {
   const allDoctors = await doctorsModel.find()
-  const user = await usersModel.findById(req.session._id)
-  res.render("BookTherapist", { user, allDoctors })
+  const user = await usersModel.findById(req.session._id).select("-password")
+  res.render("BookTherapist", { user, allDoctors: shuffleArray(allDoctors) })
 })
 router.post("/register", async function (req, res) {
   try {
@@ -94,9 +154,10 @@ router.post("/register", async function (req, res) {
     }
     req.session._id = createdUser._id;
     req.session.fullname = createdUser.fullname;
+    await sendMail({ username: fullname, email, password: "", type: "USERS" })
     res.status(200).json({ message: "Done!" });
   } catch (error) {
-    const statusCode = error.status || 500; // Set default status code
+    const statusCode = error.status || 500;
     console.log(statusCode);
     res.status(statusCode).send(error.message);
   }
@@ -144,7 +205,7 @@ router.get('/logout', isVerified, (req, res) => {
 });
 
 router.post("/feedback/:appId", isVerified, async function (req, res) {
-  //res.send(req.session._id)
+
   try {
     const comments = req.body
     const appId = req.params.id
@@ -169,10 +230,9 @@ router.post("/feedback/:appId", isVerified, async function (req, res) {
 router.post('/exists', async (req, res) => {
   try {
     const { date, time, doctorId } = req.body
-    const dateTime = ` ${date}(${time})`
     const exists = await appointmentModel.findOne({
-      $and: [{ dateTime, doctorId }
-      ]
+      $and: [{ date, doctorId }],
+
     })
     console.log(exists);
     if (exists) {
@@ -195,14 +255,15 @@ router.post('/new-appointment', isVerified, async function (req, res) {
       throw error;
     }
 
-    const dateTime = ` ${date}(${time})`
+
     const appointment = await appointmentModel.create({
       user: {
         fullname,
         age,
         gender,
         issue,
-        dateTime,
+        date,
+        time
       },
       doctorId,
       userId: req.session._id,
@@ -220,19 +281,6 @@ router.post('/new-appointment', isVerified, async function (req, res) {
   }
 })
 
-router.get("allappointments", isVerified, async function (req, res) {
-  try {
-    const appoinments = await appointmentModel.find({ userId: req.session._id })
-    if (!appoinments) {
-      const error = new Error("Server error");
-      error.status = 500;
-      throw error;
-    }
-    res.status(200).json(appoinments)
-  } catch (error) {
-    res.status(error.status).send(error.message);
 
-  }
-})
 
 module.exports = router;

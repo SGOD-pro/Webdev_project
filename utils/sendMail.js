@@ -125,16 +125,137 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
                 </main>
             </body>
         </html> `
+        
         if (type === "USERS") {
-            mailHTML = "Your appointment is booked on 25/12/2024 "
+            mailHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Registering</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Thank You for Registering</h2>
+        <p>Hello ${username},</p>
+        <p>Thank you for registering on our website. We're excited to have you join our community!</p>
+        <p>Your account details:</p>
+        <ul>
+            <li><strong>Name:</strong> ${username}</li>
+            <li><strong>Email:</strong> ${email}</li>
+        </ul>
+        <p>If you have any questions or need assistance, feel free to contact us.</p>
+        <p>Welcome aboard!</p>
+        <p style="text-align: center;"><a href="#" class="btn">Contact Us</a></p>
+        <p style="text-align: center;">Best regards,<br>Sweta,Souvik<br>Hr,</p>
+    </div>
+</body>
+</html>
+`
+
         }
         else if (type === "RESEDULED") {
-            mailHTML = "Your booking on 25/12/2024 is reseduled on 26/12/2024"
+            mailHTML = `<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Appointment Rescheduled</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f4f4f4;
+                    }
+                    .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: #fff;
+                        border-radius: 8px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }
+                    h2 {
+                        color: #333;
+                    }
+                    p {
+                        color: #666;
+                    }
+                    .btn {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #007bff;
+                        color: #fff;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .btn:hover {
+                        background-color: #0056b3;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h2 style="text-align: center;">Appointment Rescheduled</h2>
+                    <p>Hello there,</p>
+                    <p>We want to inform you that due to an emergency your appointment with Dr. ${username}  has been rescheduled to the next day by doctor.</p>
+                    <p>Please find the updated appointment details below:</p>
+                    <ul>
+                        <li><strong>Doctor:</strong> ${username}</li>
+                        <li><strong>New Appointment Date&Time:</strong> ${email}</li>
+                    </ul>
+                    <p>If you have any questions or need to reschedule, please feel free to contact us.</p>
+                    <p>Best regards,<br>Mental Peace,<br>Ceo</p>
+                </div>
+            </body>
+            </html>
+            `
         }
         const mailOpions = {
             from: process.env.MYGMAIL,
             to: email,
-            subject: "New registration on MIND PEACE.", 
+            subject: "New registration on MIND PEACE.",
             text: "Thank you for registering on MIND PEACE. This is a confirmation mail regarding your registration.We welcome you to our community of serving people withmental illness. Please feel free to contact us regarding any issue.",
             html: mailHTML
         }
@@ -142,7 +263,6 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
         console.log(mailResponce);
         return mailResponce
     } catch (error) {
-        console.log(error);
         throw new Error(error.message)
     }
 }

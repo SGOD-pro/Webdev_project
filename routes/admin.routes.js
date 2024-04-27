@@ -26,6 +26,13 @@ function getCurrentDate() {
     const year = currentDate.getFullYear();
     return { date: `${month}/${day}/${year}`, dayOfWeek };
 }
+function formatName(string) {
+    string = string.toLowerCase()
+    return string.replace(/\b\w/g, function (char) {
+        return char.toUpperCase();
+    });
+}
+
 router.get('/', isAdmin, async (req, res) => {
     try {
         console.log(req.session._id);
@@ -71,7 +78,7 @@ router.post('/login', async (req, res) => {
         res.status(error.status).send(error.message);
     }
 });
-router.get('/logout',isAdmin, (req, res) => {
+router.get('/logout', isAdmin, (req, res) => {
     try {
         req.session.destroy((err) => {
             if (err) {
@@ -86,7 +93,7 @@ router.get('/logout',isAdmin, (req, res) => {
     }
 })
 
-router.post('/newdoctors',isAdmin, uploads.single("image"), async (req, res) => {
+router.post('/newdoctors', isAdmin, uploads.single("image"), async (req, res) => {
     try {
         const {
             name,
@@ -126,7 +133,7 @@ router.post('/newdoctors',isAdmin, uploads.single("image"), async (req, res) => 
             qua.group = "Psychiatry"
         }
         const newDoctor = await doctormodel.create({
-            name,
+            name: "Dr. " + formatName(name),
             qualification: qua,
             experience,
             speciality,

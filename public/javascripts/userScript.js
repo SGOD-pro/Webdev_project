@@ -14,6 +14,7 @@ const book = (event) => {
 }
 const hideAppForm = () => {
     document.querySelector(".app-form").classList.add("invisible")
+    localStorage.clear()
 }
 window.onload = () => {
     const id = localStorage.getItem("id");
@@ -41,6 +42,21 @@ document.getElementById("add-app-form").addEventListener("submit", (event) => {
     }
     console.log(jsonData);
     const data = { ...jsonData, doctorId }
+    if (data.gender === "null") {
+        ShowToast("Gender Required", "warning",)
+        return;
+    }
+    const givenDate = new Date(data.date);
+    const today = new Date();
+    const threeMonthsFromNow = new Date();
+    threeMonthsFromNow.setMonth(threeMonthsFromNow.getMonth() + 3);
+
+    if (givenDate < today || givenDate >= threeMonthsFromNow) {
+        console.log(givenDate, today, givenDate, threeMonthsFromNow);
+        ShowToast("Required date is within 3 months from now", "info");
+        return;
+    }
+    return;
     const btn = document.getElementById("submit-btn")
     btn.setAttribute("disabled", true)
     localStorage.setItem("data", JSON.stringify(data));
