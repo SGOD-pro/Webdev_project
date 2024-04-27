@@ -61,10 +61,7 @@ const doctorSchema = new Schema({
   username: {
     type: String,
   },
-  limit: {
-    type: Number,
-    default: 5,
-  }
+ 
 });
 
 const Doctor = mongoose.model('doctors', doctorSchema);

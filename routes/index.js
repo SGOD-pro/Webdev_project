@@ -9,9 +9,11 @@ function shuffleArray(array) {
   }
   return array;
 }
-router.get('/', function (req, res, next) {
-  res.render('index', { search: false });
-});
+function getRandomValues(array, count) {
+  const shuffled = array.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
+
 router.get('/doctorspage', async function (req, res, next) {
   let doctors = await DoctorModel.aggregate([
     {
@@ -21,9 +23,21 @@ router.get('/doctorspage', async function (req, res, next) {
       },
     }
   ])
-  doctors.map((item)=>({...item,doctors:shuffleArray(item.doctors)}))
-  console.log(doctors);
-  res.render('doctorsPage', { doctors, search: true })
+  const slider = await DoctorModel.aggregate([
+    { $sample: { size: 7 } },
+    {
+      $project: {
+        name: 1,
+        speciality: 1,
+        experience: 1,
+        clinicLocation: 1,
+        image: 1
+      }
+    }
+  ])
+  doctors.map((item) => ({ ...item, doctors: shuffleArray(item.doctors) }))
+  console.log(slider);
+  res.render('doctorsPage', { doctors, search: true, slider })
 });
 
 module.exports = router;

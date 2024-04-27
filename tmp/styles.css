@@ -1,13 +1,22 @@
 body {
     background-color: #f4f4f4;
   }
-  
-  .container {
-    max-width: 500px;
-    margin: 50px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  *{
+    margin: 0;
+    padding: 0;
   }
-  
+  .my-container{
+    height: 10vh;
+    width: 90%;
+  }
+
+  .image{
+    width: 100px;
+    height: 100px;
+  }
+  .image img{
+    width: 95%;
+    height: 95%;
+    object-fit: contain;
+    object-position: top;
+  }
