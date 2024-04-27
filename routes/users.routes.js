@@ -157,7 +157,7 @@ router.post("/register", async function (req, res) {
     await sendMail({ username: fullname, email, password: "", type: "USERS" })
     res.status(200).json({ message: "Done!" });
   } catch (error) {
-    const statusCode = error.status || 500; // Set default status code
+    const statusCode = error.status || 500;
     console.log(statusCode);
     res.status(statusCode).send(error.message);
   }

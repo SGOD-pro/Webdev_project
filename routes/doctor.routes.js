@@ -32,6 +32,7 @@ router.get('/sessioninfo', isAdmin, async (req, res) => {
         res.redirect('/admin')
     }
 })
+
 router.get('/profile', isAdmin, async (req, res) => {
     const doctors = await doctorModel.findOne({ username: req.session.username }).select("-username");
     console.log(doctors);

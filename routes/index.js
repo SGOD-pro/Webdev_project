@@ -43,6 +43,9 @@ router.get('/doctorspage',(req, res)=>{
 })
 router.get('/contactus',(req,res) => {
   res.render('contactus')
-
 })
+
+router.post('/contactus',(req,res)=>{
+  
+});
 module.exports = router;

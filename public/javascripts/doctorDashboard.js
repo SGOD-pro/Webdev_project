@@ -18,6 +18,10 @@ const addTips = () => {
 }
 
 const emergency = () => {
-    console.log("hii");
     confirm("Are you sure?")
 }
+
+document.getElementById("update-profile-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+})
