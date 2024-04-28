@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var adminModel = require("../models/Admin")
 var doctormodel = require("../models/Doctor")
+var appointmentModel = require("../models/Appointment")
 const isAdmin = require('../middlewares/isAdmin');
 const uploads = require('../middlewares/Multer');
 const sendMail = require('../utils/sendMail');
@@ -21,10 +22,10 @@ function getCurrentDate() {
     const currentDate = new Date();
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dayOfWeek = days[currentDate.getDay()];
-    const month = currentDate.getMonth() + 1;
-    const day = currentDate.getDate();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
     const year = currentDate.getFullYear();
-    return { date: `${month}/${day}/${year}`, dayOfWeek };
+    return { date: `${year}-${month}-${day}`, dayOfWeek };
 }
 function formatName(string) {
     string = string.toLowerCase()
@@ -35,11 +36,57 @@ function formatName(string) {
 
 router.get('/', isAdmin, async (req, res) => {
     try {
-        console.log(req.session._id);
         if (req.session.role === 1999) {
             const doctors = await doctormodel.findOne({ username: req.session.username }).select("-experience -speciality -contactNo -timing -days -clinicLocation -limit -qualification -charges -username");
-            console.log(doctors);
-            res.render('doctorsDashboard', { doctors, date: getCurrentDate() });
+            console.log(doctors._id);
+            const { date } = getCurrentDate()
+            console.log(date);
+            const appointments = await appointmentModel.aggregate([
+                { $match: { doctorId: doctors._id,"user.date":date } },
+
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "userId",
+                        foreignField: "_id",
+                        as: "email",
+                        pipeline: [
+                            {
+                                $project: {
+                                    email: 1,
+                                },
+                            },
+                        ],
+                    },
+                },
+                {
+                    $sort: {
+                        "user.time": 1,
+                    },
+                },
+                {
+                    $addFields: {
+                        email: {
+                            $arrayElemAt: ["$email.email", 0],
+                        },
+                        fullname: "$user.fullname",
+                        age: "$user.age"
+                    }
+                },
+                {
+                    $project: {
+                        email: 1,
+                        fullname: 1,
+                        status: 1,
+                        age: 1,
+                        time: "$user.time"
+                    }
+                }
+
+
+            ])
+            console.log(appointments);
+            res.render('doctorsDashboard', { doctors, date: getCurrentDate(),appointments });
         } else {
             const doctors = await doctormodel.find();
             console.log(doctors);
@@ -47,6 +94,8 @@ router.get('/', isAdmin, async (req, res) => {
         }
     } catch (error) {
         console.error("Error occurred while fetching doctors:", error);
+        res.status(500).send(error.message);
+
     }
 });
 

@@ -125,7 +125,7 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
                 </main>
             </body>
         </html> `
-        
+
         if (type === "USERS") {
             mailHTML = `<!DOCTYPE html>
 <html lang="en">
@@ -243,7 +243,7 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
                     <p>Please find the updated appointment details below:</p>
                     <ul>
                         <li><strong>Doctor:</strong> ${username}</li>
-                        <li><strong>New Appointment Date&Time:</strong> ${email}</li>
+                        <li><strong>New Appointment Date:</strong> ${email}(Time remains the same).</li>
                     </ul>
                     <p>If you have any questions or need to reschedule, please feel free to contact us.</p>
                     <p>Best regards,<br>Mental Peace,<br>Ceo</p>

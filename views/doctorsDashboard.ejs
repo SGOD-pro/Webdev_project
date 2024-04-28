@@ -10,9 +10,9 @@
                         <div class="icon flex flex-end "><i role="button" class='bx bxs-x-circle text-md '
                                 onclick="closeTipsBtn()"></i></div>
                         <div class="form-floating h-full">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            <textarea class="form-control" placeholder="Leave a comment here" id="tips"
                                 style="height: 100px" name="tips"></textarea>
-                            <label for="floatingTextarea2">Add Tips</label>
+                            <label for="tips">Add Tips</label>
                         </div>
                         <button class="btn btn-info" id="add-tips-btn" onclick="addTips()">Add</button>
                     </div>
@@ -30,8 +30,7 @@
                             </button>
                             <div class="content flex items-end gap-1" id="show-date">
                                 <div class="text">
-                                    <% const days=['Sunday', 'Monday' , 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday'
-                                        , 'Saturday' ] %>
+                                    <% const days=['Sunday', 'Monday' , 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday', 'Saturday' ] %>
                                         <p class="text-xs opacity-6">
                                             <%=date.dayOfWeek %>
                                         </p>
@@ -87,74 +86,42 @@
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Name</th>
+                                                <th scope="col">age</th>
+                                                <th scope="col">Email</th>
                                                 <th scope="col">Status</th>
-                                                <th scope="col">Handle</th>
+                                                <th scope="col">Time</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td class="flex gap-4 items-center">
-                                                    <div class="mycontainer">
-                                                        <input type="checkbox" class="cbx" id="1"
-                                                            style="display: none;">
-                                                        <label for="1" class="check">
-                                                            <svg width="28px" height="28px" viewBox="0 0 18 18">
-                                                                <path
-                                                                    d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z">
-                                                                </path>
-                                                                <polyline points="1 9 7 14 15 4"></polyline>
-                                                            </svg>
-                                                        </label>
-                                                    </div>
-                                                    <button
-                                                        class="btn btn-danger p-1 flex justify-center items-center"><i
-                                                            class='bx bx-x text-md'></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <td>
-                                                    <div class="container">
-                                                        <input type="checkbox" class="cbx" id="2"
-                                                            style="display: none;">
-                                                        <label for="2" class="check">
-                                                            <svg width="28px" height="28px" viewBox="0 0 18 18">
-                                                                <path
-                                                                    d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z">
-                                                                </path>
-                                                                <polyline points="1 9 7 14 15 4"></polyline>
-                                                            </svg>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td colspan="2">Larry the Bird</td>
-                                                <td>@twitter</td>
-                                                <td>
-                                                    <div class="container">
-                                                        <input type="checkbox" class="cbx" id="3"
-                                                            style="display: none;">
-                                                        <label for="3" class="check">
-                                                            <svg width="28px" height="28px" viewBox="0 0 18 18">
-                                                                <path
-                                                                    d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z">
-                                                                </path>
-                                                                <polyline points="1 9 7 14 15 4"></polyline>
-                                                            </svg>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            <% appointments.forEach((element,index) => {%>
+                                                <tr>
+                                                    <th scope="row"><%=index+1  %> </th>
+                                                    <td><%=element.fullname  %></td>
+                                                    <td><%=element.age  %></td>
+                                                    <td><%=element.email  %></td>
+                                                    <td><%=element.status  %></td>
+                                                    <td><%=element.time  %></td>
+                                                    <td class="flex gap-4 items-center">
+                                                        <div class="mycontainer">
+                                                            <input type="checkbox" class="cbx" id="<%=element._id %>"
+                                                                style="display: none;" onclick="appDone('<%=element._id %>')">
+                                                            <label for="<%=element._id %>" class="check">
+                                                                <svg width="28px" height="28px" viewBox="0 0 18 18">
+                                                                    <path
+                                                                        d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z">
+                                                                    </path>
+                                                                    <polyline points="1 9 7 14 15 4"></polyline>
+                                                                </svg>
+                                                            </label>
+                                                        </div>
+                                                        <button
+                                                            class="btn btn-danger p-1 flex justify-center items-center" onclick="appCancel('<%=element._id %>')"><i
+                                                                class='bx bx-x text-md'></i></button>
+                                                    </td>
+                                                </tr>
+                                                <% });  %>
+                                               
                                         </tbody>
                                     </table>
                                 </div>

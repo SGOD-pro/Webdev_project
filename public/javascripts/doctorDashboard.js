@@ -5,15 +5,17 @@ const closeTipsBtn = () => {
     document.getElementById("add-tips-card").classList.add("invisible")
 }
 const addTips = () => {
-    var tips = document.getElementsByName("tips")
-    console.log(tips);
-    const data = { tips }
+    var tips = document.getElementById("tips")
+    console.log(tips.value);
+    const data = { tips: tips.value }
+    console.log(data);
     axios.post("/doctor/addTips", data)
         .then(response => {
-            console.log(response);
-        }).catch(err => {
+            window.location.reload();
+        }).catch(error => {
             console.log(error.response.data);
             console.log(error.response.status);
+            ShowToast(error.response.data,"danger")
         })
 }
 
@@ -23,5 +25,5 @@ const emergency = () => {
 
 document.getElementById("update-profile-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    
+
 })
