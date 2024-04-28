@@ -1,5 +1,9 @@
 .item{
-    background-color: #252525;
+    background: linear-gradient(
+        to top left,
+         #f0ae77,
+         rgb(212, 124, 201)
+    );
     color: #fff;
     padding: 5px;
     border-radius: 10px;
@@ -22,7 +26,11 @@
 .left-side .box{
     width: 100%;
     min-height: 150px;
-    background-color: #108ADF;
+    background: linear-gradient(
+        to top right,
+        rgb(116, 180, 205),
+        rgb(78, 78, 188)
+    );
     padding: 10px;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 0, 0, .9);
@@ -66,3 +74,7 @@
     color: var(--theme-color);
     font-weight: bolder;
 }
+
+
+/* #252525 
+#108ADF*/
