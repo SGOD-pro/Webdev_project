@@ -111,6 +111,7 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
                         <div class="image">
                             <img src="google.jpg" alt="Mind Peace">
                         </div>
+                        <br>
                         <div class="title">
                             <h1> Successfully registerd on Mind Peace </h1>
                         </div>
@@ -125,8 +126,10 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
                 </main>
             </body>
         </html> `
-
+        let subject = "Doctor registration"
         if (type === "USERS") {
+            subject = "User registration"
+
             mailHTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -195,6 +198,7 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
 
         }
         else if (type === "RESEDULED") {
+        subject = "Emergency reseduling"
             mailHTML = `<!DOCTYPE html>
             <html lang="en">
             <head>
@@ -243,7 +247,7 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
                     <p>Please find the updated appointment details below:</p>
                     <ul>
                         <li><strong>Doctor:</strong> ${username}</li>
-                        <li><strong>New Appointment Date:</strong> ${email}(Time remains the same).</li>
+                        <li><strong>New Appointment Date:</strong> ${password}(Time remains the same).</li>
                     </ul>
                     <p>If you have any questions or need to reschedule, please feel free to contact us.</p>
                     <p>Best regards,<br>Mental Peace,<br>Ceo</p>
@@ -255,8 +259,7 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
         const mailOpions = {
             from: process.env.MYGMAIL,
             to: email,
-            subject: "New registration on MIND PEACE.",
-            text: "Thank you for registering on MIND PEACE. This is a confirmation mail regarding your registration.We welcome you to our community of serving people withmental illness. Please feel free to contact us regarding any issue.",
+            subject: subject,
             html: mailHTML
         }
         const mailResponce = await transporter.sendMail(mailOpions)

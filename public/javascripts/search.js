@@ -9,6 +9,22 @@ function throttle(callback, delay) {
         callback(...args);
     };
 }
+function SearchFunction(event, location) {
+    location.document.querySelector(location)
+    let value = event.target.value;
+    axios.get("search", {
+        params: {
+            value: value
+        }
+    })
+        .then(response => {
+            // Handle the response
+        })
+        .catch(error => {
+            // Handle errors
+        });
 
+
+}
 
 throttle(SearchFunction, 500)

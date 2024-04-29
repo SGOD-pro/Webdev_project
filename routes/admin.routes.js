@@ -40,7 +40,6 @@ router.get('/', isAdmin, async (req, res) => {
             const doctors = await doctormodel.findOne({ username: req.session.username }).select("-experience -speciality -contactNo -timing -days -clinicLocation -limit -qualification -charges -username");
             console.log(doctors._id);
             const { date } = getCurrentDate()
-            console.log(date);
             const appointments = await appointmentModel.aggregate([
                 { $match: { doctorId: doctors._id,"user.date":date } },
 
@@ -85,7 +84,6 @@ router.get('/', isAdmin, async (req, res) => {
 
 
             ])
-            console.log(appointments);
             res.render('doctorsDashboard', { doctors, date: getCurrentDate(),appointments });
         } else {
             const doctors = await doctormodel.find();

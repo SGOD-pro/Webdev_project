@@ -35,17 +35,18 @@ router.get('/doctorspage', async function (req, res, next) {
   console.log(slider);
   res.render('doctorsPage', { doctors, search: true, slider })
 });
-router.get('/',(req, res)=>{
-  res.render('index',{search:false})
+router.get('/', (req, res) => {
+  res.render('index', { search: false })
 })
-router.get('/doctorspage',(req, res)=>{
-  res.render('doctorsPage',{search:true})
+router.get('search', async (req, res) => {
+  const searchValue = req.query.value;
+  console.log(searchValue);
+  const regex = new RegExp(searchTerm.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i');
+  res.sendStatus(200)
 })
-router.get('/contactus',(req,res) => {
+router.get('/contactus', (req, res) => {
   res.render('contactus')
 })
 
-router.post('/contactus',(req,res)=>{
-  
-});
+
 module.exports = router;

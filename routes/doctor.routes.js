@@ -86,9 +86,41 @@ router.get('/sessioninfo', isAdmin, async (req, res) => {
         if (!doctors) {
             throw new Error("Couldn't find any")
         }
-        //TODO:fetch next day appointments
-        res.render('sessionInfo', { doctors })
+        var today = new Date();
+        var nextDay = new Date(today);
+        nextDay.setDate(today.getDate() + 1);
+
+        var year = nextDay.getFullYear();
+        var month = String(nextDay.getMonth() + 1).padStart(2, '0');
+        var day = String(nextDay.getDate()).padStart(2, '0');
+
+        const newDate = `${year}-${month}-${day}`
+        console.log(newDate);
+        const nextApp = await appointmentModel.aggregate([
+            { $match: { doctorId: doctors._id, "user.date": newDate } },
+            { $lookup: { from: "users", foreignField: "_id", localField: "userId", as: "userId", pipeline: [{ $project: { email: 1 } }] } },
+            {
+                $addFields: {
+                    "fullname": "$user.fullname",
+                    "age": "$user.age",
+                    "time": "$user.time",
+                    "email": { $arrayElemAt: ["$userId.email", 0] }
+                }
+            },
+            {
+                $project: {
+                    "fullname": 1,
+                    "age": 1,
+                    "time": 1,
+                    "email": 1
+                }
+            }
+        ]);
+
+        console.log(nextApp);
+        res.render('sessionInfo', { doctors, nextApp })
     } catch (error) {
+        console.log(error);
         res.redirect('/admin')
     }
 })
@@ -118,7 +150,6 @@ router.post("/addTips", async (req, res) => {
 })
 router.get("/emergency", isAdmin, async function (req, res) {
 
-    // 2024-04-28
     try {
         const today = new Date();
         const year = today.getFullYear();
@@ -130,28 +161,32 @@ router.get("/emergency", isAdmin, async function (req, res) {
             { $match: { username: req.session.username } },
             { $project: { _id: 1, name: 1 } }
         ])
-
+        console.log(doc);
         const idsToUpdate = await appointmentModel.aggregate([
             { $match: { "user.date": currentDate, doctorId: doc[0]._id } },
-            { $lookup: { from: "users", localField: "userId", foreignField: "_id", as: "email", pipeline: [{ $project: { email: 1 } }] } },
-            { $project: { _id: 1, email: email[0].email } }
+            { $lookup: { from: "users", localField: "userId", foreignField: "_id", as: "user" } },
+            { $unwind: "$user" },
+            { $project: { _id: 1, email: "$user.email" } },
+            { $group: { _id: null, _idArray: { $push: "$_id" }, emailArray: { $push: "$email" } } },
+            { $project: { _id: 0, _idArray: 1, emailArray: 1 } }
         ])
 
-        console.log(idsToUpdate);
+        console.log(idsToUpdate[0].emailArray);
+        const date = new Date(currentDate)
         date.setDate(date.getDate() + 1);
         const year2 = date.getFullYear();
         const month2 = String(date.getMonth() + 1).padStart(2, '0');
         const day2 = String(date.getDate()).padStart(2, '0');
-
         const newDate = `${year2}-${month2}-${day2}`
-        const filter = { _id: { $in: idsToUpdate } };
+        const filter = { _id: { $in: idsToUpdate[0]._idArray } };
         const update = { $set: { 'user.date': newDate } };
         const options = { multi: true };
-
         const result = await appointmentModel.updateMany(filter, update, options);
-        await sendMail({ username: doc[0].name, email: newDate, password: "", type: "RESEDULED" })
+        await sendMail({ username: doc[0].name, email: idsToUpdate[0].emailArray, password: newDate, type: "RESEDULED" })
         console.log(`${result.nModified} document(s) updated`);
+        res.sendStatus(200)
     } catch (error) {
+        console.log(error);
         res.status(500).send("Error updating user data");
     }
 })

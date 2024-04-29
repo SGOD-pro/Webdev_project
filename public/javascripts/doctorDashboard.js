@@ -15,15 +15,20 @@ const addTips = () => {
         }).catch(error => {
             console.log(error.response.data);
             console.log(error.response.status);
-            ShowToast(error.response.data,"danger")
+            ShowToast(error.response.data, "danger")
         })
 }
 
 const emergency = () => {
-    confirm("Are you sure?")
+    const req = confirm("Are you sure?")
+    if (req) {
+        axios.get("/doctor/emergency")
+            .then(response => {
+                if (response) {
+                    window.location.reload();
+                }
+            }).catch(error => {
+                ShowToast(error.response.data, "danger")
+            })
+    }
 }
-
-document.getElementById("update-profile-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-
-})
