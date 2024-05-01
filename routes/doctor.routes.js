@@ -5,6 +5,7 @@ var appointmentModel = require("../models/Appointment")
 var tipstModel = require("../models/Tips")
 var sendMail = require("../utils/sendMail")
 var isAdmin = require("../middlewares/isAdmin")
+const uploads = require('../middlewares/Multer');
 
 router.get('/allpatients', isAdmin, async (req, res) => {
     try {
@@ -124,13 +125,44 @@ router.get('/sessioninfo', isAdmin, async (req, res) => {
         res.redirect('/admin')
     }
 })
-
-router.get('/profile', isAdmin, async (req, res) => {
-    const doctors = await doctorModel.findOne({ username: req.session.username }).select("-username");
-    console.log(doctors);
-    res.render('DoctorProfile', { doctors })
+router.get('/profile', isAdmin, (req, res) => {
+    res.render('DoctorProfile')
 })
+router.get('/profileDetails', isAdmin, async (req, res) => {
+    try {
+        const doctors = await doctorModel.findOne({ username: req.session.username }).select("-username");
+        console.log(doctors);
+        res.status(200).json({ doctors });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+router.post("/updateProfile", isAdmin, uploads.single("image"), async (req, res) => {
+    try {
 
+        const { charges, clinicLocation, days, experience, from, speciality, to } = req.body
+        if ([clinicLocation, experience, from, speciality, to].some(item => !item || item.trim() === "")) {
+            const error = new Error("Some fields are required.")
+            error.status = 401
+            throw error
+        }
+        if (!charges || days.length === 0) {
+            const error = new Error("Some fields are required.")
+            error.status = 401
+            throw error
+        }
+        console.log(req.body);
+        const update = {
+            $set: {
+                charges, clinicLocation, days, experience, speciality, timing: `${from} - ${to}`
+            }
+        }
+        const doctors = await doctorModel.findOneAndUpdate({ username: req.session.username }, update)
+        res.status(200).json({ message: "Profile updated successfully." });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
 router.post("/addTips", async (req, res) => {
     try {
         const { tips } = req.body
@@ -161,9 +193,8 @@ router.get("/emergency", isAdmin, async function (req, res) {
             { $match: { username: req.session.username } },
             { $project: { _id: 1, name: 1 } }
         ])
-        console.log(doc);
         const idsToUpdate = await appointmentModel.aggregate([
-            { $match: { "user.date": currentDate, doctorId: doc[0]._id } },
+            { $match: { "user.date": currentDate, doctorId: doc[0]._id, status: "PENDING" } },
             { $lookup: { from: "users", localField: "userId", foreignField: "_id", as: "user" } },
             { $unwind: "$user" },
             { $project: { _id: 1, email: "$user.email" } },
@@ -171,7 +202,11 @@ router.get("/emergency", isAdmin, async function (req, res) {
             { $project: { _id: 0, _idArray: 1, emailArray: 1 } }
         ])
 
-        console.log(idsToUpdate[0].emailArray);
+        console.log(idsToUpdate);
+        if (idsToUpdate.length === 0) {
+            res.sendStatus(200)
+            return;
+        }
         const date = new Date(currentDate)
         date.setDate(date.getDate() + 1);
         const year2 = date.getFullYear();
@@ -188,6 +223,26 @@ router.get("/emergency", isAdmin, async function (req, res) {
     } catch (error) {
         console.log(error);
         res.status(500).send("Error updating user data");
+    }
+})
+
+router.get('/appCancel/:id', isAdmin, async (req, res) => {
+    try {
+        const update = { $set: { status: "CANCEL" } }
+        await appointmentModel.findByIdAndUpdate(req.params.id, update)
+        res.sendStatus(200)
+    } catch (error) {
+        res.status(500).send("Couldn't modify status of appointment");
+
+    }
+})
+router.get('/appDone/:id', isAdmin, async (req, res) => {
+    try {
+        const update = { $set: { status: "SUCCESS" } }
+        await appointmentModel.findByIdAndUpdate(req.params.id, update)
+        res.sendStatus(200)
+    } catch (error) {
+        res.status(500).send("Couldn't modify status of appointment");
     }
 })
 module.exports = router;

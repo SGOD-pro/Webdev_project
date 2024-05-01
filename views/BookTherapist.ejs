@@ -48,7 +48,8 @@
             object-fit: cover;
             object-position: top;
         }
-        #app-form-grp form{
+
+        #app-form-grp form {
             width: calc(100% - 200px);
         }
     </style>
@@ -59,6 +60,7 @@
                 <% include ./partials/userNavbar.ejs %>
                     <div class="app-form absolute rounded-4 p-2 top-50 start-50 translate-middle z-100 invisible">
                         <h2 class="text-md">New Appointment</h2>
+
                         <span class="material-symbols-outlined absolute end-0 top-0 p-2" role="button"
                             onclick="hideAppForm()">
                             cancel
@@ -115,7 +117,29 @@
                         </div>
                     </div>
                     <section class="h-full scrollbar">
-                        <h1 class="text-lg">Our Therapist</h1>
+                        <div class="flex justify-between">
+
+                            <h1 class="text-lg">Our Therapist</h1>
+                            <div class="pe-4">
+                                <select class="form-select" aria-label="Default select example" id="speciality"
+                                    name="speciality" required data-bs-theme="dark">
+                                    <option selected>Filter by Speciality</option>
+                                    <option value="null" id="null">All</option>
+                                    <option value="Clinical Psychology" id="Clinical Psychology">Clinical Psychology
+                                    <option value="Neuropsychology" id="Neuropsychology">Neuropsychology</option>
+                                    <option value="Educational Psychology" id="Educational Psycholog">Educational
+                                        Psychology</option>
+                                    <option value="Social Psychology" id="Social Psychology">Social Psychology</option>
+                                    <option value="Child Psychology" id="Child Psychology">Child Psychology</option>
+
+                                    <option value="Psychiatry" id="Psychiatry">Psychiatry</option>
+                                    <option value="Psychotherapy" id="Psychotherapy">Psychotherapy</option>
+                                    <option value="Psychoanalyst" id="Psychoanalyst">Psychoanalyst</option>
+                                    <option value="Addiction Psychiatry" id="Addiction Psychiatry">Addiction Psychiatry
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="container scrollbar">
                             <% allDoctors.forEach(item=> {%>
                                 <div class="card inline-block m-1" style="width: 18rem;">

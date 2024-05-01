@@ -10,9 +10,10 @@
             text-align: center;
             font-size: 18px;
             background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: flex!important;
+            justify-content: space-around!important;;
+            align-items: center!important;
+            
         }
 
         .swiper-slide img {
@@ -84,6 +85,7 @@
 
         .swiper-slide:nth-child(7) .image {
             background-color: rgba(128, 0, 128, 0.5);
+
         }
 
         .swiper-slide .image img {
@@ -121,11 +123,11 @@
         cite {
             grid-column: 2/3;
             font-size: 1.3rem;
-            font-size: clamp(1rem, 3vw, 1.6rem);
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
 
             font-weight: 100;
             font-style: normal;
-            transform: translateX(-30%);
+            transform: translateX(-35%);
             text-align: left;
         }
     </style>
@@ -142,7 +144,7 @@
                             <div class="swiper mySwiper">
                                 <div class="swiper-wrapper">
                                     <% slider.forEach(element => { %>
-                                        <div class="swiper-slide">
+                                        <div class="swiper-slide mx-4">
                                             <div class="image d-flex justify-content-end align-items-end">
                                                 <img src="<%= element.image %>" alt="">
                                             </div>

@@ -76,3 +76,14 @@ document.getElementById("add-app-form").addEventListener("submit", (event) => {
         })
 })
 
+const selectElement = document.getElementById('speciality');
+
+selectElement.addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+
+    if (selectedValue === "null") {
+        window.location.href = "/users/therapist";
+    } else {
+        window.location.href = "/users/therapist?speciality=" + encodeURIComponent(selectedValue);
+    }
+});

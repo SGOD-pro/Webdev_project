@@ -89,8 +89,9 @@
                     <div class="navbar text-center mb-2">
 
                         <label for="profileImage" class="image m-auto position-relative">
-                            <img src="https://wallpapercave.com/wp/wp7665585.jpg" alt="Doctor Image ">
-                            <input type="file" id="profileImage" accept="image/*" class="position-absolute invisible">
+                            <img src="" alt="Doctor Image" id="profile-pic">
+                            <input type="file" id="image" name="image" accept="image/*"
+                                class="position-absolute invisible">
                             <div class="ico position-absolute flex items-center justify-center" role="button">
                                 <span class="material-symbols-outlined">
                                     add_a_photo
@@ -99,49 +100,53 @@
                         </label>
 
                         <div class="my-4 ms-5 text-start">
-                            <h2>Dr. John Doe</h2>
-                            <p>Email: john.doe@example.com</p>
-                            <p>Contact: +1234567890</p>
+                            <h2 id="doctorName">
+                            </h2>
+                            <p>Email: <span id="docEmail"></span>
+                            </p>
+                            <p>Contact: <span id="docContact"></span>
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="right-side rounded-4 p-3">
                     <h2>Edit Profile</h2>
-                    <form class=" p-4 pt-1" id="update-profile-form">
+                    <form class="p-4 pt-1" id="update-profile-form">
 
                         <div class="">
                             <h2>Qualifications</h2>
                             <div class="mb-2">
                                 <label for="degree">Degree</label>
                                 <select class="form-select" aria-label="Default select example" required>
-                                    <option value="MD in Psychiatry">MD in Psychiatry</option>
-                                    <option value="DNB in Psychiatry">DNB in Psychiatry</option>
-                                    <option value="MA or MSc in Psycholog">MA or MSc in Psychology</option>
-                                    <option value="PhD in Psychology">PhD in Psychology</option>
+                                    <option value="MD in Psychiatry" id="MD in Psychiatry">MD in Psychiatry</option>
+                                    <option value="DNB in Psychiatry" id="DNB in Psychiatry">DNB in Psychiatry</option>
+                                    <option value="MA or MSc in Psychology" id="MA or MSc in Psycholog">MA or MSc in
+                                        Psychology</option>
+                                    <option value="PhD in Psychology" id="PhD in Psychology">PhD in Psychology</option>
                                 </select>
                             </div>
 
                             <div class="mb-2">
-                                <label for="specialization">Specialization</label>
-                                <select class="form-select" aria-label="Default select example" name="speciality" required>
-                                    <option selected value="null">Open this select menu</option>
-                                    <option value="Clinical Psychology">Clinical Psychology</option>
-                                    <option value="Neuropsychology">Neuropsychology</option>
-                                    <option value="Educational Psychology">Educational Psychology</option>
-                                    <option value="Social Psychology">Social Psychology</option>
-                                    <option value="Child Psycholog">Child Psychology</option>
-                                    
-                                    <option value="Psychiatry">Psychiatry</option>
-                                    <option value="Psychotherapy">Psychotherapy</option>
-                                    <option value="Psychoanalyst">Psychoanalyst</option>
-                                    <option value="Addiction Psychiatry">Addiction Psychiatry</option>
-                                  </select>
+                                <label for="speciality">Specialization</label>
+                                <select class="form-select" aria-label="Default select example" id="speciality"
+                                    name="speciality" required>
+                                    <option value="Clinical Psychology" id="Clinical Psychology">Clinical Psychology</option>
+                                    <option value="Neuropsychology" id="Neuropsychology">Neuropsychology</option>
+                                    <option value="Educational Psychology" id="Educational Psycholog">Educational Psychology</option>
+                                    <option value="Social Psychology" id="Social Psychology">Social Psychology</option>
+                                    <option value="Child Psychology" id="Child Psychology">Child Psychology</option>
+
+                                    <option value="Psychiatry" id="Psychiatry">Psychiatry</option>
+                                    <option value="Psychotherapy" id="Psychotherapy">Psychotherapy</option>
+                                    <option value="Psychoanalyst" id="Psychoanalyst">Psychoanalyst</option>
+                                    <option value="Addiction Psychiatry" id="Addiction Psychiatry">Addiction Psychiatry</option>
+                                </select>
                             </div>
 
                             <div class="mb-2">
                                 <label for="experience" class="form-label">Experience</label>
-                                <input type="text" class="form-control" id="experience" name="experience">
+                                <input type="number" class="form-control" id="experience" name="experience" required>
                             </div>
                         </div>
 
@@ -149,46 +154,46 @@
                             <h2> Clinic details </h2>
                             <div class="mb-2">
                                 <label for="clinicLocation" class="form-label">Clinic Location</label>
-                                <input type="text" class="form-control" id="clinicLocation" name="clinicLocation">
+                                <input type="text" class="form-control" id="clinicLocation" name="clinicLocation" required>
                             </div>
 
                             <div class="row g-3 align-items-end">
                                 <div class="col-md-4">
                                     <label for="charges" class="form-label">Clinic Charges</label>
-                                    <input type="number" class="form-control" id="charges" name="charges">
+                                    <input type="number" class="form-control" id="charges" name="charges" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="from" class="form-label">From</label>
-                                    <input type="time" class="form-control" id="from" name="from">
+                                    <input type="time" class="form-control" id="from" name="from" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="to" class="form-label">To</label>
-                                    <input type="time" class="form-control" id="to" name="to">
+                                    <input type="time" class="form-control" id="to" name="to" required>
                                 </div>
                             </div>
                             <div class="mt-2">
                                 <label for="daysAvailable">Days Available</label>
                                 <div class="checkbox-group d-flex gap-3 days">
-                                    <label><input class="form-check-input" type="checkbox" value="S" id="S">
+                                    <label><input class="form-check-input" type="checkbox" value="Sun" id="Sun">
                                         Sunday</label>
-                                    <label><input class="form-check-input" type="checkbox" value="M" id="M">
+                                    <label><input class="form-check-input" type="checkbox" value="Mon" id="Mon">
                                         Monday</label>
-                                    <label><input class="form-check-input" type="checkbox" value="T" id="T">
+                                    <label><input class="form-check-input" type="checkbox" value="Tue" id="Tue">
                                         Tuesday</label>
-                                    <label><input class="form-check-input" type="checkbox" value="W" id="W">
+                                    <label><input class="form-check-input" type="checkbox" value="Wed" id="Wed">
                                         Wednesday</label>
-                                    <label><input class="form-check-input" type="checkbox" value="T" id="T">
+                                    <label><input class="form-check-input" type="checkbox" value="Thrus" id="Thrus">
                                         Thursday</label>
-                                    <label><input class="form-check-input" type="checkbox" value="F" id="F">
+                                    <label><input class="form-check-input" type="checkbox" value="Fri" id="Fri">
                                         Friday</label>
-                                    <label><input class="form-check-input" type="checkbox" value="S" id="S">
-                                        Saturday</label>
+                                    <label><input class="form-check-input" type="checkbox" value="Sat" id="Sat">
+                                        Saturday</label>.
+
                                 </div>
                             </div>
-
                         </div>
                         <div class="my-3">
-                            <button class="btn btn-primary">Save</button>
+                            <button class="btn btn-primary" id="edit-dr-btn">Save</button>
                         </div>
                     </form>
                 </div>
@@ -196,9 +201,76 @@
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
             <script>
+                (function () {
+                    axios.get("/doctor/profileDetails")
+                        .then((response) => {
+                            console.log(response.data);
+                            console.log("kiii");
+                            document.getElementById('doctorName').innerText = response.data.doctors.name;
+                            document.getElementById('docEmail').innerText = response.data.doctors.email;
+                            document.getElementById('docContact').innerText = response.data.doctors.contactNo;
+                            
+                            document.getElementById('profile-pic').src = response.data.doctors.image
+                            
+                            document.getElementById(response.data.doctors.qualification.degree).selected = true;
+                            document.getElementById(response.data.doctors.speciality).selected = true;
+                            document.getElementById('experience').value = response.data.doctors.experience;
+                            document.getElementById('clinicLocation').value = response.data.doctors.clinicLocation;
+                            document.getElementById('charges').value = response.data.doctors.charges;
+
+                            const timing = response.data.doctors.timing.split('-');
+                            document.getElementById('from').value = timing[0].trim();
+                            document.getElementById('to').value = timing[1].trim();
+
+                            response.data.doctors.days.forEach(function (day) {
+                                document.getElementById(day).checked = true;
+                            });
+
+                        })
+                        .catch((error) => {
+                            ShowToast(error.response.data, "danger")
+
+                        });
+
+                })();
                 document.getElementById("update-profile-form").addEventListener("submit", (e) => {
                     e.preventDefault();
+                    const formData = new FormData(e.target);
+                    const jsonData = {};
+                    formData.forEach((value, key) => {
+                        jsonData[key] = value;
+                    });
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    const checkedValues = [];
+                    checkboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            checkedValues.push(checkbox.value);
+                        }
+                    });
+                    console.log(checkedValues);
+                    if (checkedValues.length === 0) {
+                        ShowToast('Please select days', 'warning')
+                        return;
+                    }
 
+                    const data = { ...jsonData, days: checkedValues }
+                    console.log(data);
+                    const dr = document.getElementById("edit-dr-btn");
+                    dr.setAttribute("disabled", true);
+                    dr.innerHTML = "Saving.. <i class='bx bx-loader bx-spin text-md'></i>"
+                    axios.post("/doctor/updateProfile", data, {
+                        headers: { 'Content-Type': 'multipart/form-data' }
+                    }).then(response => {
+                        console.log(response.data);
+                        ShowToast("Data updated", "success")
+                    }).catch(error => {
+                        console.log(error.response.data);
+                        ShowToast(error.response.data, "danger")
+                        console.log(error.response.status);
+                    }).finally(() => {
+                        dr.removeAttribute("disabled");
+                        dr.innerHTML = "Save"
+                    });
                 })
             </script>
             <% include ./partials/footer.ejs %>

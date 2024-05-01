@@ -4,10 +4,10 @@ var usersModel = require("../models/User")
 var doctorsModel = require("../models/Doctor")
 var appointmentModel = require("../models/Appointment")
 var tipsModel = require("../models/Tips")
-var feedbackModel = require("../models/Feedback")
 var isVerified = require("../middlewares/verify");
 const sendMail = require("../utils/sendMail")
 const { default: mongoose } = require('mongoose');
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -15,6 +15,7 @@ function shuffleArray(array) {
   }
   return array;
 }
+
 router.get("/", isVerified, async (req, res) => {
   const user = await usersModel.findById(req.session._id)
 
@@ -109,13 +110,12 @@ router.get("/feedback", isVerified, async (req, res) => {
         $project: {
           "doctor": 1,
           "user": 1,
-          "status": 1
+          "status": 1,
+          "feedback": 1
         }
       }
     ]);
 
-
-    // const appointments = await appointmentModel.find({ _id: req.session._id });
 
     console.log(appointments);
     res.render("feedback", { user, appointments })
@@ -127,9 +127,24 @@ router.get("/payment", isVerified, async (_, res) => {
   res.render("paymentPage")
 })
 router.get("/therapist", isVerified, async (req, res) => {
-  const allDoctors = await doctorsModel.find()
-  const user = await usersModel.findById(req.session._id).select("-password")
-  res.render("BookTherapist", { user, allDoctors: shuffleArray(allDoctors) })
+  try {
+    let speciality = req.query.speciality;
+    if (speciality) {
+      speciality = speciality.replace(/\+/g, " "); // Replace all occurrences of "+" with space
+      console.log(speciality);
+    }
+    let allDoctors = null
+    if (!speciality || speciality === "null") {
+      allDoctors = await doctorsModel.find()
+    } else {
+      allDoctors = await doctorsModel.find({ speciality })
+    }
+    const user = await usersModel.findById(req.session._id).select("-password")
+    res.render("BookTherapist", { user, allDoctors: shuffleArray(allDoctors) })
+  } catch (error) {
+    console.log(error);
+    res.redirect("/users")
+  }
 })
 router.post("/register", async function (req, res) {
   try {
@@ -162,7 +177,6 @@ router.post("/register", async function (req, res) {
     res.status(statusCode).send(error.message);
   }
 })
-
 
 router.post('/login', async (req, res) => {
   try {
@@ -203,30 +217,31 @@ router.get('/logout', isVerified, (req, res) => {
     }
   });
 });
-
-router.post("/feedback/:appId", isVerified, async function (req, res) {
-
+router.post("/addfeedback", isVerified, async function (req, res) {
   try {
-    const comments = req.body
-    const appId = req.params.id
-    // TODO: fetch the doctor id from database
-    const doctorId = nll
-    const createdFeed = feedbackModel.create({
-      comments,
-      userId,
-      doctorId,
-    })
+    const { feedback, id } = req.body;
+
+    console.log(req.body);
+    const feed = await appointmentModel.aggregate([
+      { $match: { _id: new mongoose.Types.ObjectId(id) } }
+    ]);
+    console.log(feed);
+    const update = { $set: { feedback } };
+    const createdFeed = await appointmentModel.findByIdAndUpdate(id, update, { new: true });
+    console.log("new feedback", createdFeed);
+
     if (!createdFeed) {
       const error = new Error("Server error");
       error.status = 500;
       throw error;
     }
-    res.status(200).send("Added feedback")
+    res.sendStatus(200);
   } catch (error) {
-    res.status(error.status).send(error.message);
-
+    console.log(error.message);
+    res.status(error.status || 500).send(error.message);
   }
-})
+});
+
 router.post('/exists', async (req, res) => {
   try {
     const { date, time, doctorId } = req.body
@@ -280,7 +295,5 @@ router.post('/new-appointment', isVerified, async function (req, res) {
 
   }
 })
-
-
 
 module.exports = router;

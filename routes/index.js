@@ -44,9 +44,9 @@ router.get('search', async (req, res) => {
   const regex = new RegExp(searchTerm.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'i');
   res.sendStatus(200)
 })
+
 router.get('/contactus', (req, res) => {
   res.render('contactus')
 })
-
 
 module.exports = router;

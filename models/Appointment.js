@@ -38,10 +38,8 @@ const appointmentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users',
     },
-
     feedback: {
-        type: Schema.Types.ObjectId,
-        ref: 'feedbacks',
+        type: String,
     },
     status: {
         type: String,

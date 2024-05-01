@@ -21,6 +21,7 @@
             height: 100%;
             object-fit: cover;
         }
+
         .card {
             width: 100%;
             height: 100%;
@@ -29,13 +30,14 @@
             background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
             box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
             display: flex;
-            align-items: center;justify-content: space-evenly;
-            }
-        .card p{
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .card p {
             font-weight: bold;
         }
-     
-</style>
+    </style>
     <link rel="stylesheet" href="/stylesheets/dashboard.css">
 
     <body>
@@ -44,7 +46,9 @@
                 <% include ./partials/userNavbar.ejs %>
                     <section class="flex">
                         <div class="right-side flex flex-col">
-                            <h1> Dashboard </h1>
+                            <div class="flex justify-between">
+                                <h1> Dashboard </h1>
+                            </div>
                             <div class="items flex gap-3">
                                 <div class="item flex flex-col gap-3 p-2 px-3">
                                     <h4 class="text-basic">Appointments</h4>
@@ -65,48 +69,64 @@
                                     <div class="swiper-slide">
                                         <div class="card">
                                             <p>
-                                            <h1>Maintain a Support Network:</h1> Stress the importance of maintaining social connections with friends, family, or support groups. Having a support network can provide comfort, advice, and perspective during difficult times.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <p> 
-                                            <h1>Prioritize Self-Care: </h1>Encourage your patients to prioritize self-care activities such as exercise, proper nutrition, adequate sleep, and relaxation techniques like meditation or deep breathing exercises.</p>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <p>
-                                            <h1>Stick to a Routine: </h1>Establishing a daily routine can provide structure and stability, which can be especially helpful for individuals struggling with mood disorders or anxiety.
+                                            <h1>Maintain a Support Network:</h1> Stress the importance of maintaining
+                                            social connections with friends, family, or support groups. Having a support
+                                            network can provide comfort, advice, and perspective during difficult times.
                                             </p>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="card">
                                             <p>
-                                            <h1>Practice Mindfulness:</h1> Encourage mindfulness practices to help patients stay present in the moment and manage stress more effectively. Techniques such as mindfulness meditation, yoga, or journaling can be beneficial.
+                                            <h1>Prioritize Self-Care: </h1>Encourage your patients to prioritize
+                                            self-care activities such as exercise, proper nutrition, adequate sleep, and
+                                            relaxation techniques like meditation or deep breathing exercises.</p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <p>
+                                            <h1>Stick to a Routine: </h1>Establishing a daily routine can provide
+                                            structure and stability, which can be especially helpful for individuals
+                                            struggling with mood disorders or anxiety.
                                             </p>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="card">
                                             <p>
-                                                <h1>Practice Relaxation Techniques:</h1> Teach patients relaxation techniques such as progressive muscle relaxation, guided imagery, or visualization to help reduce stress and promote relaxation.
+                                            <h1>Practice Mindfulness:</h1> Encourage mindfulness practices to help
+                                            patients stay present in the moment and manage stress more effectively.
+                                            Techniques such as mindfulness meditation, yoga, or journaling can be
+                                            beneficial.
                                             </p>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="card">
                                             <p>
-                                            <h1> Stay Engaged in Treatment:</h1> Stress the importance of staying engaged in their treatment plan, whether it involves therapy, medication, or both. Encourage open communication with their mental health provider and active participation in their own recovery.
+                                            <h1>Practice Relaxation Techniques:</h1> Teach patients relaxation
+                                            techniques such as progressive muscle relaxation, guided imagery, or
+                                            visualization to help reduce stress and promote relaxation.
                                             </p>
                                         </div>
                                     </div>
                                     <div class="swiper-slide">
                                         <div class="card">
                                             <p>
-                                            <h1>Challenge Negative Thoughts: </h1> Teach patients to identify and challenge negative thought patterns or cognitive distortions. Encourage them to replace negative self-talk with more balanced and realistic thoughts.
+                                            <h1> Stay Engaged in Treatment:</h1> Stress the importance of staying
+                                            engaged in their treatment plan, whether it involves therapy, medication, or
+                                            both. Encourage open communication with their mental health provider and
+                                            active participation in their own recovery.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <p>
+                                            <h1>Challenge Negative Thoughts: </h1> Teach patients to identify and
+                                            challenge negative thought patterns or cognitive distortions. Encourage them
+                                            to replace negative self-talk with more balanced and realistic thoughts.
                                             </p>
                                         </div>
                                     </div>
@@ -162,7 +182,8 @@
                                         </table>
                                         <% }else{%>
                                             <h3 class="text-md opacity-6 mt-4">Nothing to show</h3>
-                                            <a href="/users/therapist" style="text-decoration: underline; " class="link-offset-2">Consult Therapist</a>
+                                            <a href="/users/therapist" style="text-decoration: underline; "
+                                                class="link-offset-2">Consult Therapist</a>
                                             <% } %>
                                 </div>
                             </div>
@@ -196,4 +217,5 @@
                 localStorage.clear()
             }
         </script>
+       
         <% include ./partials/footer.ejs %>

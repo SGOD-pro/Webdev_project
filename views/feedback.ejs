@@ -111,20 +111,20 @@
                                                 </p>
                                             </div>
                                             <div class="feedback mt-4">
-                                                <% if (element.status==="SUCCESS" ) {%>
-                                                    <textarea name="feedback" id="" cols="30" rows="10"
+                                                <% if (element.status==="SUCCESS" && (element.feedback===""||!element.feedback)) {%>
+                                                    <textarea name="feedback" cols="30" rows="10"
                                                         class="w-full rounded-2 p-1 text-sm"
-                                                        placeholder="Write Feedback.." name="comment">success</textarea>
+                                                        placeholder="Write Feedback.." id="comment"
+                                                        data-id="<%=element._id %>"></textarea>
                                                     <button class="btn btn-info flex items-center justify-center"
-                                                        data-id="<%=element._id %>"><i
+                                                        onclick="sendFeedback(event)" data-id="<%=element._id %>"><i
                                                             class='bx bxs-send text-md px-2'></i></button>
                                                     <% }else{%>
                                                         <textarea name="feedback" id="" cols="30" rows="10"
                                                             class="w-full rounded-2 p-1 text-sm"
-                                                            placeholder="Write Feedback.." readonly></textarea>
+                                                            placeholder="Write Feedback.." readonly><%=element.feedback %></textarea>
                                                         <button class="btn btn-info flex items-center justify-center"
-                                                            data-id="<%=element._id %>" disabled><i
-                                                                class='bx bxs-send text-md px-2'></i></button>
+                                                            disabled><i class='bx bxs-send text-md px-2'></i></button>
                                                         <% } %>
 
                                             </div>
@@ -138,6 +138,25 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-        <script src="/javascripts/userScript.js"></script>
+        <script>
+          const sendFeedback = (event) => {
+  const id = event.target.getAttribute("data-id");
+  const textarea = document.querySelector(`textarea[data-id="${id}"]`);
+  console.log("hii");
+  console.log(textarea);
+  console.log(id);
+
+  const data = { feedback: textarea.value,id }; // Change 'comments' to 'feedback'
+  console.log(data);
+  axios.post(`/users/addfeedback`, data)
+    .then(response => {
+      window.location.reload();
+    })
+    .catch(error => {
+      ShowToast(error.response.data, "danger")
+    })
+}
+
+        </script>
 
         <% include ./partials/footer.ejs %>

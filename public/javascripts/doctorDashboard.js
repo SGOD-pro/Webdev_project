@@ -32,3 +32,19 @@ const emergency = () => {
             })
     }
 }
+const appCancel = (id) => {
+    axios.get(`/doctor/appCancel/${id}`)
+        .then((response) => {
+            window.location.reload()
+        }).catch((error) => {
+            ShowToast(error.response.data, "danger")
+        });
+}
+const appDone = (id) => {
+    axios.get(`/doctor/appDone/${id}`)
+        .then((response) => {
+            window.location.reload()
+        }).catch((error) => {
+            ShowToast(error.response.data, "danger")
+        });
+}
