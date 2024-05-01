@@ -9,7 +9,7 @@ document.querySelector(".form-container>span").addEventListener('click', functio
 const showDropdown = () => {
     document.querySelector("#dropdown").classList.toggle("active")
 }
- 
+
 document.querySelector("#add-doctors").addEventListener("submit", (e) => {
     e.preventDefault();
     const form = document.getElementById('add-doctors');
