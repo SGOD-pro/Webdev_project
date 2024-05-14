@@ -4,7 +4,7 @@
          #f0ae77,
          rgb(212, 124, 201)
     );
-    color: #fff;
+    color: var(--primary-text-color);
     padding: 5px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgb(0, 0, 0,.8);
@@ -16,7 +16,10 @@
 }
 .right-side{
     max-width: 60%;
-    color: #f4f4f4;
+    color: var(--primary-text-color);
+}
+.right-side h1{
+    color: var(--primary-text-color);
 }
 .left-side {
     padding: clamp(.5rem,.15rem + 2vw,1.4rem);

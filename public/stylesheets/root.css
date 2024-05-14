@@ -11,10 +11,10 @@ body {
 	max-width: 100vw;
 }
 :root {
-	--primary-bg-color: #adcccc;
-	--secondary-bg-color: #82bddc;
+	--primary-bg-color: #F9F7F7;
+	--secondary-bg-color: #EAEAEA;
 	--primary-text-color: #101010;
-	--theme-color: #00a8cc;
+	--theme-color: #3282B8;
 
 	--font1: "Work Sans", sans-serif;
 	--font2: "Josefin Sans", sans-serif;
@@ -33,8 +33,8 @@ input {
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-		--secondary-bg-color: #1b262c;
-		--primary-bg-color: #0d1717;
+		--primary-bg-color: #252A34;
+		--secondary-bg-color: #1B2430;
 		--primary-text-color: #f4f4f4;
 	}
 }
