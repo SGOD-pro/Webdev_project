@@ -8,10 +8,21 @@
 
     .my-toast {
         transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        backdrop-filter: blur(10px);
+        font-size: 1.3rem;
+        line-height: 1.3rem;
+        max-width: 350px;
     }
 
     .my-toast span {
         cursor: pointer;
+        font-size: 1.8rem;
+    }
+
+    .absolute-ico {
+        top: 5%;
+        right: 1.1%;
+        position: absolute;
     }
 
     .error-num {
@@ -35,16 +46,17 @@
         parent.style.display = "block"
         let toast = document.createElement("div")
         toast.style.opacity = "1"
-        toast.innerHTML = ` <div class="my-toast rounded-2 bg-${type} text-${type} p-2 my-1 py-1 border border-${type} bg-opacity-25 flex gap-2 items-center">
+        toast.innerHTML = ` <div class="my-toast rounded-2 bg-${type} text-${type} p-2 my-1 py-3 pe-5 bg-opacity-10 flex gap-2 items-center position-relative">
             ${error}
-<span class="material-symbols-outlined text-lg" onclick="deleteParent(this)">
+<div class="absolute-ico">
+    <span class="material-symbols-outlined" onclick="deleteParent(this)">
     disabled_by_default
-    </span>
+    </span></div>
 </div>`
         parent.appendChild(toast)
         setTimeout(() => {
             parent.removeChild(toast)
-        }, 10000 + c * 1000);
+        }, 8000 + c * 500);
         c += 1
     }
 </script>

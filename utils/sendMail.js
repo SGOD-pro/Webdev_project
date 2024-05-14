@@ -115,7 +115,6 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
                         <div class="title">
                             <h1> Successfully registerd on Mind Peace </h1>
                         </div>
-        
                     </div>
                     <div class="para">
                         <p> Be part of a dynamic community dedicated to providing accessible and quality healthcare to all.</p>
@@ -243,7 +242,7 @@ async function sendMail({ email, username, password, type = "DOCTOR" }) {
                 <div class="container">
                     <h2 style="text-align: center;">Appointment Rescheduled</h2>
                     <p>Hello there,</p>
-                    <p>We want to inform you that due to an emergency your appointment with Dr. ${username}  has been rescheduled to the next day by doctor.</p>
+                    <p>We want to inform you that due to an emergency your appointment with ${username}  has been rescheduled to the next day by doctor.</p>
                     <p>Please find the updated appointment details below:</p>
                     <ul>
                         <li><strong>Doctor:</strong> ${username}</li>
