@@ -250,7 +250,7 @@ footer p {
 }
 footer p,
 footer h2 {
-	opacity: 0.4;
+	opacity: 0.8;
 }
 #btn3:hover {
 	background-color: var(--theme-color) !important;
