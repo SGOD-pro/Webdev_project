@@ -10,7 +10,6 @@ body {
 main {
 	font-family: Arial, sans-serif;
 	margin: 0;
-	padding: 1rem;
 	background-color: var(--primary-bg-color);
 	width: 100%;
 	overflow: auto;
@@ -18,6 +17,7 @@ main {
 	max-height: 100vh;
 	scroll-behavior: smooth;
 	padding-top: 5rem;
+	padding-bottom: 0;
 }
 
 .heading {
@@ -53,36 +53,47 @@ main {
 .autoplay-progress {
 	color: var(--theme-color);
 }
-.container{
-	cursor:grab;
+.container {
+	cursor: grab;
 }
-.container:active{
+.container:active {
 	cursor: grabbing;
 }
-.container h1{
-    color: var(--primary-text-color);
+.container::selection {
+	pointer-events: none;
+}
+.container h1 {
+	color: var(--primary-text-color);
 }
 .cards {
 	white-space: nowrap;
 	overflow: auto;
-    border-radius: 10px;
+	border-radius: 10px;
 }
 .card {
 	height: 65vh;
 	background-color: var(--secondary-bg-color);
 	color: var(--primary-text-color);
-
 }
-.card-body h5,.card-body p{
-    pointer-events: none;
+.card-body h5,
+.card-body p {
+	pointer-events: none;
 }
-.card-body{
+.card h5::selection,
+.card p ::selection{
+	pointer-events: none;
+	background-color: transparent;
+}
+.card::selection{
+	pointer-events: none;
+}
+.card-body {
 	height: 45%;
 }
-.card-body p{
-	line-height: .2rem;
+.card-body p {
+	line-height: 0.2rem;
 }
-.card .image{
+.card .image {
 	height: 55%;
 }
 .card img {
@@ -92,4 +103,48 @@ main {
 }
 .card-text {
 	white-space: wrap;
+}
+
+@media (max-width: 678px) {
+	.heading{
+		display: none;
+	}
+	.containers{
+		width: 100% !important;
+		background: #000 !important;
+	}
+	.container {
+		margin: 0;
+		width: 100%;
+	}
+	
+	.cards {
+		width: 100%;
+	}
+	.card {
+		height: 35vh;
+		background-color: var(--secondary-bg-color);
+		color: var(--primary-text-color);
+	}
+	.card-body h5,
+	.card-body p {
+		pointer-events: none;
+	}
+	.card-body {
+		height: 45%;
+	}
+	.card-body p {
+		line-height: 0.2rem;
+	}
+	.card .image {
+		height: 55%;
+	}
+	.card img {
+		height: 100%;
+		object-fit: cover;
+		object-position: top;
+	}
+	.card-text {
+		white-space: wrap;
+	}
 }

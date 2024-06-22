@@ -1,36 +1,38 @@
 
 //Do-dont's
 
-const dont = [
-    "Don't neglect your physical health. Remember that your physical and mental health are interconnected.",
-    "Avoid excessive use of alcohol, drugs, or other substances as a way to cope with stress or emotional issues.",
-    "Don't isolate yourself. Stay connected with others and reach out for support when needed.",
-    "Avoid dwelling on negative thoughts or ruminating on past events. Practice self-compassion and focus on solutions.",
-    "Don't ignore warning signs of mental health problems in yourself or others. Early intervention is key to effective treatment.",
-    "Avoid comparing yourself to others, especially on social media. Remember that everyone's journey is unique.",
-    "Don't be afraid to set boundaries and say no to things that drain your energy or contribute to stress."
+const dont =  [
+    "Prioritize your physical health; it directly affects your mental well-being.",
+    "Limit alcohol, drugs, and other substances as coping mechanisms.",
+    "Stay connected; don't isolate yourself and seek support when needed.",
+    "Avoid negative thinking and focus on solutions with self-compassion.",
+    "Recognize and address mental health warning signs early for effective treatment."
 ]
 let tips = ""
 dont.forEach(item => {
-    tips += `<li>${item}</li>`
+    tips += `<div class="text">
+    ${item}
+</div>`
 })
-const notToDo = document.querySelector("#not-to-do ul")
+const notToDo = document.querySelector("#donts-text")
 notToDo.innerHTML = tips
 
 const dos = [
-    "Practice relaxation techniques such as deep breathing, meditation, or progressive muscle relaxation.",
-    "Engage in activities you enjoy and that bring you a sense of fulfillment.",
-    "Reach out to friends, family, or support groups for social connection and emotional support.",
-    "Set realistic goals and celebrate your achievements, no matter how small.",
-    "Prioritize self-care activities, including getting enough sleep, eating nutritious foods, and exercising regularly.",
-    "Practice mindfulness and stay present in the moment, focusing on what you can control.",
-    "Seek professional help if you're struggling with your mental health. Therapy or counseling can provide valuable support and guidance."
+    
+    "Engage in fulfilling activities you enjoy.",
+    "Connect with friends, family, or support groups.",
+    "Set realistic goals and celebrate small achievements.",
+    
+    "Practice mindfulness and focus on what you can control.",
+    "Seek professional help if struggling with mental health."
 ]
 tips = ""
 dos.forEach(item => {
-    tips += `<li>${item}</li>`
+    tips += `<div class="text">
+                              ${item}
+                          </div>`
 })
-const toDo = document.querySelector("#to-do ul")
+const toDo = document.querySelector("#does-text")
 toDo.innerHTML = tips
 
 

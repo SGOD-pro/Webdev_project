@@ -1,213 +1,123 @@
-<style>
-    #load {
-        position: absolute;
-        width: 600px;
-        height: 36px;
-        left: 50%;
-        top: 40%;
-        margin-left: -300px;
-        overflow: visible;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        cursor: default;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    #load div {
-        position: absolute;
-        width: 20px;
-        height: 36px;
-        opacity: 0;
-        font-family: Helvetica, Arial, sans-serif;
-        animation: move 2s linear infinite;
-        -o-animation: move 2s linear infinite;
-        -moz-animation: move 2s linear infinite;
-        -webkit-animation: move 2s linear infinite;
-        transform: rotate(180deg);
-        -o-transform: rotate(180deg);
-        -moz-transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
-        color: #35C4F0;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./public/stylesheets/root.css">
+        <link rel="stylesheet" href="./public/stylesheets/utlis.css">
+        <style>
+            .image {
+                width: 34.5vw;
+                height: 34.5vw;
 
-    #load div:nth-child(2) {
-        animation-delay: 0.2s;
-        -o-animation-delay: 0.2s;
-        -moz-animation-delay: 0.2s;
-        -webkit-animation-delay: 0.2s;
-    }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    object-position: center;
+                transform: translateY(4%);
 
-    #load div:nth-child(3) {
-        animation-delay: 0.4s;
-        -o-animation-delay: 0.4s;
-        -webkit-animation-delay: 0.4s;
-        -webkit-animation-delay: 0.4s;
-    }
+                }
+            }
 
-    #load div:nth-child(4) {
-        animation-delay: 0.6s;
-        -o-animation-delay: 0.6s;
-        -moz-animation-delay: 0.6s;
-        -webkit-animation-delay: 0.6s;
-    }
+            .text {
+                border-radius: 8px;
+                box-shadow: 4px 4px 10px #101010;
+                padding: 8px;
+                width: 250px;
+                margin-block: 10px;
+            }
 
-    #load div:nth-child(5) {
-        animation-delay: 0.8s;
-        -o-animation-delay: 0.8s;
-        -moz-animation-delay: 0.8s;
-        -webkit-animation-delay: 0.8s;
-    }
+            .texts .text:nth-child(1),
+            .text:nth-last-child(1) {
+                transform: translateX(-55%);
+            }
 
-    #load div:nth-child(6) {
-        animation-delay: 1s;
-        -o-animation-delay: 1s;
-        -moz-animation-delay: 1s;
-        -webkit-animation-delay: 1s;
-    }
+            .texts .text:nth-child(2),
+            .text:nth-last-child(2) {
+                transform: translateX(-26%);
+            }
 
-    #load div:nth-child(7) {
-        animation-delay: 1.2s;
-        -o-animation-delay: 1.2s;
-        -moz-animation-delay: 1.2s;
-        -webkit-animation-delay: 1.2s;
-    }
+            .texts {
+                gap: 8px;
 
-    @keyframes move {
-        0% {
-            left: 0;
-            opacity: 0;
-        }
+            }
 
-        35% {
-            left: 41%;
-            -moz-transform: rotate(0deg);
-            -webkit-transform: rotate(0deg);
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg);
-            opacity: 1;
-        }
+            .donts {
+                right: 0px;
+                bottom: 0;
+                display: inline-flex;
+                flex-direction: row-reverse;
+            }
+             .donts .texts .text:nth-child(1),
+             .donts .text:nth-last-child(1) {
+                transform: translateX(55%);
+            }
 
-        65% {
-            left: 59%;
-            -moz-transform: rotate(0deg);
-            -webkit-transform: rotate(0deg);
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg);
-            opacity: 1;
-        }
+             .donts .texts .text:nth-child(2),
+             .donts .text:nth-last-child(2) {
+                transform: translateX(26%);
+            }
+            .donts,
+            .does {
+                width: 50%;
+            }
 
-        100% {
-            left: 100%;
-            -moz-transform: rotate(-180deg);
-            -webkit-transform: rotate(-180deg);
-            -o-transform: rotate(-180deg);
-            transform: rotate(-180deg);
-            opacity: 0;
-        }
-    }
+            .border {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
 
-    @-moz-keyframes move {
-        0% {
-            left: 0;
-            opacity: 0;
-        }
+    <body>
+        <div class="flex flex-col relative border w-screen h-screen">
+            <div class="does flex inline">
+                <div class="image">
+                    <img src="./public/images/hand-drawn-doctor-cartoon-illustration.png" alt="" class="">
+                </div>
+                <div class="texts">
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                </div>
+            </div>
+            <div class="donts flex absolute inline">
+                <div class="image">
+                    <img src="./public/images/hand-drawn-doctor-cartoon-illustration.png" alt="" class="">
+                </div>
+                <div class="texts">
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 
-        35% {
-            left: 41%;
-            -moz-transform: rotate(0deg);
-            transform: rotate(0deg);
-            opacity: 1;
-        }
-
-        65% {
-            left: 59%;
-            -moz-transform: rotate(0deg);
-            transform: rotate(0deg);
-            opacity: 1;
-        }
-
-        100% {
-            left: 100%;
-            -moz-transform: rotate(-180deg);
-            transform: rotate(-180deg);
-            opacity: 0;
-        }
-    }
-
-    @-webkit-keyframes move {
-        0% {
-            left: 0;
-            opacity: 0;
-        }
-
-        35% {
-            left: 41%;
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-            opacity: 1;
-        }
-
-        65% {
-            left: 59%;
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-            opacity: 1;
-        }
-
-        100% {
-            left: 100%;
-            -webkit-transform: rotate(-180deg);
-            transform: rotate(-180deg);
-            opacity: 0;
-        }
-    }
-
-    @-o-keyframes move {
-        0% {
-            left: 0;
-            opacity: 0;
-        }
-
-        35% {
-            left: 41%;
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg);
-            opacity: 1;
-        }
-
-        65% {
-            left: 59%;
-            -o-transform: rotate(0deg);
-            transform: rotate(0deg);
-            opacity: 1;
-        }
-
-        100% {
-            left: 100%;
-            -o-transform: rotate(-180deg);
-            transform: rotate(-180deg);
-            opacity: 0;
-        }
-    }
-
-    #animatedDiv {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-</style>
-<div id="animatedDiv">
-    <div id="load">
-        <div>G</div>
-        <div>N</div>
-        <div>I</div>
-        <div>D</div>
-        <div>A</div>
-        <div>O</div>
-        <div>L</div>
-    </div>
-</div>
+</html>

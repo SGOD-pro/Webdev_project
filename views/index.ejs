@@ -13,7 +13,75 @@
     <link rel="stylesheet" href="/stylesheets/utlis.css">
     <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/index.css">
-    
+    <style>
+      #page3 {
+        color: var(--primary-text-color);
+border-radius: 4rem 4rem 0 0 ;
+        .image {
+          width: 34.5vw;
+          height: 34.5vw;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+
+          }
+        }
+
+        #does-image {
+          transform: translate(-10%, -8%);
+
+        }
+
+        .text {
+          border-radius: 8px;
+          box-shadow: 4px 4px 10px #101010;
+          padding: 8px;
+          width: 280px;
+          margin-block: 10px;
+          background-color: var(--secondary-bg-color);
+        }
+
+        .texts .text:nth-child(1),
+        .text:nth-last-child(1) {
+          transform: translateX(-55%);
+        }
+
+        .texts .text:nth-child(2),
+        .text:nth-last-child(2) {
+          transform: translateX(-26%);
+        }
+
+        .texts {
+          gap: 8px;
+
+        }
+
+        .donts {
+          right: 0px;
+          bottom: 0;
+          display: inline-flex;
+          flex-direction: row-reverse;
+        }
+
+        .donts .texts .text:nth-child(1),
+        .donts .text:nth-last-child(1) {
+          transform: translateX(55%);
+        }
+
+        .donts .texts .text:nth-child(2),
+        .donts .text:nth-last-child(2) {
+          transform: translateX(26%);
+        }
+
+        .donts,
+        .does {
+          width: 50%;
+        }
+      }
+    </style>
   </head>
 
 
@@ -52,7 +120,7 @@
                   <img src="/images/undraw_doctor_kw5l (1).png" alt="">
                 </div>
                 <div class="right flex justify-center items-center" data-scroll data-scroll-speed="-1.5">
-                  <h1 class="text-xl "> Urgent <span class="material-symbols-outlined text-lg" style="color: #E72929;">
+                  <h1 class="text-xl "> Urgent <span class="material-symbols-outlined text-lg" style="color: #E72929;text-shadow:0 0 10px #E72929;">
                       ecg_heart
                     </span>appointment </h1>
                   <p> Book your schedule with the top therapists and consultants for any kind of mental issues.</p>
@@ -65,34 +133,54 @@
             </div>
 
             <div id="page3" class="" data-scroll data-scroll-speed="-.1">
-              <h1 class="text-lg text-capitalize">do-dont's: - <span class="material-symbols-outlined text-lg">
+              <h1 class="text-lg text-capitalize">do-dont's: - <span class="material-symbols-outlined text-lg" >
                   pulse_alert
                 </span></h1>
-              <div class="flex justify-between items-center tips-section h-full w-full">
-                <div class="left flex justify-around" data-scroll-scetion data-scroll data-scroll-speed="-.8">
-                  <div id="to-do">
-                    <h4 class="text-md text-capitalize text-center">To-Do</h4>
-                    <ul class=" flex flex-col justify-between h-full">
-                      <li>bsdk</li>
-                      <li>lmjp</li>
-                      <li>alla hu akbar💣💥</li>
-                    </ul>
+              <div class="flex flex-col relative w-screen h-screen" >
+                <div class="does flex inline" data-scroll data-scroll-speed="1.2">
+                  <div class="image" id="does-image">
+                    <img src="/images/hand-drawn-doctor-cartoon-illustration.png" alt="" class="">
                   </div>
-                  <div id="not-to-do">
-                    <h4 class="text-md text-capitalize text-center">not-to-do</h4>
-                    <ul class=" flex flex-col justify-between h-full">
-                      <li>bsdk</li>
-                      <li>lmjp</li>
-                      <li>alla hu akbar</li>
-                    </ul>
+                  <div class="texts" id="does-text">
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
                   </div>
                 </div>
-                <div class="right relative" data-scroll-scetion data-scroll data-scroll-speed="1.5">
-                  <div class="img">
-                    <img src="/images/tips.png" alt="" class="w-full h-full">
+                <div class="donts flex absolute inline" data-scroll data-scroll-speed="-1.2">
+                  <div class="image">
+                    <img src="/images/hand-drawn-doctor-cartoon-illustration.png" alt="" class="">
+                  </div>
+                  <div class="texts" id="donts-text">
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
+                    <div class="text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, earum!
+                    </div>
                   </div>
                 </div>
-                <div class="circle absolute top-0" data-scroll-scetion data-scroll data-scroll-speed="-.2"></div>
               </div>
             </div>
 
@@ -125,7 +213,7 @@
               <h2 class="text-basic">Copyright © [2024] [Mental Peace]. All rights reserved. No part of this website may
                 be
                 reproduced, distributed, or transmitted in any form or by any means.</h2>
-              <p class="text-sm">For permission requests, contact sgod@gmail.com.</p>
+              <p class="text-sm">For permission requests, contact sgod@gmail.com</p>
             </footer>
           </main>
 
