@@ -25,11 +25,8 @@ main {
 	width: 90%;
 	height: 400px;
 	text-align: center;
-	background-image: url("./health2.jpg");
 	background-size: contain;
 	background-position: center;
-	background-clip: text;
-	-webkit-background-clip: text;
 	color: transparent;
 	z-index: 10;
 	margin: auto;
@@ -59,11 +56,10 @@ main {
 .container:active {
 	cursor: grabbing;
 }
-.container::selection {
-	pointer-events: none;
-}
+
 .container h1 {
 	color: var(--primary-text-color);
+	font-family: var(--font1);
 }
 .cards {
 	white-space: nowrap;
@@ -75,18 +71,13 @@ main {
 	background-color: var(--secondary-bg-color);
 	color: var(--primary-text-color);
 }
-.card-body h5,
-.card-body p {
-	pointer-events: none;
-}
+
 .card h5::selection,
 .card p ::selection{
 	pointer-events: none;
 	background-color: transparent;
 }
-.card::selection{
-	pointer-events: none;
-}
+
 .card-body {
 	height: 45%;
 }

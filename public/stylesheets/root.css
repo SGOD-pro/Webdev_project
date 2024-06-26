@@ -3,7 +3,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Poppins", sans-serif;
 	transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 html,
@@ -11,17 +10,51 @@ body {
 	min-height: 100%;
 	max-width: 100vw;
 }
+@font-face {
+	font-family:aghita ;
+	src: url("../fonts/aghita.ttf");
+}
+@font-face {
+	font-family:alibold ;
+	src: url("../fonts/alibold-italic.otf");
+}
+@font-face {
+	font-family:ANDREW ;
+	src: url("../fonts/ANDREW\ ELEGANT\ Regular.otf");
+}
+@font-face {
+	font-family:goldbadge ;
+	src: url("../fonts/goldbadge-lxzwz.otf");
+}
+@font-face {
+	font-family:Hastegi ;
+	src: url("../fonts/Hastegi-yYBYe.otf");
+}
+@font-face {
+	font-family:lost-sarafin ;
+	src: url("../fonts/lost-sarafin.otf");
+}
+@font-face {
+	font-family:notica ;
+	src: url("../fonts/notica-serif.otf");
+}
+@font-face {
+	font-family:Retolia ;
+	src: url("../fonts/Retolia-BF6627323366900.otf");
+}
+
+
 :root {
 	--primary-bg-color: #F9F7F7;
 	--secondary-bg-color: #EAEAEA;
 	--primary-text-color: #101010;
-	--theme-color: #3282B8;
+	--theme-color: #75A3BF;
 
-	--font1: "Work Sans", sans-serif;
-	--font2: "Josefin Sans", sans-serif;
-	--font3: "Dancing Script", cursive;
-	--font4: "Noto Sans", sans-serif;
+	--font1: lost-sarafin,sans-serif;
+	--font2: notica,sans-serif;
+	--font3: Retolia,sans-serif;
 }
+
 a {
 	text-decoration: none;
 	text-transform: capitalize;

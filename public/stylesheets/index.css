@@ -32,9 +32,10 @@ button {
 }
 #page1 .left {
 	width: 50%;
-	color: #2966bf;
+	color: var(--theme-color);
 	padding: 1.5rem;
 	font-weight: 600;
+	font-family: var(--font3);
 }
 #page1 .left h1 {
 	letter-spacing: -1px;
@@ -68,6 +69,7 @@ button {
 	text-align: center;
 	padding-block: 5rem;
 	padding-top: 3rem;
+	font-family: var(--font3);
 }
 #page2 {
 	height: 100vh;
@@ -95,11 +97,12 @@ button {
 	margin-right: 10rem;
 }
 #page2 .right h1 {
+	font-family: var(--font1);
 	color: var(--primary-text-color);
 }
 #page2 .right p {
-	font-weight: 500;
-	word-spacing: 5px;
+	font-weight: 800;
+	font-family: var(--font2);
 }
 #page2 .right button {
 	background-color: var(--secondary-bg-color);
@@ -108,6 +111,8 @@ button {
 	letter-spacing: -1px;
 	padding-block: 0.5rem;
 	border-radius: 7px;
+	font-family: var(--font4);
+	font-family: var(--font8)!important;
 }
 #page3 {
 	position: relative;
@@ -119,6 +124,7 @@ button {
 	padding: 2rem;
 	font-weight: 800;
 	text-decoration: underline;
+	font-family: var(--font1);
 }
 #page3 .tips-section {
 	gap: 2rem;
@@ -146,9 +152,11 @@ button {
 #page3 .tips-section .left > * ul {
 	color: var(--theme-color);
 }
-#page3 .tips-section .left > * ul li {
+.texts .text {
 	font-weight: 400;
 	margin-block: 0.5rem;
+	font-family: var(--font2);
+	letter-spacing: 1px;
 }
 #page3 .tips-section .right {
 	background-color: tan;
@@ -181,6 +189,8 @@ button {
 	color: var(--primary-text-color);
 	padding: 2rem;
 	text-decoration: underline;
+	font-family: var(--font1);
+
 }
 #page4 p {
 	color: var(--primary-text-color);
@@ -255,8 +265,8 @@ footer h2 {
 #btn3:hover {
 	background-color: var(--theme-color) !important;
 	color: var(--primary-text-color) !important;
-	box-shadow: 0 0 10px -2px var(--theme-color), 0 0 5px 0px var(--theme-color),
-		0 0 15px -4px var(--theme-color);
+	box-shadow: 0 0 10px 1px var(--theme-color), 0 0 5px 0px var(--theme-color),
+		0 0 30px -4px var(--theme-color);
 	-webkit-box-reflect: below 8px
 		linear-gradient(transparent, rgba(0, 0, 0, 0.3));
 }
@@ -266,4 +276,5 @@ footer h2 {
 	border-radius: 10px;
 	background-color: var(--secondary-bg-color) !important;
 	border: 1px solid var(--theme-color);
+	font-family: var(--font3);
 }
